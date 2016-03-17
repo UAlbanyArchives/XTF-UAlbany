@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<brand xmlns="http://www.w3.org/1999/xhtml">
+   
+   <links>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <!--<link rel="stylesheet" href="css/default/results.css" type="text/css"/>-->
+      <link rel="shortcut icon" href="icons/ua/mainLogo.ico"/>
+      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"/>
+      <!-- bootstrap -->
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+      <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"/>
+	  <link rel="stylesheet" href="css/ua/headerNavbar.css" type="text/css"/>
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </links>
+   
+   <dynaxml.links>
+      <link rel="stylesheet" href="css/default/content.css" type="text/css"/>
+      <link rel="stylesheet" href="css/ua/headerNavbar.css" type="text/css"/>
+      <link rel="shortcut icon" href="icons/default/favicon.ico" />
+   </dynaxml.links>
+   
+   <header>
+      <div class="header col-xs-12">
+         <!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/xtf/search"><img src="icons/ua/mainLogo.png" height="75px" /></a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<!--<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">UAlbany <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="http://www.albany.edu/">UAlbany, SUNY</a></li>
+								<li><a href="http://library.albany.edu/">University Libraries</a></li>
+							</ul>
+						</li>-->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Collections <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">About Collections</a></li>
+								<li><a href="http://library.albany.edu/archive/apap">NY Modern Political Archive</a></li>
+								<li><a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a></li>
+								<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré Papers</a></li>
+								<li><a href="http://library.albany.edu/archive/ua">University Archives</a></li>
+								<li><a href="http://library.albany.edu/archive/mathes">Mathes Childrens Literature</a></li>
+								<li><a href="http://library.albany.edu/archive/manuscript">Rare Books and Manuscripts</a></li>
+								<li><a href="http://library.albany.edu/archive/collections/alpha">A-Z Complete List of Collections</a></li>
+								<li><a href="http://library.albany.edu/archive/collections/subject">Subject Guides to Collections</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Digital Selections <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">About Digital Selections</a></li>
+								<!--<li><a href="http://luna.albany.edu/luna/servlet/UALBANYSCA~14~14">Digital Photograph Collections (LUNA)</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/s/uc9c1q">University Photographs</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search;JSESSIONID=2b6136d9-4163-47bb-bdb7-152ea22a99fa?sort=Archive_Collection%2CDate%2CTitle%2CSubject&q=Creator%3D%22United+University+Professions+%28UUP%29%22&pgs=50&res=1">United University Professions</a></li>
+								<li><a href="http://library.albany.edu/archive/milnedigitalcollections">Milne School</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?q==%22WAMC%22&sort=Archive_Collection,Date,Title,Subject">WAMC Northeast Public Radio</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=marcia+brown&search=Search">Marcia Brown</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=CSEA&sort=Archive_Collection%2CDate%2CTitle%2CSubject&search=Search">The Civil Service Employees Association (CSEA)</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=Norman+Studer&sort=Archive_Collection%2CDate%2CTitle%2CSubject&search=Search">Norman Studer</a></li>
+								<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>-->
+								<li><a href="http://library.albany.edu/speccoll/findaids/eresources/findingaids/ua809.html">Albany Student Newspaper Archive</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exhibits <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="http://library.albany.edu/archive/chronology">Chronological History of UAlbany</a></li>
+								<li><a href="http://library.albany.edu/archive/seeger">Remembering Pete Seeger</a></li>
+								<li><a href="http://library.albany.edu/archive/exhibitmilne">The Milne School Murals</a></li>
+								<li><a href="http://library.albany.edu/speccoll/campusbuildings/index.htm">Campus Buildings Historical Tour</a></li>
+								<li><a href="http://library.albany.edu/speccoll/marciabrown/index.htm">Marcia Brown Exhibit and Resource Website</a></li>
+								<li><a href="http://library.albany.edu/speccoll/stockingBrown/">Patricia Stocking Brown</a></li>
+								<li><a href="http://library.albany.edu/speccoll/mural/">University Historical Murals</a></li>
+								<li><a href="http://library.albany.edu/speccoll/secretlives/index.htm">The Secret Lives of Toys and Their Friends</a></li>
+								<li><a href="http://library.albany.edu/speccoll/stone/index.htm">Edward Durell Stone and the Building of the Uptown Campus</a></li>
+								<li><a href="http://library.albany.edu/archive/exhibits">More...</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">University Records <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="http://library.albany.edu/archive/ua/transferform">Transfer Records to the University Archives</a></li>
+								<li><a href="http://library.albany.edu/archive/universityarchives">FAQ</a></li>
+								<li><a href="http://library.albany.edu/archive/UniversityArchives/ANTS">About ANTS: Archives Network Transfer System</a></li>
+								<li><a href="#">About SUNY Records Laws</a></li>
+								<li><a href="#">About UAlbany Record Classification System</a></li>
+								<li><a href="#">Exporting Email for Transfer</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+						</li>
+						<li>
+							<a href="http://library.albany.edu/archive/reference">Contact</a>
+						</li>
+					
+					<div class="col-sm-3 col-md-3 pull-right" id="searchBox">
+						<form class="navbar-form" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+						</form>
+					</div>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container -->
+		</nav>
+      </div>
+   </header>
+   
+   <dynaxml.header>
+      <div class="header">
+         <!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/xtf/search"><img src="icons/ua/mainLogo.png" height="75px" /></a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<!--<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">UAlbany <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="http://www.albany.edu/">UAlbany, SUNY</a></li>
+								<li><a href="http://library.albany.edu/">University Libraries</a></li>
+							</ul>
+						</li>-->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Collections <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">About Collections</a></li>
+								<li><a href="http://library.albany.edu/archive/apap">NY Modern Political Archive</a></li>
+								<li><a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a></li>
+								<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré Papers</a></li>
+								<li><a href="http://library.albany.edu/archive/ua">University Archives</a></li>
+								<li><a href="http://library.albany.edu/archive/mathes">Mathes Childrens Literature</a></li>
+								<li><a href="http://library.albany.edu/archive/manuscript">Rare Books and Manuscripts</a></li>
+								<li><a href="http://library.albany.edu/archive/collections/alpha">A-Z Complete List of Collections</a></li>
+								<li><a href="http://library.albany.edu/archive/collections/subject">Subject Guides to Collections</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Digital Selections <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">About Digital Selections</a></li>
+								<!--<li><a href="http://luna.albany.edu/luna/servlet/UALBANYSCA~14~14">Digital Photograph Collections (LUNA)</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/s/uc9c1q">University Photographs</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search;JSESSIONID=2b6136d9-4163-47bb-bdb7-152ea22a99fa?sort=Archive_Collection%2CDate%2CTitle%2CSubject&q=Creator%3D%22United+University+Professions+%28UUP%29%22&pgs=50&res=1">United University Professions</a></li>
+								<li><a href="http://library.albany.edu/archive/milnedigitalcollections">Milne School</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?q==%22WAMC%22&sort=Archive_Collection,Date,Title,Subject">WAMC Northeast Public Radio</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=marcia+brown&search=Search">Marcia Brown</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=CSEA&sort=Archive_Collection%2CDate%2CTitle%2CSubject&search=Search">The Civil Service Employees Association (CSEA)</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=Norman+Studer&sort=Archive_Collection%2CDate%2CTitle%2CSubject&search=Search">Norman Studer</a></li>
+								<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>-->
+								<li><a href="http://library.albany.edu/speccoll/findaids/eresources/findingaids/ua809.html">Albany Student Newspaper Archive</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exhibits <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="http://library.albany.edu/archive/chronology">Chronological History of UAlbany</a></li>
+								<li><a href="http://library.albany.edu/archive/seeger">Remembering Pete Seeger</a></li>
+								<li><a href="http://library.albany.edu/archive/exhibitmilne">The Milne School Murals</a></li>
+								<li><a href="http://library.albany.edu/speccoll/campusbuildings/index.htm">Campus Buildings Historical Tour</a></li>
+								<li><a href="http://library.albany.edu/speccoll/marciabrown/index.htm">Marcia Brown Exhibit and Resource Website</a></li>
+								<li><a href="http://library.albany.edu/speccoll/stockingBrown/">Patricia Stocking Brown</a></li>
+								<li><a href="http://library.albany.edu/speccoll/mural/">University Historical Murals</a></li>
+								<li><a href="http://library.albany.edu/speccoll/secretlives/index.htm">The Secret Lives of Toys and Their Friends</a></li>
+								<li><a href="http://library.albany.edu/speccoll/stone/index.htm">Edward Durell Stone and the Building of the Uptown Campus</a></li>
+								<li><a href="http://library.albany.edu/archive/exhibits">More...</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">University Records <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="http://library.albany.edu/archive/ua/transferform">Transfer Records to the University Archives</a></li>
+								<li><a href="http://library.albany.edu/archive/universityarchives">FAQ</a></li>
+								<li><a href="http://library.albany.edu/archive/UniversityArchives/ANTS">About ANTS: Archives Network Transfer System</a></li>
+								<li><a href="#">About SUNY Records Laws</a></li>
+								<li><a href="#">About UAlbany Record Classification System</a></li>
+								<li><a href="#">Exporting Email for Transfer</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+						</li>
+						<li>
+							<a href="http://library.albany.edu/archive/reference">Contact</a>
+						</li>
+					
+					<div class="col-sm-3 col-md-3 pull-right" id="searchBox">
+						<form class="navbar-form" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+						</form>
+					</div>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container -->
+		</nav>
+      </div>
+   </dynaxml.header>
+   
+   <footer>
+      <div class="container-fluid">
+         <div class="row">
+            <div class="footer col-md-12 text-center text-muted">
+                <div class="spc-footer">
+					  <p style="margin-bottom: 0;">M. E. Grenander Department of Special Collections &amp; Archives<br />
+						<a href="/" class="spc_hypbt">University Libraries</a>, University at Albany, State University of New York<br />
+						1400 Washington Avenue, Albany, New York 12222 - (518) 437-3935 - <a href="#" class="spc_hypbt" id="spc_bottomemailus">Email Us</a><br />
+					</p>
+				</div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   
+</brand>

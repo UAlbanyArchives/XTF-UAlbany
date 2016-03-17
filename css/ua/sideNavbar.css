@@ -1,0 +1,30 @@
+.nav > .alert {
+	margin: 20px;
+}
+
+#collectionMenu .panel {
+	margin:  20px 8px;
+}
+
+
+#collectionMenu .panel * {
+	margin: 0px;
+}
+
+#collectionMenu .panel .list-group-item {
+	border-bottom: 0px;
+}
+
+#collectionMenu .panel .list-group div .list-group-item {
+	padding-left: 35px;
+}
+
+#aboutMenu .list-group-item.open .caret {
+	border-top: none;
+    border-bottom: 4px solid #000000;
+} 
+
+#seriesMenu .list-group-item.open .caret {
+	border-top: none;
+    border-bottom: 4px solid #000000;
+} 

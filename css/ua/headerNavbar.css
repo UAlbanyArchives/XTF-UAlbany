@@ -1,0 +1,227 @@
+/*!
+ * Start Bootstrap - Heroic Features HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+	
+}
+
+span.glyphicon-triangle-bottom {
+    font-size: 0.6em;
+}
+
+span.glyphicon-triangle-top {
+    font-size: 0.6em;
+}
+
+.navbar {
+	min-height: 100px;
+	border-radius: 0px;
+}
+
+.navbar-inverse {
+	background-color: #512D6D;
+}
+
+.navbar-header {
+	min-height: 100px;
+	background-size: 100% 90%;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+#bs-example-navbar-collapse-1{
+	background-image: url("../../icons/ua/mainHeadingLarge.png");
+	background-size: 935px 60px;
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-origin: content-box;
+}
+
+.navbar-nav {
+	margin-top: 55px;
+	width: 90%;
+}
+
+.navbar-nav li .dropdown-toggle {
+	border-radius: 5px;
+}
+
+.navbar-inverse .navbar-nav li a {
+	color: #EBE6F0;
+	text-decoration: none;
+	font: 11pt Vani, Palatino,"Palatino Linotype","Times New Roman",serif;
+	padding-top: 15px;
+}
+
+.navbar-inverse .navbar-nav li ul li a {
+	color: #403a60;
+	text-decoration: none;
+	font: 11pt Vani, Palatino,"Palatino Linotype","Times New Roman",serif
+	
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu li {
+	width: 123%;
+}
+
+.nav li a {
+	padding: 10px 10px;
+}
+
+.nav > .dropdown.open .caret {
+    border-top: none;
+    border-bottom: 4px solid #000000;
+}
+
+.dropdown-menu li a {
+	padding-top: 8px;
+	padding-bottom: 2px;
+}
+
+.navbar-inverse .navbar-nav li a:hover{
+	background-color: #512d6d;
+}
+
+.dropdown-menu {
+	background-color: #EBE6F0;
+}
+
+.navbar-inverse .navbar-nav .open a:focus,a:hover,a:active,a:visited {
+	color: #403a60;
+	background-color: #EBE6F0;
+}
+
+#searchBox {
+	padding-right: 0px;
+	padding-left: 0px;
+	width: 21%;
+}
+
+.btn {
+	padding: 9px 12px;
+}
+
+.navbar-form {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+	background-color: #eaaa00;
+}
+
+.navbar-inverse .navbar-nav .open a{
+	background-color: #EBE6F0;
+	color: #403a60;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu li a:hover {
+	color: #EBE6F0;
+	background-color: #512D6D;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu li a {
+	color: #403a60;
+}
+
+@media only screen and (max-width: 991px) {
+  #bs-example-navbar-collapse-1 {
+	  background-image: url("../../icons/ua/mainHeading.png");
+	  background-size: 710px 60px;
+  }
+  #searchBox {
+	  width: 18%;
+  }
+  .navbar-inverse .navbar-nav li a {
+	  font: 9pt Arial,Helvetica,sans-serif;
+	  padding-left: 5px;
+	  padding-right: 5px;
+	  padding-bottom: 15px;
+  }
+  .dropdown-menu li a {
+	padding-top: 5px;
+	padding-bottom: 5px;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  #bs-example-navbar-collapse-1 {
+       background-image: none;
+   }
+   .navbar-header {
+	background-image: url("../../icons/ua/mainHeadingSmall.png");
+   }
+   .navbar-inverse .navbar-nav li a{
+	  font: 11pt Vani, Palatino,"Palatino Linotype","Times New Roman",serif;
+	  padding-left: 10px;
+	  padding-right: 10px;
+	  padding-bottom: 8px;
+   }
+   .navbar-nav {
+	margin-top: 0px;
+	}
+	#searchBox{
+		width: 50%;
+		margin: 0px;
+	}
+}
+
+@media only screen and (max-width: 540px) {
+  .navbar-header {
+	background-size: 100% 60%;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+  .navbar-header {
+	background-image: url("../../icons/ua/mainHeadingTiny.png");
+	background-size: 105% 75%;
+  }
+}
+
+.header {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+.spc-footer {
+    margin: 50px 0;
+	
+	color: #EBE6F0;
+	
+}
+
+.spc-footer a {
+    color: #EBE6F0
+}
+
+.spc-footer p {
+   width: 85%;
+   margin: 0 auto;
+   background-color: #512D6D;
+   padding: 15px;
+   text-align: left;
+}
+
+.spc-footer a:hover, footer a:focus {
+    color: #403a60
+}
+
+.resultsLeft{
+	float: left;
+	width: 50%;
+}
+
+.resultsSort{
+	float: right;
+}
