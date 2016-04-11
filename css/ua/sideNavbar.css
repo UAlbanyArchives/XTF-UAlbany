@@ -2,6 +2,7 @@
 	margin: 20px;
 }
 
+
 #collectionMenu .panel {
 	margin:  20px 8px;
 }
@@ -11,7 +12,11 @@
 	margin: 0px;
 }
 
-#collectionMenu .panel .list-group-item {
+#collectionMenu .panel #tocItem {
+	border-bottom: 0px;
+}
+
+#collectionMenu #panel1 .list-group-item {
 	border-bottom: 0px;
 }
 
@@ -28,3 +33,110 @@
 	border-top: none;
     border-bottom: 4px solid #000000;
 } 
+
+#menuPanel > .panel-heading {
+	padding: 5px 15px;
+}
+
+.breadcrumb {
+	position: fixed;
+	top: 127px;
+	/*background-color: #EBE6F0;*/
+	z-index: 500;
+	width: 100%;
+	white-space: nowrap;
+}
+
+.breadcrumb a {
+	color: #512D6D;
+}
+
+#collectionTitle {
+	margin-top: 40px;
+}
+
+#topSpacer {
+	position: fixed;
+	top: 0;
+	height: 20px;
+	width: 100%;
+	background-color: #FFFFFF;
+	z-index: 1000;
+}
+
+#menuPanel {
+	margin:  20px 8px;
+}
+
+
+.navbar-form > .input-group .btn {
+	padding:  5px 8px;
+	height: 34px;
+}
+
+#searchSelect .dropdown-menu {
+	left: -147px;
+}
+
+#searchSelect .dropdown-menu > .radio {
+	margin: 3px 20px;
+	display: block;
+}
+
+#searchSelect .dropdown-menu > .radio > label > input {
+	margin-right: 5px;
+}
+
+
+
+.dropdownLogo {
+	height: 22px;
+}
+
+#menuBtn {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#searchBtn {
+	border-radius: 0;
+}
+
+#srch-term, #srch-termValue {
+	display: none;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+#srch-term2, #srch-termValue2 {
+	display: none;
+}
+
+/*
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    margin-top: -1px;
+	border-top-left-radius:0;
+	border-bottom-left-radius:0;
+	border-left-color:#fff;
+	box-shadow:none;
+}
+.right-caret:after,.left-caret:after
+ {	content:"";
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    display: inline-block;
+    height: 0;
+    vertical-align: middle;
+    width: 0;
+	margin-left:5px;
+}
+.right-caret:after
+{	border-left: 5px solid #eaaa00;
+}
+.left-caret:after
+{	border-right: 5px solid #eaaa00;
+}*/

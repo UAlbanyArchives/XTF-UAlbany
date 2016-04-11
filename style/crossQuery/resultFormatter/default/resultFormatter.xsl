@@ -191,7 +191,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/xtf/search"><img src="icons/ua/mainLogo.png" height="75px" /></a>
+					<a class="navbar-brand" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" height="75px" /></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -206,7 +206,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Collections <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">About Collections</a></li>
+								<li><a href="search">About Collections</a></li>
 								<li><a href="http://library.albany.edu/archive/apap">NY Modern Political Archive</a></li>
 								<li><a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a></li>
 								<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré Papers</a></li>
@@ -220,17 +220,20 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Digital Selections <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">About Digital Selections</a></li>
-								<!--<li><a href="http://luna.albany.edu/luna/servlet/UALBANYSCA~14~14">Digital Photograph Collections (LUNA)</a></li>
+								<li><a href="http://library.albany.edu/archive/digitalcollections">About Digital Selections</a></li>
+								<li class="dropdown-header">Photographs</li>
+								<li><a href="http://luna.albany.edu/luna/servlet/UALBANYSCA~14~14">Digital Photograph Collections (LUNA)</a></li>
 								<li><a href="http://luna.albany.edu/luna/servlet/s/uc9c1q">University Photographs</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search;JSESSIONID=2b6136d9-4163-47bb-bdb7-152ea22a99fa?sort=Archive_Collection%2CDate%2CTitle%2CSubject&q=Creator%3D%22United+University+Professions+%28UUP%29%22&pgs=50&res=1">United University Professions</a></li>
-								<li><a href="http://library.albany.edu/archive/milnedigitalcollections">Milne School</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search?q==%22WAMC%22&sort=Archive_Collection,Date,Title,Subject">WAMC Northeast Public Radio</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=marcia+brown&search=Search">Marcia Brown</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=CSEA&sort=Archive_Collection%2CDate%2CTitle%2CSubject&search=Search">The Civil Service Employees Association (CSEA)</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&q=Norman+Studer&sort=Archive_Collection%2CDate%2CTitle%2CSubject&search=Search">Norman Studer</a></li>
-								<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>-->
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search;JSESSIONID=2b6136d9-4163-47bb-bdb7-152ea22a99fa?sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;q=Creator%3D%22United+University+Professions+%28UUP%29%22&amp;pgs=50&amp;res=1">United University Professions</a></li>
+								<li class="dropdown-header">Digitized Newspapers</li>
+								<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>
 								<li><a href="http://library.albany.edu/speccoll/findaids/eresources/findingaids/ua809.html">Albany Student Newspaper Archive</a></li>
+								<li><a href="http://library.albany.edu/archive/milnedigitalcollections">Milne School</a></li>
+								<li class="dropdown-header">Audio</li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?q==%22WAMC%22&amp;sort=Archive_Collection,Date,Title,Subject">WAMC Northeast Public Radio</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=marcia+brown&amp;search=Search">Marcia Brown</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=CSEA&amp;sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;search=Search">The Civil Service Employees Association (CSEA)</a></li>
+								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=Norman+Studer&amp;sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;search=Search">Norman Studer</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -254,13 +257,27 @@
 								<li><a href="http://library.albany.edu/archive/ua/transferform">Transfer Records to the University Archives</a></li>
 								<li><a href="http://library.albany.edu/archive/universityarchives">FAQ</a></li>
 								<li><a href="http://library.albany.edu/archive/UniversityArchives/ANTS">About ANTS: Archives Network Transfer System</a></li>
+								<li><a href="http://library.albany.edu/archive/ua/matrix">University Records Charts</a></li>
 								<li><a href="#">About SUNY Records Laws</a></li>
-								<li><a href="#">About UAlbany Record Classification System</a></li>
-								<li><a href="#">Exporting Email for Transfer</a></li>
+								<li><a href="https://wiki.albany.edu/display/public/askit/Information+Security+Domains%2C+Supporting+Protocols+and+Procedures">About CIO Data Classification System</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="http://library.albany.edu/archive/rules">How to Use Collections for Research</a></li>
+								<li><a href="http://library.albany.edu/archive/directions">Hours and Directions</a></li>
+								<li><a href="http://library.albany.edu/archive/contact">Staff</a></li>
+								<li><a href="http://library.albany.edu/archive/grenander">About M.E. Grenander</a></li>
+								<li><a href="http://library.albany.edu/archive/manual">Accessioning and Processing Manual</a></li>
+								<li><a href="http://library.albany.edu/archive/citation">Citation Guide for Unpublished Materials</a></li>
+								<li><a href="http://library.albany.edu/archive/policy">Collection Development Policy</a></li>
+								<li><a href="http://library.albany.edu/archive/copyright">Copyright Notice</a></li>
+								<li><a href="http://liblogs.albany.edu/grenander/">Department Blog</a></li>
+								<li><a href="http://library.albany.edu/archive/historicalresources/">Find Other Historical Repositories</a></li>
+								<li><a href="http://library.albany.edu/archive/research_room">Marcia Brown Research Room</a></li>
+								<li><a href="http://library.albany.edu/speccoll/findaids/eresources/drupal/publish.pdf">Permission to Publish Form</a></li>
+							</ul>
 						</li>
 						<li>
 							<a href="http://library.albany.edu/archive/reference">Contact</a>
@@ -348,7 +365,7 @@
                               </xsl:choose>
                               </div>
 							  </div>
-							  <div class="btn-group results" role="group">
+							  <div class="btn-group options" role="group">
 								   <xsl:if test="$smode != 'showBag'">
 										 <a type="button" class="btn btn-primary" href="{$xtfURL}{$crossqueryPath}?{$modifyString}"><xsl:text>Modify Search</xsl:text></a>
 								   </xsl:if>
@@ -356,7 +373,7 @@
 								   <xsl:if test="$smode = 'showBag'">
 										<a type="button" class="btn btn-primary" href="{session:getData('queryURL')}"><xsl:text>Return to Search Results</xsl:text></a>
 								   </xsl:if>
-							</div>
+							  </div>
 							  <form method="get" action="{$xtfURL}{$crossqueryPath}" class="resultsSort">
 							   <div class="form-group form-inline">
 								  <label>Sorted by:&#160;</label>
@@ -369,6 +386,7 @@
 								  <input class="btn btn-primary" type="submit" value="Go!"/>
 							   </div>
 							</form>
+							<div style="clear: both;height:0px;"></div>
                            </div>
                            
                            <xsl:apply-templates select="docHit"/>
@@ -806,7 +824,7 @@ Item number <xsl:value-of select="$num"/>:
                   <xsl:apply-templates select="meta/publisher[1]"/>
                </div>
             </div>
-         </xsl:if-->
+         </xsl:if>-->
             <xsl:if test="meta/subject">
                <div class="row">
                   <div class="col-md-2 col-md-offset-1">

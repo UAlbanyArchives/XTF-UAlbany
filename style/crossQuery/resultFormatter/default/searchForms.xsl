@@ -60,13 +60,14 @@
          <body>
             <xsl:copy-of select="$brand.header"/>
             <div class="searchPage container-fluid">
+			<div class="container">
                <div class="forms">
                      <ul class="nav nav-tabs nav-justified">
-                        <li class="{if(matches($smode,'simple')) then 'active' else ''}"><a href="search?smode=simple">Keyword</a></li>
-                        <li class="{if(matches($smode,'advanced')) then 'active' else ''}"><a href="search?smode=advanced">Advanced</a></li>
+                        <li class="{if(matches($smode,'simple')) then 'active' else ''}"><a href="search?smode=simple">Browse</a></li>
+                        <li class="{if(matches($smode,'advanced')) then 'active' else ''}"><a href="search?smode=advanced">Advanced Search</a></li>
                         <!-- HA 3/21/2014 goodbye free form query -->
                         <!--<li class="{if(matches($smode,'freeform')) then 'active' else ''}"><a href="search?smode=freeform">Freeform</a></li>-->
-                        <li class="{if(matches($smode,'browse')) then 'active' else ''}"><a href="search?browse-all=yes">Browse</a></li>
+                        <li class="{if(matches($smode,'browse')) then 'active' else ''}"><a href="search?browse-all=yes">View All</a></li>
                      </ul>
                   <div class="form">
                      <xsl:choose>
@@ -89,7 +90,8 @@
                      </xsl:choose>
                   </div>
                </div>
-               <xsl:copy-of select="$brand.footer"/>
+              </div>
+			   <xsl:copy-of select="$brand.footer"/>
             </div>
          </body>
       </html>
@@ -97,37 +99,41 @@
    
    <!-- simple form -->
    <xsl:template name="simpleForm" exclude-result-prefixes="#all">
-      <div class="row">&#160;</div>
-      <form class="form text-center" method="get" action="{$xtfURL}{$crossqueryPath}">
-         <div class="form-group form-inline">
-            <input class="form-control" type="text" name="keyword" size="60" value="{$keyword}"/>
-            <xsl:text>&#160;</xsl:text>
-            <input class="btn btn-primary" type="submit" value="Search"/>
-         </div>
-      </form>
-         <h3>Examples:</h3>
-                  <table class="table table-striped sampleTable">
-                     <tr>
-                        <td class="sampleQuery">africa</td>
-                        <td class="sampleDescrip">Search keywords (full text and metadata) for 'africa'</td>
-                     </tr>
-                     <tr>
-                        <td class="sampleQuery">south africa</td>
-                        <td class="sampleDescrip">Search keywords for 'south' AND 'africa'</td>
-                     </tr>
-                     <tr>
-                        <td class="sampleQuery">"south africa"</td>
-                        <td class="sampleDescrip">Search keywords for the phrase 'south africa'</td>
-                     </tr>
-                     <tr>
-                        <td class="sampleQuery">africa*</td>
-                        <td class="sampleDescrip">Search keywords for the string 'africa' followed by 0 or more characters</td>
-                     </tr>
-                     <tr>
-                        <td class="sampleQuery">africa?</td>
-                        <td class="sampleDescrip">Search keywords for the string 'africa' followed by a single character</td>
-                     </tr>
-                  </table>
+    <div id="main-content" class="container">
+	<div id="main-content-header">
+		<h2 id="page-title">Archive and Manuscript Collections</h2>
+	</div>
+	<div id="content">
+		<div class="article">
+			<p>The M.E. Grenander Department of Special Collections and Archives serves as a repository for manuscripts, archives, books, and special collections of original research materials.</p>
+			<ul>
+				<li>
+					<a href="http://library.albany.edu/archive/apap">New York State Modern Political Archive </a>: Collections of organizations and individuals active in public policy issues especially since 1950.</li>
+				<li>
+					<a href="http://library.albany.edu/archive/ger">German and Jewish Intellectual Émigré Collection</a>: Personal and professional papers of German-speaking Émigré in the social sciences, humanities, and the arts and the organizations which assisted those who fled the Nazi regime.</li>
+				<li>
+					<a href="http://library.albany.edu/archive/ua">University Archives</a>: Official records of the University at Albany, SUNY, and its predecessor institutions dating to the founding of the New York State Normal School in 1844. Also includes papers and records related to the faculty and students of the University.</li>
+				<li>
+					<a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a>: a collection of personal papers and organizational records documenting the United State&#39;s important history of capital punishment.</li>
+				<li>
+					<a href="http://library.albany.edu/archive/mathes">Miriam Snow Mathes Historical Children's Literature Collection</a>:  includes over 12,000 children's books and periodicals published in the 19th century and up to 1960.</li>
+				<li>
+					<a href="http://library.albany.edu/archive/manuscript">Business, Literary, and Art Collection</a>: Chiefly New York State and New England business records, state and local history collections, and art and literary manuscripts.</li>
+				<li>
+					<a href="http://library.albany.edu/archive/books">Rare and Specialized Books</a>: Pre-1801 European and pre-1820 American printed books</li>
+			</ul>
+			<ul>
+				<li>
+					<a href="http://library.albany.edu/archive/collections/alpha">Alphabetical Listing of Collections</a>: An alphabetical listing of all manuscript and archival collections.</li>
+				<li>
+					<a href="http://library.albany.edu/archive/collections/subject">Subject Guides to Collections</a>: Selected subject listings of manuscript and archival collections.</li>
+				<li>
+					<a href="http://library.albany.edu/archive/chronology">Chronological History of the University at Albany, SUNY</a>: Chronological History of the University at Albany, SUNY, 1844-2008</li>
+			</ul>
+		</div>
+		<!-- /article -->
+	</div>
+</div>
    </xsl:template>
    
    <!-- advanced form -->
@@ -313,39 +319,41 @@
             <input class="btn btn-primary" type="submit" value="Search"/>
          </div>
          <div class="col-md-12">
-            <h3>Examples:</h3>      
-            <table class="table table-striped sampleTable">
-                     <tr>
-                        <td/>
-                        <td class="sampleQuery">south africa</td>
-                        <td class="sampleDescrip">Search full text for 'south' AND 'africa'</td>
-                     </tr>
-                     <tr>
-                        <td>Exclude</td>
-                        <td class="sampleQuery">race</td>
-                        <td class="sampleDescrip">Exclude results which contain the term 'race'</td>
-                     </tr>
-                     <tr>
-                        <td>Proximity</td>
-                        <td><form action=""><select><option>5</option></select></form></td>
-                        <td class="sampleDescrip">Match the full text terms, only if they are 5 or fewer words apart</td>
-                     </tr>
-                     <tr>
-                        <td>Section</td>
-                        <td><form action=""><input type="radio" checked="checked"/>headings</form></td>
-                        <td class="sampleDescrip">Match the full text terms, only if they appear in document 'headings' (e.g. chapter titles)</td>
-                     </tr>
-                     <tr>
-                        <td>Title</td>
-                        <td class="sampleQuery">"south africa"</td>
-                        <td class="sampleDescrip">Search for the phrase 'south africa' in the 'title' field</td>
-                     </tr>
-                     <tr>
-                        <td>Year(s)</td>
-                        <td><form action="">from <input type="text" value="2000" size="4"/> to <input type="text" value="2005" size="4"/></form></td>
-                        <td class="sampleDescrip">Search for documents whose date falls in the range from '2000' to '2005'</td>
-                     </tr>
-                  </table>
+            <div id="main-content">
+				<div id="main-content-header">
+					<h2 id="page-title">Archive and Manuscript Collections</h2>
+				</div>
+				<div id="content">
+					<div class="article">
+						<p>The M.E. Grenander Department of Special Collections and Archives serves as a repository for manuscripts, archives, books, and special collections of original research materials.</p>
+						<ul>
+							<li>
+								<a href="http://library.albany.edu/archive/apap">New York State Modern Political Archive </a>: Collections of organizations and individuals active in public policy issues especially since 1950.</li>
+							<li>
+								<a href="http://library.albany.edu/archive/ger">German and Jewish Intellectual Émigré Collection</a>: Personal and professional papers of German-speaking Émigré in the social sciences, humanities, and the arts and the organizations which assisted those who fled the Nazi regime.</li>
+							<li>
+								<a href="http://library.albany.edu/archive/ua">University Archives</a>: Official records of the University at Albany, SUNY, and its predecessor institutions dating to the founding of the New York State Normal School in 1844. Also includes papers and records related to the faculty and students of the University.</li>
+							<li>
+								<a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a>: a collection of personal papers and organizational records documenting the United State&#39;s important history of capital punishment.</li>
+							<li>
+								<a href="http://library.albany.edu/archive/mathes">Miriam Snow Mathes Historical Children's Literature Collection</a>:  includes over 12,000 children's books and periodicals published in the 19th century and up to 1960.</li>
+							<li>
+								<a href="http://library.albany.edu/archive/manuscript">Business, Literary, and Art Collection</a>: Chiefly New York State and New England business records, state and local history collections, and art and literary manuscripts.</li>
+							<li>
+								<a href="http://library.albany.edu/archive/books">Rare and Specialized Books</a>: Pre-1801 European and pre-1820 American printed books</li>
+						</ul>
+						<ul>
+							<li>
+								<a href="http://library.albany.edu/archive/collections/alpha">Alphabetical Listing of Collections</a>: An alphabetical listing of all manuscript and archival collections.</li>
+							<li>
+								<a href="http://library.albany.edu/archive/collections/subject">Subject Guides to Collections</a>: Selected subject listings of manuscript and archival collections.</li>
+							<li>
+								<a href="http://library.albany.edu/archive/chronology">Chronological History of the University at Albany, SUNY</a>: Chronological History of the University at Albany, SUNY, 1844-2008</li>
+						</ul>
+					</div>
+					<!-- /article -->
+				</div>
+			</div>
          </div>
       </form>
    </xsl:template>

@@ -56,7 +56,7 @@
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		exclude-result-prefixes="#all" omit-xml-declaration="yes"/>
 
-	<xsl:output name="frameset" method="xhtml" indent="yes" encoding="UTF-8"
+	<xsl:output name="frameset" method="xhtml" indent="no" encoding="UTF-8"
 		media-type="text/html; charset=UTF-8" doctype-public="HTML" omit-xml-declaration="yes"
 		exclude-result-prefixes="#all"/>
 
@@ -65,6 +65,7 @@
 	<!-- ====================================================================== -->
 
 	<xsl:strip-space elements="*"/>
+
 
 	<!-- ====================================================================== -->
 	<!-- Included Stylesheets                                                   -->
@@ -188,7 +189,7 @@
 					</title>
 				</head>
 
-				<body>
+				<body data-spy="scroll" data-target=".nav" data-offset="50">
 					<div id="wrapper">
 
 					<!-- Schema.org metadata -->
@@ -252,12 +253,27 @@
 
 						<xsl:call-template name="bbar"/>
 						<div id="page-wrapper">
+						
+						
 							<div class="container-fluid">
+								
+								<div class="row" id="topSpacer"></div>
+								
+								<!--Breadcrumbs-->
+								<div class="row">
+									<ol class="breadcrumb">
+										<li><a href="http://lwww.albany.edu">UAlbany</a></li>
+										<li><a href="http://library.albany.edu">University Libraries</a></li>
+										<li><a href="http://library.albany.edu/archive/">M.E. Grenander Special Collections &amp; Archives</a></li>
+										<li class="active"><xsl:value-of select="substring-before(eadheader/filedesc/titlestmt/titleproper, '(')"/></li>
+									</ol>
+								</div>
+								
 								<div class="row">
 									<!--<div class="col-sm-3 col-md-2 sidebar">
 										<xsl:call-template name="toc"/>
 									</div>-->
-									<div class="col-lg-12">
+									<div class="col-lg-12" id="collectionTitle">
 										<div class="row">
 											<xsl:apply-templates select="eadheader"/>
 										</div>
@@ -325,24 +341,93 @@
 				
 					<div class="nav navbar-nav side-nav">
 					
+						<div id="menuPanel" class="panel panel-default">
+						  <div class="panel-heading">
+						  
+								<form id="searchForm2" class="navbar-form" role="search" action="search">
+									<div class="input-group">
+										<div class="input-group-btn">
+											<div class="dropdown">
+											  <button id="menuBtn" class="btn btn-default dropdown-toggle"  type="button"  data-toggle="dropdown">
+											  <img class="dropdownLogo" src="icons/ua/mainLogo.png" />
+											  <xsl:text> </xsl:text>
+											  <span class="caret"></span></button>
+											  <ul class="dropdown-menu">
+												<li>
+													<a href="search">Collections</a>
+													<!--<a class="trigger right-caret">Collections</a>
+													<ul class="dropdown-menu sub-menu">
+														<li><a href="search">About Collections</a></li>
+														<li><a href="http://library.albany.edu/archive/apap">NY Modern Political Archive</a></li>
+														<li><a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a></li>
+														<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré Papers</a></li>
+														<li><a href="http://library.albany.edu/archive/ua">University Archives</a></li>
+														<li><a href="http://library.albany.edu/archive/mathes">Mathes Childrens Literature</a></li>
+														<li><a href="http://library.albany.edu/archive/manuscript">Rare Books and Manuscripts</a></li>
+														<li><a href="http://library.albany.edu/archive/collections/alpha">A-Z Complete List of Collections</a></li>
+														<li><a href="http://library.albany.edu/archive/collections/subject">Subject Guides to Collections</a></li>
+													</ul>-->
+												</li>
+												<li><a href="http://library.albany.edu/archive/digitalcollections">Digital Selections</a></li>
+												<li><a href="http://library.albany.edu/archive/exhibits">Exhibits</a></li>
+												<li><a href="http://library.albany.edu/archive/universityarchives">University Records</a></li>
+												<li><a href="http://library.albany.edu/archive/about">About</a></li>
+												<li><a href="http://library.albany.edu/archive/contact">Contact</a></li>
+											  </ul>
+											</div>
+										</div>
+										
+										<input id="searchAll2" type="text" class="form-control" placeholder="Search" name="keyword" value=""/>
+										<input type="text" class="form-control" placeholder="Search this Collection" name="query" id="srch-term2" disabled="disabled"/>
+										<input id="srch-termValue2" type="hidden" name="docId" value="{$docId}" disabled="disabled"/>
+
+										
+										<div class="input-group-btn">
+											<div class="dropdown dropdown-lg">
+												<div class="dropdown" id="searchSelect">
+													<button id="searchBtn" class="btn btn-default dropdown-toggle"  type="button"  data-toggle="dropdown">
+													 <span class="caret"></span></button>
+													 <div class="dropdown-menu">
+														<div class="radio">
+														  <label><input type="radio" name="optradio" value="1" checked="checked" />Search All</label>
+														 </div>
+														 <div class="radio">
+														  <label><input type="radio" name="optradio" value="2" />Search Collection</label>
+														</div>
+													  </div>
+												</div>
+											</div>
+										</div>
+										<div class="input-group-btn">
+											<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+										</div>
+									</div>
+								</form>
+						  
+							 
+							
+						  </div>
+						</div>
+						
 						<xsl:if test="($query != '0') and ($query != '')">
 							<div class="alert alert-info alert-dismissable">
 								<div class="text-center">
 									<b>
 										<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+										<xsl:text> </xsl:text>
 										<span class="sr-only">Information:</span>
 										<span class="hit-count">
 											<xsl:value-of select="$sum"/>
 										</span>
 										<xsl:text> </xsl:text>
 										<xsl:value-of select="$occur"/>
-										<xsl:text> of </xsl:text><br/>
+										<xsl:text> of </xsl:text>
 										<xsl:text>"</xsl:text>
 										<span class="hit-count">
 											<xsl:value-of select="$query"/>
 										</span>
 										<xsl:text>"</xsl:text>
-									</b><br/>
+									</b>
 									<xsl:text> [</xsl:text>
 									<a class="clearHits"><xsl:attribute name="href">
 											<xsl:value-of select="$doc.path"/>
@@ -381,8 +466,8 @@
 											<xsl:apply-templates select="archdesc/did/langmaterial" mode="tocLink-lang"/>
 										</xsl:if>
 									</div>
-									<a href="#provenance" class="list-group-item" data-toggle="collapse" data-parent="#panel1">Provenance <span class="glyphicon glyphicon-triangle-bottom"></span></a>
-									<div class="collapse" id="provenance">
+									<a href="#collectionHistory" class="list-group-item" data-toggle="collapse" data-parent="#panel1">Collection History <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+									<div class="collapse" id="collectionHistory">
 										<xsl:if test="archdesc/acqinfo">
 											<xsl:apply-templates select="archdesc/acqinfo" mode="tocLink-acqinfo"/>
 										</xsl:if>
@@ -393,7 +478,7 @@
 											<xsl:apply-templates select="eadheader/revisiondesc" mode="tocLink-revisions"/>
 										</xsl:if>
 									</div>
-									<a href="#accessUse" class="list-group-item" data-toggle="collapse" data-parent="#panel1">Access and Use of Materials <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+									<a href="#accessUse" class="list-group-item" data-toggle="collapse" data-parent="#panel1">Access and Use <span class="glyphicon glyphicon-triangle-bottom"></span></a>
 									<div class="collapse" id="accessUse">
 										<xsl:if test="archdesc/accessrestrict">
 											<xsl:apply-templates select="archdesc/accessrestrict" mode="tocLink-access"/>
@@ -976,7 +1061,7 @@
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 
 		<!--actual list template here-->
-		<a class="list-group-item">
+		<a class="list-group-item" id="tocItem">
 			<xsl:attribute name="href">
 				<xsl:text>#</xsl:text>
 				<xsl:value-of select="@id"/>
@@ -996,7 +1081,7 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a class="list-group-item" data-toggle="collapse" data-parent="#panel2">
+		<a class="list-group-item" id="tocItem" data-toggle="collapse" data-parent="#panel2">
 			<xsl:attribute name="href">
 				<xsl:text>#</xsl:text>
 				<xsl:value-of select="@id"/>
