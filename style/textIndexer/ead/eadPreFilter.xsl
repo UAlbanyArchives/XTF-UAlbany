@@ -274,6 +274,7 @@
             <xsl:otherwise>
                <xsl:call-template name="get-ead-title"/>
                <xsl:call-template name="get-ead-creator"/>
+               <xsl:call-template name="get-ead-extent"/>
                <xsl:call-template name="get-ead-subject"/>
                <xsl:call-template name="get-ead-description"/>
                <xsl:call-template name="get-ead-publisher"/>
@@ -317,11 +318,11 @@
       <xsl:choose>
          <xsl:when test="($dtdVersion)/ead/archdesc/did/unittitle">
             <title xtf:meta="true">
-               <xsl:value-of select="($dtdVersion)/ead/archdesc/did/unittitle"/>
+               <xsl:value-of select="($dtdVersion)/ead/archdesc/did/unittitle/text()"/>
             </title>
          </xsl:when>
          <xsl:when test="($dtdVersion)/ead/eadheader/filedesc/titlestmt/titleproper">
-            <xsl:variable name="titleproper" select="string(($dtdVersion)/ead/eadheader/filedesc/titlestmt/titleproper)"/>
+            <xsl:variable name="titleproper" select="string(($dtdVersion)/ead/eadheader/filedesc/titlestmt/titleproper/text())"/>
             <xsl:variable name="subtitle" select="string(($dtdVersion)/ead/eadheader/filedesc/titlestmt/subtitle)"/>
             <title xtf:meta="true">
                <xsl:value-of select="$titleproper"/>
@@ -361,6 +362,31 @@
             <creator xtf:meta="true">
                <xsl:value-of select="'unknown'"/>
             </creator>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   
+   <!-- extent -->
+   <xsl:template name="get-ead-extent">
+      <xsl:choose>
+         <!--GW 5/2/2016 adding selection of extent and @unit and physfacet-->
+         <xsl:when test="($dtdVersion)/ead/archdesc/did/physdesc/extent or ($dtdVersion)/ead/archdesc/did/physdesc/physfacet">
+            <extent xtf:meta="true">
+				<xsl:if test="string(($dtdVersion)/ead/archdesc/did/physdesc/extent)">
+					<xsl:value-of select="string(($dtdVersion)/ead/archdesc/did/physdesc/extent)"/>
+				</xsl:if>
+				<xsl:if test="string(($dtdVersion)/ead/archdesc/did/physdesc/extent/@unit)">
+					&#160;<xsl:value-of select="string(($dtdVersion)/ead/archdesc/did/physdesc/extent/@unit)"/>
+				</xsl:if>
+				<xsl:if test="string(($dtdVersion)/ead/archdesc/did/physdesc/physfacet)">
+					&#160;<xsl:value-of select="string(($dtdVersion)/ead/archdesc/did/physdesc/physfacet)"/>
+				</xsl:if>
+            </extent>
+         </xsl:when>
+         <xsl:otherwise>
+            <extent xtf:meta="true">
+               <xsl:text>unknown</xsl:text>
+            </extent>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>

@@ -167,13 +167,18 @@
       
       <html xml:lang="en" lang="en">
          <head>
-            <title>XTF: Search Results</title>
+            <title>Collections: Search Results</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
             <!-- AJAX support -->
             <script src="script/yui/yahoo-dom-event.js" type="text/javascript"/> 
             <script src="script/yui/connection-min.js" type="text/javascript"/>
             <script src="script/moreless.js" type="text/javascript"/>
+			<script>
+				$(function () {
+				  $('[data-toggle="tooltip"]').tooltip()
+				})
+			</script>
          </head>
          <body>
 
@@ -191,11 +196,15 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" height="75px" /></a>
+					<!--<a class="navbar-brand" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" height="75px" /></a>-->
+					<div class="navbar-brand">
+						<a class="logo" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" /></a>
+						<a class="ualbany" href="http://www.albany.edu"><img src="icons/ua/ualbany.png" /></a>
+					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" id="topNavMenu">
 						<!--<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">UAlbany <span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -207,9 +216,9 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Collections <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="search">About Collections</a></li>
-								<li><a href="http://library.albany.edu/archive/apap">NY Modern Political Archive</a></li>
+								<li><a href="http://library.albany.edu/archive/apap">NY State Modern Political Archive</a></li>
 								<li><a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a></li>
-								<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré Papers</a></li>
+								<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré</a></li>
 								<li><a href="http://library.albany.edu/archive/ua">University Archives</a></li>
 								<li><a href="http://library.albany.edu/archive/mathes">Mathes Childrens Literature</a></li>
 								<li><a href="http://library.albany.edu/archive/manuscript">Rare Books and Manuscripts</a></li>
@@ -221,19 +230,16 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Digital Selections <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="http://library.albany.edu/archive/digitalcollections">About Digital Selections</a></li>
-								<li class="dropdown-header">Photographs</li>
 								<li><a href="http://luna.albany.edu/luna/servlet/UALBANYSCA~14~14">Digital Photograph Collections (LUNA)</a></li>
 								<li><a href="http://luna.albany.edu/luna/servlet/s/uc9c1q">University Photographs</a></li>
 								<li><a href="http://luna.albany.edu/luna/servlet/view/search;JSESSIONID=2b6136d9-4163-47bb-bdb7-152ea22a99fa?sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;q=Creator%3D%22United+University+Professions+%28UUP%29%22&amp;pgs=50&amp;res=1">United University Professions</a></li>
-								<li class="dropdown-header">Digitized Newspapers</li>
-								<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>
-								<li><a href="http://library.albany.edu/speccoll/findaids/eresources/findingaids/ua809.html">Albany Student Newspaper Archive</a></li>
 								<li><a href="http://library.albany.edu/archive/milnedigitalcollections">Milne School</a></li>
-								<li class="dropdown-header">Audio</li>
 								<li><a href="http://luna.albany.edu/luna/servlet/view/search?q==%22WAMC%22&amp;sort=Archive_Collection,Date,Title,Subject">WAMC Northeast Public Radio</a></li>
 								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=marcia+brown&amp;search=Search">Marcia Brown</a></li>
 								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=CSEA&amp;sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;search=Search">The Civil Service Employees Association (CSEA)</a></li>
 								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=Norman+Studer&amp;sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;search=Search">Norman Studer</a></li>
+								<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>
+								<li><a href="http://library.albany.edu/speccoll/findaids/eresources/findingaids/ua809.html">Albany Student Newspaper Archive</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -383,7 +389,7 @@
 										select="editURL:remove($queryString, 'sort')"/>
 								  </xsl:call-template>
 								  <xsl:text>&#160;</xsl:text>
-								  <input class="btn btn-primary" type="submit" value="Go!"/>
+								  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-arrow-right"></i></button>
 							   </div>
 							</form>
 							<div style="clear: both;height:0px;"></div>
@@ -537,7 +543,7 @@ Item number <xsl:value-of select="$num"/>:
       
       <html xml:lang="en" lang="en">
          <head>
-            <title>XTF: Search Results</title>
+            <title>Collections: Search Results</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
             <!-- AJAX support -->
@@ -560,7 +566,7 @@ Item number <xsl:value-of select="$num"/>:
                   <div>
                      <b>Browse by:&#160;</b>
                      <xsl:choose>
-                        <xsl:when test="$browse-title">Title</xsl:when>
+                        <xsl:when test="$browse-title">Collection</xsl:when>
                         <xsl:when test="$browse-creator">Author</xsl:when>
                         <xsl:otherwise>All Items</xsl:otherwise>
                      </xsl:choose>
@@ -632,25 +638,25 @@ Item number <xsl:value-of select="$num"/>:
       <xsl:choose>
          <xsl:when test="$browse-all">
             <xsl:text>Facet | </xsl:text>
-            <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Title</a>
+            <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Collection</a>
             <xsl:text> | </xsl:text>
             <a href="{$xtfURL}{$crossqueryPath}?browse-creator=first;sort=creator">Author</a>
          </xsl:when>
          <xsl:when test="$browse-title">
             <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facet</a>
-            <xsl:text> | Title | </xsl:text>
+            <xsl:text> | Collection | </xsl:text>
             <a href="{$xtfURL}{$crossqueryPath}?browse-creator=first;sort=creator">Author</a>
          </xsl:when>
          <xsl:when test="$browse-creator">
             <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facet</a>
             <xsl:text> | </xsl:text>
-            <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Title</a>
+            <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Collection</a>
             <xsl:text>  | Author</xsl:text>
          </xsl:when>
          <xsl:otherwise>
             <a href="{$xtfURL}{$crossqueryPath}?browse-all=yes">Facet</a>
             <xsl:text> | </xsl:text>
-            <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Title</a>
+            <a href="{$xtfURL}{$crossqueryPath}?browse-title=first;sort=title">Collection</a>
             <xsl:text> | </xsl:text>
             <a href="{$xtfURL}{$crossqueryPath}?browse-creator=first;sort=creator">Author</a>
          </xsl:otherwise>
@@ -697,7 +703,7 @@ Item number <xsl:value-of select="$num"/>:
                   <xsl:if test="$sort = 'title'">
                      <a name="{$anchor}"/>
                   </xsl:if>
-                  <b>Title:</b>
+                  <b>Collection:</b>
                </div>
                <div class="col-md-9">
                   <a>
@@ -789,6 +795,7 @@ Item number <xsl:value-of select="$num"/>:
                   </xsl:if>
                </div>--> 
             </div>
+			<!-- GW removed creator
             <div class="row">
                <div class="col-md-2 col-md-offset-1">
                   <xsl:if test="$sort = 'creator'">
@@ -804,17 +811,46 @@ Item number <xsl:value-of select="$num"/>:
                      <xsl:otherwise>none</xsl:otherwise>
                   </xsl:choose>
                </div>
-            </div>
+            </div>-->
             <xsl:if test="meta/date != ''">
             <div class="row">
                <div class="col-md-2 col-md-offset-1">
-                  <b>Dates:&#160;&#160;</b>
+                  <b>Date Coverage:</b>
                </div>
                <div class="col-md-9">
                   <xsl:apply-templates select="meta/date"/>
                </div>
             </div>
             </xsl:if>
+			<div class="row">
+               <div class="col-md-2 col-md-offset-1">
+                  <xsl:if test="$sort = 'extent'">
+                     <a name="{$anchor}"/>
+                  </xsl:if>
+                  <b>Extent:</b>
+               </div>
+               <div class="col-md-9">
+                  <xsl:choose>
+                     <xsl:when test="meta/extent">
+						<xsl:choose>
+							<xsl:when test="contains(meta/extent[1], 'Digital Files')">
+								<xsl:apply-templates select="meta/extent[1]"/>&#160;&#160;<span class="digitalFiles glyphicon glyphicon-ok" data-toggle="tooltip" data-placement="top" title="Contains Online Content"></span>
+							</xsl:when>
+							<xsl:when test="contains(meta/extent[1], 'GB')">
+								<xsl:apply-templates select="meta/extent[1]"/>&#160;&#160;<span class="digitalFiles glyphicon glyphicon-ok" data-toggle="tooltip" data-placement="top" title="Contains Online Content"></span>
+							</xsl:when>
+							<xsl:when test="contains(meta/extent[1], 'Web Archives')">
+								<xsl:apply-templates select="meta/extent[1]"/>&#160;&#160;<span class="webArchive glyphicon glyphicon-ok" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:apply-templates select="meta/extent[1]"/>
+							</xsl:otherwise>
+						</xsl:choose>
+                     </xsl:when>
+                     <xsl:otherwise>none</xsl:otherwise>
+                  </xsl:choose>
+               </div>
+            </div>
          <!--<xsl:if test="meta/publisher">
             <div class="row">
                <div class="col-md-2 col-md-offset-1">
@@ -905,7 +941,7 @@ Item number <xsl:value-of select="$num"/>:
          <xsl:call-template name="dynaxml.url">
             <xsl:with-param name="path" select="$path"/>
          </xsl:call-template>
-         <xsl:value-of select="concat(';hit.rank=', $hit.rank)"/>
+         <xsl:value-of select="concat(';#', $hit.rank)"/>
       </xsl:variable>
       
       <xsl:choose>

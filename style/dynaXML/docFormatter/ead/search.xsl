@@ -36,7 +36,7 @@
    
    <xsl:template match="xtf:hit">
       
-      <a name="{@hitNum}"/>
+      <a class="anchor" name="{@hitNum}"/>
       
       <xsl:if test="@hitNum = key('chunk-id', $chunk.id)/@xtf:firstHit">
          <a name="X"/>
@@ -47,12 +47,36 @@
       <xsl:choose>
          <xsl:when test="xtf:term">
             <span class="bg-info">
-               <xsl:apply-templates/>
+				<xsl:choose>
+					<xsl:when test="../../dao">
+						<a>
+							<xsl:attribute name="href">
+								<xsl:value-of select="../../dao/@href"/>
+							</xsl:attribute>
+							<xsl:apply-templates/>
+						</a>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates/>
+					</xsl:otherwise>
+				</xsl:choose>
             </span>
          </xsl:when>
          <xsl:otherwise>
             <span class="bg-info">
-               <xsl:apply-templates/>
+               <xsl:choose>
+					<xsl:when test="../../dao">
+						<a>
+							<xsl:attribute name="href">
+								<xsl:value-of select="../../dao/@href"/>
+							</xsl:attribute>
+							<xsl:apply-templates/>
+						</a>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates/>
+					</xsl:otherwise>
+				</xsl:choose>
             </span>
          </xsl:otherwise>
       </xsl:choose>
@@ -135,6 +159,7 @@
             </xsl:call-template>
          </xsl:variable>
          <a>
+			<!-- This choose was messing up search result links
             <xsl:choose>
                <xsl:when test="$target.chunk = $chunk.id">
                   <xsl:attribute name="href" select="concat('#', $prev)"/>
@@ -145,10 +170,12 @@
                      concat($xtfURL, $dynaxmlPath, '?', $query.string, 
                             ';hit.num=', $prev, ';brand=', $brand, $search)"/>
                </xsl:otherwise>
-            </xsl:choose>
-            <img src="{$icon.path}b_inprev.gif" border="0" alt="previous hit"/>
+            </xsl:choose>-->
+			<xsl:attribute name="href" select="concat('#', $prev)"/>
+            <!--<img src="{$icon.path}b_inprev.gif" border="0" alt="previous hit"/>-->
+			<i class="glyphicon glyphicon-arrow-left searchGlyph"></i>
+			<xsl:text> </xsl:text>
          </a>         
-         <xsl:text>&#160;</xsl:text>
       </xsl:if>
    </xsl:template>
    
@@ -166,9 +193,9 @@
             <xsl:call-template name="findHitChunk">
                <xsl:with-param name="hitNode" select="key('hit-num-dynamic', string($next))"/>
             </xsl:call-template>
-         </xsl:variable>       
-         <xsl:text>&#160;</xsl:text>
+         </xsl:variable>
          <a>
+			<!-- This choose was messing up search result links
             <xsl:choose>
                <xsl:when test="$target.chunk = $chunk.id">
                   <xsl:attribute name="href" select="concat('#', $next)"/>
@@ -179,8 +206,11 @@
                      concat($xtfURL, $dynaxmlPath, '?', $query.string, 
                             ';hit.num=', $next, ';brand=', $brand, $search)"/>
                </xsl:otherwise>
-            </xsl:choose>
-            <img src="{$icon.path}b_innext.gif" border="0" alt="next hit"/>
+            </xsl:choose>-->
+			<xsl:attribute name="href" select="concat('#', $next)"/>
+           <!-- <img src="{$icon.path}b_innext.gif" border="0" alt="next hit"/>-->
+		   <xsl:text> </xsl:text>
+		   <i class="glyphicon glyphicon-arrow-right searchGlyph"></i>
          </a>
       </xsl:if>
    </xsl:template>

@@ -13,7 +13,7 @@ body {
     padding-left: 0;
 }
 
-#page-wrapper {
+#page-content-wrapper {
     width: 100%;
     padding: 0;
     background-color: #fff;
@@ -29,7 +29,7 @@ body {
         /*padding-left: 225px;*/
     }
 
-    #page-wrapper {
+    #page-content-wrapper {
         padding: 10px;
 		padding-left: 300px;
 		padding-top: 0px;
@@ -115,7 +115,7 @@ ul.alert-dropdown {
 @media(min-width:768px) {
     .side-nav {
         position: fixed;
-        top: -55px;
+        top: 52px;
         left: 300px;
         width: 300px;
         margin-left: -300px;

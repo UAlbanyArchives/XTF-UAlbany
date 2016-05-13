@@ -119,6 +119,7 @@
          <!-- Create sort fields -->
          <xsl:apply-templates select="$meta/*:title[1]" mode="sort"/>    
          <xsl:apply-templates select="$meta/*:creator[1]" mode="sort"/>
+         <xsl:apply-templates select="$meta/*:extent[1]" mode="sort"/>
          <xsl:apply-templates select="$meta/*:date[1]" mode="sort"/>
          
          <!-- Create facets -->
@@ -138,6 +139,7 @@
            
          <xsl:apply-templates select="$meta/*:title[1]" mode="browse"/>    
          <xsl:apply-templates select="$meta/*:creator[1]" mode="browse"/>
+         <xsl:apply-templates select="$meta/*:extent[1]" mode="browse"/>
       </xtf:meta>
    </xsl:template>
    
@@ -160,6 +162,13 @@
       <sort-creator xtf:meta="yes" xtf:tokenize="no">
          <xsl:copy-of select="parse:name(string(.))"/>
       </sort-creator>
+   </xsl:template>
+   
+      <!-- Generate sort-extent -->
+   <xsl:template match="*:extent" mode="sort">
+      <sort-extent xtf:meta="yes" xtf:tokenize="no">
+         <xsl:copy-of select="parse:name(string(.))"/>
+      </sort-extent>
    </xsl:template>
    
    <!-- Generate sort-year (if range, only use first year) -->
@@ -290,6 +299,15 @@
          <xsl:attribute name="xtf:tokenize" select="'no'"/>
          <xsl:value-of select="parse:alpha(parse:name(.))"/>
       </browse-creator>
+   </xsl:template>
+   
+   <!-- Generate browse-extent -->
+   <xsl:template match="*:extent" mode="browse">
+      <browse-extent>
+         <xsl:attribute name="xtf:meta" select="'true'"/>
+         <xsl:attribute name="xtf:tokenize" select="'no'"/>
+         <xsl:value-of select="parse:alpha(parse:name(.))"/>
+      </browse-extent>
    </xsl:template>
    
    <!-- ====================================================================== -->

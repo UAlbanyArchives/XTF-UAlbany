@@ -170,11 +170,16 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" height="75px" /></a>
+					<!--<a class="navbar-brand" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" height="75px" /></a>-->
+					<div class="navbar-brand">
+						<a class="logo" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" /></a>
+						<a class="ualbany" href="http://www.albany.edu"><img src="icons/ua/ualbany.png" /></a>
+						<a class="smallLogo" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" /></a>
+					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" id="topNavMenu">
 						<!--<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">UAlbany <span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -186,9 +191,9 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Collections <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="search">About Collections</a></li>
-								<li><a href="http://library.albany.edu/archive/apap">NY Modern Political Archive</a></li>
+								<li><a href="http://library.albany.edu/archive/apap">NY State Modern Political Archive</a></li>
 								<li><a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a></li>
-								<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré Papers</a></li>
+								<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré</a></li>
 								<li><a href="http://library.albany.edu/archive/ua">University Archives</a></li>
 								<li><a href="http://library.albany.edu/archive/mathes">Mathes Childrens Literature</a></li>
 								<li><a href="http://library.albany.edu/archive/manuscript">Rare Books and Manuscripts</a></li>
@@ -293,9 +298,12 @@
 				</div>
 				<!-- /.navbar-collapse -->
 			</div>
-			<xsl:call-template name="toc"/>
+			<xsl:call-template name="toc">
+				<xsl:with-param name="aboutNodes" select="archdesc/bioghist | archdesc/scopecontent | archdesc/phystech | archdesc/arrangement | archdesc/did/langmaterial | archdesc/relatedmaterial | archdesc/separatedmaterial | archdesc/odd"/>
+				<xsl:with-param name="historyNodes" select="archdesc/custodhist | archdesc/altformavail | archdesc/acqinfo |eadheader/filedesc/titlestmt/author | archdesc/appraisal | archdesc/accruals | eadheader/profiledesc | eadheader/revisiondesc"/>
+				<xsl:with-param name="accessNodes" select="archdesc/accessrestrict | archdesc/userestrict | archdesc/prefercite"/>
+			</xsl:call-template>
 		</nav>
-
 
 		<!--<xsl:call-template name="translate">
          <xsl:with-param name="resultTree">

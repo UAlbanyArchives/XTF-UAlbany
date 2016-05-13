@@ -1,12 +1,6 @@
-$( document ).ready(function() {
-	if ($(this).scrollTop() == 0){
-    $('#topSpacer').hide();
-	} else {
-		$('.breadcrumb').css({"top":20});
-	}
-});
 
 
+/*
 $( document ).ready(function() {
 	if ($(this).scrollTop() == 0){
     $('.side-nav').css({"top":52});
@@ -22,25 +16,28 @@ $(function(){
 	  }
   });
 });
+*/
 
-$( document ).ready(function() {
-	if ($(this).scrollTop() == 0){
-    $('.breadcrumb').css({"top":127});
-	}
-});
+$.fn.clicktoggle = function(a, b) {
+    return this.each(function() {
+        var clicked = false;
+        $(this).click(function() {
+            if (clicked) {
+                clicked = false;
+                return b.apply(this, arguments);
+            }
+            clicked = true;
+            return a.apply(this, arguments);
+        });
+    });
+};
 
-$(function(){
-  $(window).scroll(function(){
-	  if ($(this).scrollTop() < 117){
-		 $('.breadcrumb').css({"top":127-$(this).scrollTop()});
-		 $('#topSpacer').hide();
-	  } else {
-		  if ($(window).width() >= 766) {
-			  $('.breadcrumb').css({"top":20});
-			  $('#topSpacer').show();
-		  }
-	  }
-  });
+$(document).ready(function(){    
+	$("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $(this).toggleClass("slideRight");
+    });
 });
 
 $(document).ready(function(){    
@@ -54,18 +51,115 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){    
+	$('.moreBtn').on('click', function(){
+		$(this).toggleClass("glyphicon-triangle-bottom glyphicon-triangle-top");
+	});
+});
+
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+	
 $( document ).ready(function() {
 	if ($(this).scrollTop() == 0){
     $('#menuPanel').css({"display": "none"});
 	}
 });
 
+//opens accordion panels by anchor link
+$( document ).ready(function() {
+	$("a.list-group-item").click(function(e) {
+		$('.panel-collapse').removeClass("in");
+		$(".glyphicon-minus").addClass("glyphicon-plus").removeClass("glyphicon-minus");
+		$('a[name="' + $(this).attr("href").substring(1) + '"]').next().find(".glyphicon").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+		$('a[name="' + $(this).attr("href").substring(1) + '"]').next().children('.panel-collapse').addClass('in');
+		$('a[name="' + $(this).attr("href").substring(1) + '"]').next().children('.panel-collapse').css({"height": "100%"});
+	});
+});
+
+$( document ).ready(function() {
+	if(window.location.hash) {
+	  var hash=window.location.hash.substring(1);
+	  $target = $('[name=' + hash + ']');
+      $target.parents('.collapse').addClass('in').css({height: ''});
+	}
+});
+
+$(function(){
+  $(document).on('click', 'a[href^="#"]', function(ev){
+	  var targetId = $(ev.target).parent("a").attr('href').substring(1),
+      $target = $('[name=' + targetId + ']');
+      $target.parents('.collapse').addClass('in').css({height: ''});
+  });
+})
+
+$( document ).ready(function() {
+	$('.panel-collapse').on('show.bs.collapse', function(){
+		$(this).prev().find(".glyphicon").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	});  
+	$('.panel-collapse').on('hide.bs.collapse', function(){
+		$(this).prev().find(".glyphicon").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	});     
+});
+
+
+//when request modal is clicked get ids from checked boxed and append to href as params
+$(function(){
+	$( "#request" ).on('shown.bs.modal', function(){
+		var checkedValues = $('input.styled:checked').map(function() {
+			return this.value;
+		}).get();
+		var link = $("a#scheduleVisit").attr("href");
+		$("a#scheduleVisit").attr("href", link + 'id=');
+		var remote = $("a#remoteRequest").attr("href");
+		$("a#remoteRequest").attr("href", remote + 'id=');
+		$.each(checkedValues, function(n, val) {
+			var link = $("a#scheduleVisit").attr("href");
+			$("a#scheduleVisit").attr("href", link + "%0A" + val);
+			var remoteLink = $("a#remoteRequest").attr("href");
+			$("a#remoteRequest").attr("href", remoteLink + "%0A" + val);
+		});
+	});
+});
+
+/*
+//Checks or unchecks all children when series is checked or unchecked, passes too many params
+$(function(){
+	$('input.cmpntCheck').click (function(){
+	  if ( $(this).is(':checked') ) {
+		$(this).closest("div.section").find('input.fileCheck').prop('checked', true);
+	  } else {
+		  $(this).closest("div.section").find('input.fileCheck').prop('checked', false);
+	  }
+	});
+});
+*/
+
 $(function(){
   $(window).scroll(function(){
-	  if ($(this).scrollTop() < 117){
-		 $('#menuPanel').css({"display": "none"});
+	  if ($(this).scrollTop() < 57){
+		 $('.navbar-top').removeClass("fixHalf");
+		 $('#page-content-wrapper').removeClass("content-spacer");
+		 $('.logo').removeClass("logoHide");
+		 $('.ualbany').removeClass("logoHide");
+		 $('.smallLogo').removeClass("logoShow");
+		 $('.side-nav').css({"top":52-$(this).scrollTop()});
 	  } else {
-		  $('#menuPanel').css({"display": "block"});
+		 $('.navbar-top').addClass("fixHalf");
+		 $('#page-content-wrapper').addClass("content-spacer");
+		 $('.logo').addClass("logoHide");
+		 $('.ualbany').addClass("logoHide");
+		 $('.smallLogo').addClass("logoShow");
+		 $('.side-nav').css({"top": "-5px"});
 	  }
   });
 });
@@ -149,4 +243,18 @@ $(function(){
 		root.find('.left-caret').toggleClass('right-caret left-caret');
 		root.find('.sub-menu:visible').hide();
 	});
+});
+
+$(function(){
+	var $items = $('#seeAlsoList').find('ul').children();
+	if ( $items.length > 5 ) {
+		$items.hide().slice(0, 4).show();
+		$('.viewAll').show();
+		$('.viewAll').click(function () {
+			$items.show(); // or .fadeIn()
+			$(this).remove();
+		});
+	} else {
+		$('.viewAll').remove();
+	}
 });

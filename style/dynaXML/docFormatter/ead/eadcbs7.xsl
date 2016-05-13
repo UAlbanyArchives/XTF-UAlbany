@@ -16,7 +16,7 @@
       resulting META tag uses Dublin Core semantics and is drawn from the text of
       the finding aid.-->
 	<xsl:template name="metadata">
-		<meta http-equiv="Content-Type" name="dc.title" content="{eadheader/filedesc/titlestmt/titleproper&#x20; }{eadheader/filedesc/titlestmt/subtitle}"/>
+		<meta http-equiv="Content-Type" name="dc.title" content="{archdesc/did/unittitle/text()&#x20; }{eadheader/filedesc/titlestmt/subtitle}"/>
 		<meta http-equiv="Content-Type" name="dc.author" content="{archdesc/did/origination}"/>
 
 		<xsl:for-each select="xtf:meta/subject">
@@ -32,15 +32,49 @@
 
 	<!-- Creates the body of the finding aid.-->
 	<xsl:template name="body">	
-		<xsl:apply-templates select="archdesc/bioghist"/>
-		<xsl:apply-templates select="archdesc/scopecontent"/>
-		<xsl:apply-templates select="archdesc/arrangement"/>
-		<xsl:call-template name="archdesc-restrict"/>
-		<xsl:apply-templates select="archdesc/controlaccess"/>
-		<xsl:call-template name="archdesc-relatedmaterial"/>
-		<xsl:call-template name="archdesc-admininfo"/>
-		<xsl:apply-templates select="archdesc/odd"/>
-		<xsl:apply-templates select="descendant::dsc"/>
+	
+		<div class="row section" id="collectionDesc">
+			<div class="col-lg-12">
+				<div class="page-header">
+				  <h3>About the Collection</h3>
+				</div>
+				<div class="panel-group" id="aboutCollection">
+					<xsl:apply-templates select="archdesc/bioghist"/>
+					<xsl:apply-templates select="archdesc/scopecontent"/>
+					<xsl:apply-templates select="archdesc/phystech"/>
+					<xsl:apply-templates select="archdesc/arrangement"/>
+					<xsl:apply-templates select="archdesc/did/langmaterial"/>
+					<xsl:apply-templates select="archdesc/relatedmaterial"/>
+					<xsl:apply-templates select="archdesc/separatedmaterial"/>
+					<xsl:apply-templates select="archdesc/odd"/>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="page-header">
+				  <h3>Collection History</h3>
+				</div>
+				<div class="panel-group" id="collectionHistory">
+					<xsl:call-template name="archdesc-admininfo"/>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="page-header">
+				  <h3>Access and Use</h3>
+				</div>
+				<div class="panel-group" id="accessUse">
+					<xsl:call-template name="archdesc-restrict"/>
+				</div>
+			</div>
+		</div>
+		
+		<a class="anchor" name="containerList"></a>
+		<div class="row section cmpnts">
+			<xsl:apply-templates select="descendant::dsc"/>
+		</div>
+			
+		
+		
+		
 		
 
 		<!-- <xsl:choose>
@@ -368,41 +402,103 @@
 
 	<!--Suppreses all other elements of eadheader.-->
 	<xsl:template match="eadheader">
-		<div class="text-center">
-			<h2>
-				<xsl:value-of select="filedesc/titlestmt/titleproper"/>
-			</h2>
-			<xsl:if test="filedesc/titlestmt/subtitle">
-				<h3>
-					<xsl:value-of select="filedesc/titlestmt/subtitle"/>
-				</h3>
-			</xsl:if>
-			
-			<xsl:if test="filedesc/titlestmt/author">
-				<p class="text-muted">
-					<xsl:value-of select="filedesc/titlestmt/author"/>
-				</p>
-			</xsl:if>
-			<xsl:if test="filedesc/titlestmt/sponsor">
-				<p class="text-muted">
-					<xsl:value-of select="filedesc/titlestmt/sponsor"/>
-				</p>
-			</xsl:if>
-			<xsl:if test="profiledesc/creation">
-				<p class="text-muted">
-					<xsl:value-of select="profiledesc/creation"/>
-				</p>
-			</xsl:if>
-			<xsl:if test="profiledesc/descrules">
-				<p class="text-muted">
-					<xsl:value-of select="profiledesc/descrules"/>
-				</p>
-			</xsl:if>
-			<xsl:if test="profiledesc/langusage">
-				<p class="text-muted">
-					<xsl:value-of select="profiledesc/langusage"/>
-				</p>
-			</xsl:if>
+	
+		<div class="modal fade" tabindex="-1" role="dialog" id="request">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+				<h4 class="modal-title">Request the materials you selected:</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>Archival materials can be view in-person in our reading room, located on the top floor of the Science Library on the Uptown Campus. Making an appointment is not neccessary, but it may help us ensure the items are availible when you arrive.</p>
+				<p>We can also deliver digital scans for remote research for a fee.</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<a type="button" class="btn btn-primary" id="scheduleVisit">
+					<xsl:attribute name="href">
+						<xsl:text>http://library.albany.edu/archive/scheduleVisit?col=</xsl:text>
+						<xsl:value-of select="/ead/@id"/>
+						<xsl:text>: </xsl:text>
+						<xsl:value-of select="/ead/archdesc/did/unittitle/text()"/>
+						<xsl:text>&amp;</xsl:text>
+					</xsl:attribute>
+					<xsl:text>Schedule a Visit</xsl:text>
+				</a>
+				<a type="button" class="btn btn-primary" id="remoteRequest">
+					<xsl:attribute name="href">
+						<xsl:text>http://library.albany.edu/archive/remoteRequest?col=</xsl:text>
+						<xsl:value-of select="/ead/@id"/>
+						<xsl:text>: </xsl:text>
+						<xsl:value-of select="/ead/archdesc/did/unittitle/text()"/>
+						<xsl:text>&amp;</xsl:text>
+					</xsl:attribute>
+					<xsl:text>Make Remote Request</xsl:text>
+				</a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	
+		<div class="col-md-10">
+			<div class="jumbotron">
+				<h2>
+					<!--<xsl:value-of select="../archdesc/did/unittitle/text()"/>-->
+					<xsl:apply-templates select="../archdesc/did/unittitle/node()[not(self::unitdate)]" />
+				</h2>
+				<h4>
+					<xsl:value-of select="substring-after(filedesc/titlestmt/titleproper, ')')"/>
+				</h4>
+				<xsl:if test="filedesc/titlestmt/subtitle">
+					<p>
+						<xsl:value-of select="filedesc/titlestmt/subtitle"/>
+					</p>
+				</xsl:if>
+				
+				<xsl:if test="filedesc/titlestmt/sponsor">
+					<p>
+						<xsl:value-of select="filedesc/titlestmt/sponsor"/>
+					</p>
+				</xsl:if>
+			</div>
+		</div>
+		<div id="buttonPDF" class="col-md-2">
+			<button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-info-sign"/> Need Help?</button>
+			<button type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"/> PDF Version</button>
+			<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Request Collection</button>
+		</div>
+		<div id="seeAlsoList" class="col-xs-12 col-sm-9 col-md-10">
+			<ul>
+				<li class="seeAlso">See Also:</li>
+				<xsl:for-each select="../archdesc/controlaccess/subject">
+					<li class="seeAlsoItem">
+						<a>
+							<xsl:attribute name="href">
+								<xsl:text>search?f1-subject=</xsl:text>
+								<xsl:value-of select="."/>
+							</xsl:attribute>
+							<xsl:value-of select="."/>
+						</a>
+					</li>
+				</xsl:for-each>
+				<xsl:for-each select="../archdesc/controlaccess/geogname">
+					<li class="seeAlsoItem">
+						<a>
+							<xsl:attribute name="href">
+								<xsl:text>search?f1-geogname=</xsl:text>
+								<xsl:value-of select="."/>
+							</xsl:attribute>
+							<xsl:value-of select="."/>
+						</a>
+					</li>
+				</xsl:for-each>
+				<li class="viewAll">
+					<a>View All 
+						<i class="glyphicon glyphicon-chevron-right"/>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</xsl:template>
 
@@ -410,7 +506,36 @@
       each of the other did elements.  To change the order of appearance of these
       elements, change the sequence of the apply-templates statements.-->
 	<xsl:template match="archdesc/did">
-		<dl class="dl-horizontal">
+		<div style="clear: both;"/>
+		<div class="col-md-8">
+			<a class="anchor" id="abstract"/>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">Abstract</h4>
+				  </div>
+				  <div class="panel-body">
+						<xsl:apply-templates select="abstract"/>
+				  </div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Summary</h4>
+				  </div>
+				  <div class="panel-body">
+						<xsl:apply-templates select="origination"/>
+						<xsl:apply-templates select="unittitle/unitdate"/>
+						<xsl:apply-templates select="physdesc"/>
+						<!--<xsl:apply-templates select="physloc"/>-->
+						<!--<xsl:apply-templates select="langmaterial"/>-->
+						<xsl:apply-templates select="materialspec"/>
+						<xsl:apply-templates select="note"/>
+						<!--<xsl:apply-templates select="unitid"/>-->
+				  </div>
+			</div>
+		</div>
+		<!--<dl class="dl-horizontal">
 			<xsl:apply-templates select="repository"/>
 			<xsl:apply-templates select="origination"/>
 			<xsl:apply-templates select="unittitle"/>
@@ -422,7 +547,7 @@
 			<xsl:apply-templates select="langmaterial"/>
 			<xsl:apply-templates select="materialspec"/>
 			<xsl:apply-templates select="note"/>
-		</dl>
+		</dl>-->
 	</xsl:template>
 
 
@@ -435,6 +560,7 @@
       | archdesc/did/origination
       | archdesc/did/physdesc
       | archdesc/did/unitid
+      | archdesc/did/unittitle/unitdate
       | archdesc/did/physloc
       | archdesc/did/abstract
       | archdesc/did/langmaterial
@@ -443,70 +569,61 @@
          inserting the contents if there is or adding display textif there isn't.
          The content of the supplied label depends on the element.  To change the
          supplied label, simply alter the template below.-->
-
-		<dt>
-			<xsl:choose>
-				<xsl:when test="@label">
-					<xsl:value-of select="@label"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:choose>
-						<xsl:when test="self::repository">
-							<xsl:text>Repository</xsl:text>
-						</xsl:when>
-						<xsl:when test="self::origination">
-							<xsl:text>Creator</xsl:text>
-						</xsl:when>
-						<xsl:when test="self::physdesc">
-							<xsl:text>Quantity</xsl:text>
-						</xsl:when>
-						<xsl:when test="self::physloc">
-							<xsl:text>Location</xsl:text>
-						</xsl:when>
-						<xsl:when test="self::unitid">
-							<xsl:text>Identification</xsl:text>
-						</xsl:when>
-						<xsl:when test="self::abstract">
-							<xsl:text>Abstract</xsl:text>
-						</xsl:when>
-						<xsl:when test="self::langmaterial">
-							<xsl:text>Language</xsl:text>
-						</xsl:when>
-						<xsl:when test="self::materialspec">
-							<xsl:text>Technical</xsl:text>
-						</xsl:when>
-					</xsl:choose>
-				</xsl:otherwise>
-			</xsl:choose>
-		</dt>
-		<dd>
+		
+		<xsl:if test="self::abstract">
 			<xsl:apply-templates/>
-			
-			<!--4/1/2014 add to generate repository contact information box IF there is an address in publicationstmt -->
-			<xsl:if test="/ead/eadheader/filedesc/publicationstmt/address and self::repository">
-				<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#contact">
-					Contact Information
-				</button>
-				
-				<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-								<h4 class="modal-title" id="myModalLabel"><xsl:value-of select="/ead/eadheader/filedesc/publicationstmt/publisher"/></h4>
-							</div>
-							<div class="modal-body">
-								<xsl:for-each select="/ead/eadheader/filedesc/publicationstmt/address/addressline">
-									<p>
-										<xsl:value-of select="."/>
-									</p>
-								</xsl:for-each>
-							</div>
-						</div>
-					</div>
-				</div>
-			</xsl:if>
-		</dd>
+		</xsl:if>
+		
+		<xsl:if test="self::origination">
+			<dt><xsl:text>Creator:</xsl:text></dt>
+			<dd><xsl:apply-templates/></dd>
+		</xsl:if>
+		
+		<xsl:if test="self::physdesc">
+			<dt><xsl:text>Quantity:</xsl:text></dt>
+			<dd>
+				<xsl:choose>
+					<xsl:when test="extent or physfacet">
+						<xsl:if test="extent">
+							<xsl:value-of select="extent"/>
+						</xsl:if>
+						<xsl:if test="extent/@unit">
+							<xsl:text> </xsl:text>
+							<xsl:choose>
+								<xsl:when test="contains(extent/@unit, 'cubic ft.')">
+									<xsl:value-of select="extent/@unit"/><xsl:text> (about </xsl:text><xsl:value-of select="extent"/><xsl:text> boxes)</xsl:text>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="extent/@unit"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:if>
+						<xsl:if test="physfacet">
+							&#160;<xsl:value-of select="physfacet"/>
+						</xsl:if>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</dd>
+		</xsl:if>
+		
+		<xsl:if test="self::unitdate">
+			<dt>
+				<xsl:choose>
+					<xsl:when test="@type='bulk'">
+						<xsl:text>Bulk Date Coverage:</xsl:text>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>Date Coverage:</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+			</dt>
+			<dd><xsl:apply-templates/></dd>
+		</xsl:if>
+
+
 	</xsl:template>
 
 
@@ -592,19 +709,182 @@
 		</xsl:for-each>
 	</xsl:template>
 
-	<!--This template rule formats the top-level bioghist element and
-      creates a link back to the top of the page after the display of the element.-->
-	<xsl:template match="archdesc/bioghist |
-      archdesc/scopecontent |
-      archdesc/phystech |
-      archdesc/odd   |
-      archdesc/arrangement">
-		<a name="{@id}"></a>
+	<!--This template rule formats the top-level bioghist element.-->
+	<xsl:template match="archdesc/bioghist">
+		<a name="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
-			<xsl:apply-templates/>
-			<hr/>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse1">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>
+						<xsl:choose>
+							<xsl:when test="head">
+								<xsl:value-of select="head"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:text>Historical Note</xsl:text>
+							</xsl:otherwise>
+						</xsl:choose>
+					</a>
+				  </h4>
+				</div>
+				<div id="collapse1" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<xsl:for-each select="p">
+						<p><xsl:apply-templates/></p>
+					</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
 		</xsl:if>
 	</xsl:template>
+	
+	<!--This template rule formats the top-level scopecontent element.-->
+	<xsl:template match="archdesc/scopecontent">
+		<a name="{name(.)}" class="anchor"></a>
+		<xsl:if test="string(child::*)">
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse2">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Description of Contents</a>
+				  </h4>
+				</div>
+				<div id="collapse2" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<xsl:for-each select="p">
+						<p><xsl:apply-templates/></p>
+					</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/phystech">
+		<a name="{name(.)}" class="anchor"></a>
+		<xsl:if test="string(child::*)">
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse3">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Technical Details</a>
+				  </h4>
+				</div>
+				<div id="collapse3" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<xsl:for-each select="p">
+						<p><xsl:apply-templates/></p>
+					</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/arrangement">
+		<a name="{name(.)}" class="anchor"></a>
+		<xsl:if test="string(child::*)">
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse4">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Arrangement</a>
+				  </h4>
+				</div>
+				<div id="collapse4" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<xsl:for-each select="p">
+						<p><xsl:apply-templates/></p>
+					</xsl:for-each>
+					<xsl:for-each select="list">
+						<ul>
+							<xsl:for-each select="item">
+								<li><xsl:apply-templates/></li>
+							</xsl:for-each>
+						</ul>
+					</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/did/langmaterial">
+		<a name="{name(.)}" class="anchor"></a>
+		<xsl:if test="string(child::*)">
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse5">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Languages Present</a>
+				  </h4>
+				</div>
+				<div id="collapse5" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<xsl:for-each select="language">
+						<p><xsl:apply-templates/></p>
+					</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/separatedmaterial">
+		<a name="{name(.)}" class="anchor"></a>
+		<xsl:if test="string(child::*)">
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse6">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Separated Material</a>
+				  </h4>
+				</div>
+				<div id="collapse6" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<xsl:for-each select="p">
+						<p><xsl:apply-templates/></p>
+					</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/relatedmaterial">
+		<a name="{name(.)}" class="anchor"></a>
+		<xsl:if test="string(child::*)">
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse7">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Related Material</a>
+				  </h4>
+				</div>
+				<div id="collapse7" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<xsl:apply-templates/>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/odd">
+		<a name="{name(.)}" class="anchor"></a>
+		<xsl:if test="string(child::*)">
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse8">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>More Information</a>
+				  </h4>
+				</div>
+				<div id="collapse8" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<xsl:for-each select="p">
+						<p><xsl:apply-templates/></p>
+					</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
 
 	<!--This template formats various head elements and makes them targets for
       links from the Table of Contents.-->
@@ -1029,40 +1309,96 @@
          or string(archdesc/accessrestrict/*)
          or string(archdesc/*/userestrict/*)
          or string(archdesc/*/accessrestrict/*)">
-			<h3>
-				<a name="restrictlink"/>
-				<xsl:text>Restrictions</xsl:text>
-			</h3>
+		 
+			<a name="howto" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse17" data-parent="#accessUse">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>How to Access Materials</a>
+				  </h4>
+				</div>
+				<div id="collapse17" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<p>Archival materials can be view in-person during business hours in our reading room, located on the top floor of the Science Library on the Uptown Campus.</p>
+						<p>We can also deliver digital scans for remote research for a fee.</p>
+						<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Make a Request</button>
+				  </div>
+				</div>
+			  </div>
+		 
+
 			<xsl:apply-templates select="archdesc/accessrestrict
             | archdesc/*/accessrestrict"/>
 			<xsl:apply-templates select="archdesc/userestrict
             | archdesc/*/userestrict"/>
-			<hr/>
+			<xsl:apply-templates select="archdesc/prefercite
+            | archdesc/*/prefercite"/>
+			
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="archdesc/accessrestrict/head
-      | archdesc/userestrict/head
-      | archdesc/*/accessrestrict/head
-      | archdesc/*/userestrict/head">
-		<h4>
-			<xsl:apply-templates/>
-		</h4>
+	<xsl:template match="archdesc/accessrestrict">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse18" data-parent="#accessUse">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Access Restrictions</a>
+				  </h4>
+				</div>
+				<div id="collapse18" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
 	</xsl:template>
-
-	<xsl:template
-		match="archdesc/accessrestrict/p
-      | archdesc/userestrict/p
-      | archdesc/*/accessrestrict/p
-      | archdesc/*/userestrict/p
-      | archdesc/accessrestrict/note/p
-      | archdesc/userestrict/note/p
-      | archdesc/*/accessrestrict/note/p
-      | archdesc/*/userestrict/note/p">
-		<p>
-			<xsl:apply-templates/>
-		</p>
+	
+	<xsl:template match="archdesc/userestrict">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse19" data-parent="#accessUse">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Use Restrictions</a>
+				  </h4>
+				</div>
+				<div id="collapse19" class="panel-collapse collapse">
+				  <div class="panel-body">
+					<h4>Copyright Statement</h4>
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
 	</xsl:template>
+	
+	<xsl:template match="archdesc/prefercite">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse20" data-parent="#accessUse">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Citing Materials</a>
+				  </h4>
+				</div>
+				<div id="collapse20" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	
 
 	<!--This templates consolidates all the other administrative information
       elements into one block under a common heading.  It formats these elements
@@ -1085,28 +1421,203 @@
          or string(archdesc/*/processinfo/*)
          or string(archdesc/*/appraisal/*)
          or string(archdesc/*/accruals/*)">
-			<h3>
-				<a name="adminlink"/>
-				<xsl:text>Administrative Information</xsl:text>
-			</h3>
+		 
+		 			
 			<xsl:apply-templates select="archdesc/custodhist
             | archdesc/*/custodhist"/>
 			<xsl:apply-templates select="archdesc/altformavail
             | archdesc/*/altformavail"/>
-			<xsl:apply-templates select="archdesc/prefercite
-            | archdesc/*/prefercite"/>
+			<!--<xsl:apply-templates select="archdesc/prefercite
+            | archdesc/*/prefercite"/>-->
 			<xsl:apply-templates select="archdesc/acqinfo
             | archdesc/*/acqinfo"/>
-			<xsl:apply-templates select="archdesc/processinfo
-            | archdesc/*/processinfo"/>
+			<xsl:apply-templates select="eadheader/filedesc/titlestmt/author"/>
+			
 			<xsl:apply-templates select="archdesc/appraisal
             | archdesc/*/appraisal"/>
 			<xsl:apply-templates select="archdesc/accruals
             | archdesc/*/accruals"/>
-			<hr/>
+			
+			<xsl:apply-templates select="eadheader/profiledesc"/>
+			
+			<xsl:apply-templates select="eadheader/revisiondesc"/>
+			
+			
+				 
 		</xsl:if>
 	</xsl:template>
-
+	
+	<xsl:template match="archdesc/acqinfo">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse9" data-parent="#collectionHistory">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Acquisition</a>
+				  </h4>
+				</div>
+				<div id="collapse9" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	 
+	<xsl:template match="archdesc/custodhist">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse10" data-parent="#collectionHistory">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Custodial History</a>
+				  </h4>
+				</div>
+				<div id="collapse10" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/appraisal">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse11" data-parent="#collectionHistory">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Appraisal Information</a>
+				  </h4>
+				</div>
+				<div id="collapse11" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="eadheader/filedesc/titlestmt/author">
+		<a name="processinfo" class="anchor"></a>
+		<div class="panel panel-default">
+			<div class="panel-heading" data-toggle="collapse" href="#collapse12" data-parent="#collectionHistory">
+			  <h4 class="panel-title">
+				<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Processing Details</a>
+			  </h4>
+			</div>
+			<div id="collapse12" class="panel-collapse collapse">
+			  <div class="panel-body">
+					<p>
+						<xsl:text>Processed by: </xsl:text><xsl:value-of select="."/>
+						<xsl:if test="../../../profiledesc/creation/date">
+							<xsl:text> in </xsl:text>
+							<xsl:value-of select="../../../profiledesc/creation/date"/>
+							<xsl:text>.</xsl:text>
+						</xsl:if>
+					</p>
+					<xsl:if test="../../../../archdesc/processinfo">
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+					</xsl:if>
+			  </div>
+			</div>
+		  </div>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/accruals">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse13" data-parent="#collectionHistory">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Accruals</a>
+				  </h4>
+				</div>
+				<div id="collapse13" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="archdesc/altformavail">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse14" data-parent="#collectionHistory">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Alternative Forms</a>
+				  </h4>
+				</div>
+				<div id="collapse14" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<xsl:for-each select="p">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="eadheader/profiledesc">
+		<xsl:if test="string(child::*)">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse15" data-parent="#collectionHistory">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Publication</a>
+				  </h4>
+				</div>
+				<div id="collapse15" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<p><xsl:text>Collection record created by: </xsl:text><xsl:value-of select="creation/text()"/></p>
+						<xsl:if test="../filedesc/publicationstmt/date/@normal">
+							<p><xsl:text>Published: </xsl:text><xsl:value-of select="../filedesc/publicationstmt/date/@normal"/></p>
+						</xsl:if>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="eadheader/revisiondesc">
+		<xsl:if test="change/date/text()">
+			<a name="{name(.)}" class="anchor"></a>
+			<div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" href="#collapse16" data-parent="#collectionHistory">
+				  <h4 class="panel-title">
+					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>Revisions</a>
+				  </h4>
+				</div>
+				<div id="collapse16" class="panel-collapse collapse">
+				  <div class="panel-body">
+						<xsl:for-each select="change">
+							<xsl:if test="date/text()">
+								<p><xsl:value-of select="item"/><xsl:text>, </xsl:text><xsl:value-of select="date"/></p>
+							</xsl:if>
+						</xsl:for-each>
+				  </div>
+				</div>
+			  </div>
+		</xsl:if>
+	</xsl:template>
+	
 
 	<!--This template rule formats the head element of top-level elements of
       administrative information.-->
@@ -1280,5 +1791,5 @@
 	</xsl:template>
 
 	<!--Insert the address for the dsc stylesheet of your choice here.-->
-   <xsl:include href="dsc3nyead.xsl"/>
+   <xsl:include href="dsc3ua.xsl"/>
 </xsl:stylesheet>
