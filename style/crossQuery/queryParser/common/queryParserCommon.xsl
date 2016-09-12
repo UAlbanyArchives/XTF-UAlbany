@@ -290,7 +290,7 @@
    <xsl:template match="*[@field]" priority="-1" mode="freeform">
       <xsl:copy>
          <xsl:copy-of select="@*"/>
-         <xsl:attribute name="maxContext" select="'60'"/>
+         <xsl:attribute name="maxContext" select="'200'"/>
          <xsl:if test="@field = 'text'">
             <xsl:attribute name="maxSnippets" select="'3'"/>
          </xsl:if>

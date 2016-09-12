@@ -8,18 +8,25 @@
 
 #wrapper {
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
+	-webkit-overflow-scrolling: touch;
+	-webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 
 #menu-toggle.slideRight {
-	left: 250px;
+	left: 345px;
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 350px;
+	width: 100% !important;
+	-webkit-overflow-scrolling: touch;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 #sidebar-wrapper {
@@ -27,6 +34,7 @@
     position: fixed;
     left: 250px;
 	top: 0;
+	bottom: 0 !important;
     width: 0;
     height: 100%;
     margin-left: -250px;
@@ -52,7 +60,7 @@
 
 
 #page-content-wrapper {
-    width: 100%;
+    /*width: 100%;*/
     position: absolute;
     padding: 15px;
 }
@@ -60,6 +68,38 @@
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
+}
+
+@media only screen and (max-width: 991px) {
+	.browseNav {
+		z-index: 1000;
+		position: fixed;
+		left: 225px;
+		top: 0 !important;
+		bottom: 0 !important;
+		width: 0;
+		height: 100%;
+		margin-left: -250px;
+		overflow-y: scroll;
+		background-color: #EBE6F0;
+		/*height: 480px;
+		max-height: 480px;*/
+		-webkit-overflow-scrolling: touch;
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+
+
+	#wrapper.toggled .browseNav {
+		width: 250px;
+		left: 250px;
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
 }
 
 /* Sidebar Styles */

@@ -1003,27 +1003,53 @@
          <!-- Display the group name, with '[X]' box if it is selected. -->
          <xsl:choose>
             <xsl:when test="//param[matches(@name,concat('f[0-9]+-',$field))]/@value=$value">
-               <div class="col-md-11">
+               <div class="col-md-12">
                   <xsl:apply-templates select="." mode="beforeGroupValue"/>
                   <i>
                      <xsl:value-of select="$value"/>
                   </i>
+				  <xsl:choose>
+					<xsl:when test="contains($value, 'Digital Files')">
+						&#160;
+						<span class="digitalFiles glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="top" title="Contains Online Content"></span>
+					</xsl:when>
+					<xsl:when test="contains($value, 'Web Archives')">
+						&#160;
+						<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
+					</xsl:when>
+					<xsl:otherwise>
+					</xsl:otherwise>
+				 </xsl:choose>
                   <xsl:apply-templates select="." mode="afterGroupValue"/>
+				  <div class="pull-right">
+                  <a href="{$clearLink}"><i class="glyphicon glyphicon-remove"></i></a>
                </div>
-               <div class="pull-right">
-                  <a href="{$clearLink}">[X]</a>
                </div>
             </xsl:when>
             <xsl:otherwise>
-               <div class="col-md-11">
+               <div class="col-md-12">
                   <xsl:apply-templates select="." mode="beforeGroupValue"/>
                   <a href="{$selectLink}">
-                     <xsl:value-of select="$value"/>
+					<xsl:choose>
+						<xsl:when test="contains($value, 'Digital Files')">
+							<xsl:value-of select="$value"/>
+							&#160;
+							<span class="digitalFiles glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="top" title="Contains Online Content"></span>
+						</xsl:when>
+						<xsl:when test="contains($value, 'Web Archives')">
+							<xsl:value-of select="$value"/>
+							&#160;
+							<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$value"/>
+						</xsl:otherwise>
+					</xsl:choose>
                   </a>
                   <xsl:apply-templates select="." mode="afterGroupValue"/>
-               </div>
-               <div class="badge">
+				  <div class="badge pull-right">
                   <xsl:value-of select="@totalDocs"/>
+				</div>
                </div>
             </xsl:otherwise>
          </xsl:choose>
@@ -1108,15 +1134,15 @@
             
             <!-- non-selected terminal node: click to select -->
             <xsl:when test="count(group) = 0 and @totalSubGroups = 0">
-               <div class="col-md-11">
+               <div class="col-md-12">
                   <xsl:apply-templates select="." mode="beforeGroupValue"/>
                   <a href="{$selectLink}">
                      <xsl:value-of select="@value"/>
                   </a>
                   <xsl:apply-templates select="." mode="afterGroupValue"/>
-               </div>
-               <div class="badge">
+				  <div class="badge pull-right">
                   <xsl:value-of select="@totalDocs"/>
+               </div>
                </div>
             </xsl:when>
             
@@ -1194,7 +1220,7 @@
          <xsl:when test="$rawName = 'corpname'"><xsl:text>Organizations</xsl:text></xsl:when>
          <xsl:when test="$rawName = 'persname'"><xsl:text>People</xsl:text></xsl:when>
          <xsl:when test="$rawName = 'famname'"><xsl:text>Families</xsl:text></xsl:when>
-         <xsl:when test="$rawName = 'genreform'"><xsl:text>Formats</xsl:text></xsl:when>
+         <xsl:when test="$rawName = 'genreform'"><xsl:text>Types of Materials</xsl:text></xsl:when>
          <xsl:when test="$rawName = 'title'"><xsl:text>Titles</xsl:text></xsl:when>
          <xsl:when test="$rawName = 'geogname'"><xsl:text>Places</xsl:text></xsl:when>
          <xsl:when test="$rawName = 'occupation'"><xsl:text>Occupations</xsl:text></xsl:when>

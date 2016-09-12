@@ -41,7 +41,7 @@
 				<div class="panel-group" id="aboutCollection">
 					<xsl:apply-templates select="archdesc/bioghist"/>
 					<xsl:apply-templates select="archdesc/scopecontent"/>
-					<xsl:apply-templates select="archdesc/phystech"/>
+					<!--<xsl:apply-templates select="archdesc/phystech"/>-->
 					<xsl:apply-templates select="archdesc/arrangement"/>
 					<xsl:apply-templates select="archdesc/did/langmaterial"/>
 					<xsl:apply-templates select="archdesc/relatedmaterial"/>
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 		
-		<a class="anchor" name="containerList"></a>
+		<a class="anchor" id="containerList"></a>
 		<div class="row section cmpnts">
 			<xsl:apply-templates select="descendant::dsc"/>
 		</div>
@@ -411,14 +411,17 @@
 				<h4 class="modal-title">Request the materials you selected:</h4>
 			  </div>
 			  <div class="modal-body">
-				<p>Archival materials can be view in-person in our reading room, located on the top floor of the Science Library on the Uptown Campus. Making an appointment is not neccessary, but it may help us ensure the items are availible when you arrive.</p>
+				<p>Archival materials can be view in-person in our reading room, located on the top floor of the Science Library on the Uptown Campus. Making an appointment is not neccessary, but it may help us ensure the items are available when you arrive.</p>
 				<p>We can also deliver digital scans for remote research for a fee.</p>
+				<div class="alert alert-danger">
+				  <strong>Restricted Records</strong><br/>The materials you selected include restricted records. We may not be able to fulfill remote requests for these items, and in-person access may be limited. If you request these items an archivist will contact you with more details.
+				</div>
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				<a type="button" class="btn btn-primary" id="scheduleVisit">
 					<xsl:attribute name="href">
-						<xsl:text>http://library.albany.edu/archive/scheduleVisit?col=</xsl:text>
+						<xsl:text>http://library.albany.edu/archiveDev/scheduleVisit?col=</xsl:text>
 						<xsl:value-of select="/ead/@id"/>
 						<xsl:text>: </xsl:text>
 						<xsl:value-of select="/ead/archdesc/did/unittitle/text()"/>
@@ -428,7 +431,7 @@
 				</a>
 				<a type="button" class="btn btn-primary" id="remoteRequest">
 					<xsl:attribute name="href">
-						<xsl:text>http://library.albany.edu/archive/remoteRequest?col=</xsl:text>
+						<xsl:text>http://library.albany.edu/archiveDev/remoteRequest?col=</xsl:text>
 						<xsl:value-of select="/ead/@id"/>
 						<xsl:text>: </xsl:text>
 						<xsl:value-of select="/ead/archdesc/did/unittitle/text()"/>
@@ -442,6 +445,30 @@
 		</div>
 	
 		<div class="col-md-10">
+			<noscript>
+				<div class="alert alert-danger">
+				  <strong>This site is best viewed with Javascript.</strong>
+				  <xsl:text> If you are unable to use Javascript, it may help to use the </xsl:text>
+				  <a>
+					  <xsl:attribute name="href">
+						<xsl:text>http://library.albany.edu/speccoll/findaids/eresources/findingaids/</xsl:text>
+						<xsl:value-of select="substring-after(/ead/@id, '_')"/>
+						<xsl:text>.html</xsl:text>
+					  </xsl:attribute>
+					  <xsl:text>flat HTML version</xsl:text>
+				  </a>
+				  <xsl:text> or the </xsl:text>
+				  <a>
+					<xsl:attribute name="href">
+				  <xsl:text>http://library.albany.edu/speccoll/findaids/eresources/static/pdf/</xsl:text>
+					<xsl:value-of select="substring-after(/ead/@id, '_')"/>
+					<xsl:text>.pdf</xsl:text>
+					</xsl:attribute>
+					<xsl:text>print PDF version</xsl:text>
+				  </a>
+				  <xsl:text>.</xsl:text>
+				</div>
+			</noscript>
 			<div class="jumbotron">
 				<h2>
 					<!--<xsl:value-of select="../archdesc/did/unittitle/text()"/>-->
@@ -465,13 +492,21 @@
 		</div>
 		<div id="buttonPDF" class="col-md-2">
 			<button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-info-sign"/> Need Help?</button>
-			<button type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"/> PDF Version</button>
+			<a type="button" class="btn btn-default">
+				<xsl:attribute name="href">
+				  <xsl:text>http://library.albany.edu/speccoll/findaids/eresources/static/pdf/</xsl:text>
+					<xsl:value-of select="substring-after(/ead/@id, '_')"/>
+					<xsl:text>.pdf</xsl:text>
+				</xsl:attribute>
+				<i class="fa fa-file-pdf-o"/>
+				<xsl:text> PDF Version</xsl:text>
+			</a>
 			<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Request Collection</button>
 		</div>
 		<div id="seeAlsoList" class="col-xs-12 col-sm-9 col-md-10">
 			<ul>
 				<li class="seeAlso">See Also:</li>
-				<xsl:for-each select="../archdesc/controlaccess/subject">
+				<xsl:for-each select="../archdesc/controlaccess/subject[@source='meg']">
 					<li class="seeAlsoItem">
 						<a>
 							<xsl:attribute name="href">
@@ -583,7 +618,7 @@
 			<dt><xsl:text>Quantity:</xsl:text></dt>
 			<dd>
 				<xsl:choose>
-					<xsl:when test="extent or physfacet">
+					<xsl:when test="extent or physfacet or dimensions">
 						<xsl:if test="extent">
 							<xsl:value-of select="extent"/>
 						</xsl:if>
@@ -600,6 +635,13 @@
 						</xsl:if>
 						<xsl:if test="physfacet">
 							&#160;<xsl:value-of select="physfacet"/>
+						</xsl:if>
+						<xsl:if test="dimensions">
+							&#160;<xsl:value-of select="dimensions"/>
+						</xsl:if>
+						<xsl:if test="dimensions/@unit">
+							<xsl:text> </xsl:text>
+							<xsl:value-of select="dimensions/@unit"/>
 						</xsl:if>
 					</xsl:when>
 					<xsl:otherwise>
@@ -711,20 +753,21 @@
 
 	<!--This template rule formats the top-level bioghist element.-->
 	<xsl:template match="archdesc/bioghist">
-		<a name="{name(.)}" class="anchor"></a>
+		<a id ="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse1">
 				  <h4 class="panel-title">
 					<a><i class="glyphicon glyphicon-plus"/><xsl:text>  </xsl:text>
-						<xsl:choose>
+						<!--<xsl:choose>
 							<xsl:when test="head">
 								<xsl:value-of select="head"/>
 							</xsl:when>
 							<xsl:otherwise>
 								<xsl:text>Historical Note</xsl:text>
 							</xsl:otherwise>
-						</xsl:choose>
+						</xsl:choose>-->
+						Background History
 					</a>
 				  </h4>
 				</div>
@@ -741,7 +784,7 @@
 	
 	<!--This template rule formats the top-level scopecontent element.-->
 	<xsl:template match="archdesc/scopecontent">
-		<a name="{name(.)}" class="anchor"></a>
+		<a id ="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse2">
@@ -760,8 +803,8 @@
 		</xsl:if>
 	</xsl:template>
 	
-	<xsl:template match="archdesc/phystech">
-		<a name="{name(.)}" class="anchor"></a>
+	<!--<xsl:template match="archdesc/phystech">
+		<a id ="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse3">
@@ -778,10 +821,10 @@
 				</div>
 			  </div>
 		</xsl:if>
-	</xsl:template>
+	</xsl:template>-->
 	
 	<xsl:template match="archdesc/arrangement">
-		<a name="{name(.)}" class="anchor"></a>
+		<a id ="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse4">
@@ -808,7 +851,7 @@
 	</xsl:template>
 	
 	<xsl:template match="archdesc/did/langmaterial">
-		<a name="{name(.)}" class="anchor"></a>
+		<a id ="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse5">
@@ -828,7 +871,7 @@
 	</xsl:template>
 	
 	<xsl:template match="archdesc/separatedmaterial">
-		<a name="{name(.)}" class="anchor"></a>
+		<a id ="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse6">
@@ -848,7 +891,7 @@
 	</xsl:template>
 	
 	<xsl:template match="archdesc/relatedmaterial">
-		<a name="{name(.)}" class="anchor"></a>
+		<a id ="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse7">
@@ -866,7 +909,7 @@
 	</xsl:template>
 	
 	<xsl:template match="archdesc/odd">
-		<a name="{name(.)}" class="anchor"></a>
+		<a id ="{name(.)}" class="anchor"></a>
 		<xsl:if test="string(child::*)">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse8">
@@ -1310,7 +1353,7 @@
          or string(archdesc/*/userestrict/*)
          or string(archdesc/*/accessrestrict/*)">
 		 
-			<a name="howto" class="anchor"></a>
+			<a id="howto" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse17" data-parent="#accessUse">
 				  <h4 class="panel-title">
@@ -1339,7 +1382,7 @@
 
 	<xsl:template match="archdesc/accessrestrict">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse18" data-parent="#accessUse">
 				  <h4 class="panel-title">
@@ -1359,7 +1402,7 @@
 	
 	<xsl:template match="archdesc/userestrict">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse19" data-parent="#accessUse">
 				  <h4 class="panel-title">
@@ -1380,7 +1423,7 @@
 	
 	<xsl:template match="archdesc/prefercite">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse20" data-parent="#accessUse">
 				  <h4 class="panel-title">
@@ -1449,7 +1492,7 @@
 	
 	<xsl:template match="archdesc/acqinfo">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse9" data-parent="#collectionHistory">
 				  <h4 class="panel-title">
@@ -1469,7 +1512,7 @@
 	 
 	<xsl:template match="archdesc/custodhist">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse10" data-parent="#collectionHistory">
 				  <h4 class="panel-title">
@@ -1489,7 +1532,7 @@
 	
 	<xsl:template match="archdesc/appraisal">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse11" data-parent="#collectionHistory">
 				  <h4 class="panel-title">
@@ -1508,7 +1551,7 @@
 	</xsl:template>
 	
 	<xsl:template match="eadheader/filedesc/titlestmt/author">
-		<a name="processinfo" class="anchor"></a>
+		<a class="anchor" id="processinfo"></a>
 		<div class="panel panel-default">
 			<div class="panel-heading" data-toggle="collapse" href="#collapse12" data-parent="#collectionHistory">
 			  <h4 class="panel-title">
@@ -1519,9 +1562,9 @@
 			  <div class="panel-body">
 					<p>
 						<xsl:text>Processed by: </xsl:text><xsl:value-of select="."/>
-						<xsl:if test="../../../profiledesc/creation/date">
+						<xsl:if test="../../../filedesc/publicationstmt/date/@normal">
 							<xsl:text> in </xsl:text>
-							<xsl:value-of select="../../../profiledesc/creation/date"/>
+							<xsl:value-of select="../../../filedesc/publicationstmt/date/@normal"/>
 							<xsl:text>.</xsl:text>
 						</xsl:if>
 					</p>
@@ -1537,7 +1580,7 @@
 	
 	<xsl:template match="archdesc/accruals">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse13" data-parent="#collectionHistory">
 				  <h4 class="panel-title">
@@ -1557,7 +1600,7 @@
 	
 	<xsl:template match="archdesc/altformavail">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse14" data-parent="#collectionHistory">
 				  <h4 class="panel-title">
@@ -1577,7 +1620,7 @@
 	
 	<xsl:template match="eadheader/profiledesc">
 		<xsl:if test="string(child::*)">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse15" data-parent="#collectionHistory">
 				  <h4 class="panel-title">
@@ -1587,8 +1630,8 @@
 				<div id="collapse15" class="panel-collapse collapse">
 				  <div class="panel-body">
 						<p><xsl:text>Collection record created by: </xsl:text><xsl:value-of select="creation/text()"/></p>
-						<xsl:if test="../filedesc/publicationstmt/date/@normal">
-							<p><xsl:text>Published: </xsl:text><xsl:value-of select="../filedesc/publicationstmt/date/@normal"/></p>
+						<xsl:if test="creation/date">
+							<p><xsl:text>Published: </xsl:text><xsl:value-of select="creation/date/text()"/></p>
 						</xsl:if>
 				  </div>
 				</div>
@@ -1598,7 +1641,7 @@
 	
 	<xsl:template match="eadheader/revisiondesc">
 		<xsl:if test="change/date/text()">
-			<a name="{name(.)}" class="anchor"></a>
+			<a id ="{name(.)}" class="anchor"></a>
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse16" data-parent="#collectionHistory">
 				  <h4 class="panel-title">

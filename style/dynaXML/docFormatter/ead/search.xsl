@@ -38,10 +38,12 @@
       
       <a class="anchor" name="{@hitNum}"/>
       
-      <xsl:if test="@hitNum = key('chunk-id', $chunk.id)/@xtf:firstHit">
+      <!-- gw causing issues with single hits 5-31-16
+	  <xsl:if test="@hitNum = key('chunk-id', $chunk.id)/@xtf:firstHit">
          <a name="X"/>
       </xsl:if>
-      
+      -->
+	  
       <xsl:call-template name="prev.hit"/>
       
       <xsl:choose>

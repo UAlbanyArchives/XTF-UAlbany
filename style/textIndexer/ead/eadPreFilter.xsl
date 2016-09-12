@@ -381,6 +381,12 @@
 				<xsl:if test="string(($dtdVersion)/ead/archdesc/did/physdesc/physfacet)">
 					&#160;<xsl:value-of select="string(($dtdVersion)/ead/archdesc/did/physdesc/physfacet)"/>
 				</xsl:if>
+				<xsl:if test="string(($dtdVersion)/ead/archdesc/did/physdesc/dimensions)">
+					&#160;<xsl:value-of select="string(($dtdVersion)/ead/archdesc/did/physdesc/dimensions)"/>
+				</xsl:if>
+				<xsl:if test="string(($dtdVersion)/ead/archdesc/did/physdesc/dimensions/@unit)">
+					&#160;<xsl:value-of select="string(($dtdVersion)/ead/archdesc/did/physdesc/dimensions/@unit)"/>
+				</xsl:if>
             </extent>
          </xsl:when>
          <xsl:otherwise>
@@ -395,15 +401,15 @@
    <!-- Note: we use for-each-group below to remove duplicate entries. -->
    <xsl:template name="get-ead-subject">
       <xsl:choose>
-         <xsl:when test="($dtdVersion)/ead/archdesc//controlaccess/subject">
-            <xsl:for-each-group select="($dtdVersion)/ead/archdesc//controlaccess/subject" group-by="string()">
+         <xsl:when test="($dtdVersion)/ead/archdesc//controlaccess/subject[@source='meg']">
+            <xsl:for-each-group select="($dtdVersion)/ead/archdesc//controlaccess/subject[@source='meg']" group-by="string()">
                <subject xtf:meta="true">
                   <xsl:value-of select="replace(normalize-space(.), '^(.*)[.]$', '$1')"/>
                </subject>
             </xsl:for-each-group>
          </xsl:when>
-         <xsl:when test="($dtdVersion)/ead/eadheader/filedesc/notestmt/subject">
-            <xsl:for-each-group select="($dtdVersion)/ead/eadheader/filedesc/notestmt/subject" group-by="string()">
+         <xsl:when test="($dtdVersion)/ead/eadheader/filedesc/notestmt/subject[@source='meg']">
+            <xsl:for-each-group select="($dtdVersion)/ead/eadheader/filedesc/notestmt/subject[@source='meg']" group-by="string()">
                <subject xtf:meta="true">
                   <xsl:value-of select="replace(normalize-space(.), '^(.*)[.]$', '$1')"/>
                </subject>
@@ -594,16 +600,16 @@
    <!-- JB 3/31/2014 add to generate materials facet from genreform -->
    <xsl:template name="get-ead-genreform">
       <xsl:choose>
-         <xsl:when test="($dtdVersion)/ead/archdesc/controlaccess/genreform">
-            <xsl:for-each-group select="($dtdVersion)/ead/archdesc/controlaccess/genreform"
+         <xsl:when test="($dtdVersion)/ead/archdesc/controlaccess/genreform[@source='meg']">
+            <xsl:for-each-group select="($dtdVersion)/ead/archdesc/controlaccess/genreform[@source='meg']"
                group-by="string()">
                <genreform xtf:meta="true">
                   <xsl:value-of select="replace(normalize-space(.), '^(.*)[.]$', '$1')"/>
                </genreform>
             </xsl:for-each-group>
          </xsl:when>
-         <xsl:when test="($dtdVersion)/ead/archdesc//controlaccess/genreform">
-            <xsl:for-each-group select="($dtdVersion)/ead/archdesc//controlaccess/genreform"
+         <xsl:when test="($dtdVersion)/ead/archdesc//controlaccess/genreform[@source='meg']">
+            <xsl:for-each-group select="($dtdVersion)/ead/archdesc//controlaccess/genreform[@source='meg']"
                group-by="string()">
                <genreform xtf:meta="true">
                   <xsl:value-of select="replace(normalize-space(.), '^(.*)[.]$', '$1')"/>
@@ -611,8 +617,8 @@
             </xsl:for-each-group>
          </xsl:when>
          <!-- add to account for nesting of control access -->
-         <xsl:when test="($dtdVersion)/ead/archdesc//controlaccess/*/genreform">
-            <xsl:for-each-group select="($dtdVersion)/ead/archdesc//controlaccess/*/genreform"
+         <xsl:when test="($dtdVersion)/ead/archdesc//controlaccess/*/genreform[@source='meg']">
+            <xsl:for-each-group select="($dtdVersion)/ead/archdesc//controlaccess/*/genreform[@source='meg']"
                group-by="string()">
                <genreform xtf:meta="true">
                   <xsl:value-of select="replace(normalize-space(.), '^(.*)[.]$', '$1')"/>
@@ -620,8 +626,8 @@
             </xsl:for-each-group>
          </xsl:when>
          <!-- will NYEAD use  -->
-         <xsl:when test="($dtdVersion)/ead/eadheader/filedesc/notestmt/genreform">
-            <xsl:for-each-group select="($dtdVersion)/ead/eadheader/filedesc/notestmt/genreform"
+         <xsl:when test="($dtdVersion)/ead/eadheader/filedesc/notestmt/genreform[@source='meg']">
+            <xsl:for-each-group select="($dtdVersion)/ead/eadheader/filedesc/notestmt/genreform[@source='meg']"
                group-by="string()">
                <genreform xtf:meta="true">
                   <xsl:value-of select="replace(normalize-space(.), '^(.*)[.]$', '$1')"/>
@@ -914,12 +920,12 @@
    
    <!-- OAI sets -->
    <xsl:template name="oai-set">
-      <xsl:for-each-group select="($dtdVersion)/ead/archdesc//controlaccess/subject" group-by="string()">
+      <xsl:for-each-group select="($dtdVersion)/ead/archdesc//controlaccess/subject[@source='meg']" group-by="string()">
          <set xtf:meta="true">
             <xsl:value-of select="."/>
          </set>
       </xsl:for-each-group>
-      <xsl:for-each-group select="($dtdVersion)/ead/eadheader/filedesc/notestmt/subject" group-by="string()">
+      <xsl:for-each-group select="($dtdVersion)/ead/eadheader/filedesc/notestmt/subject[@source='meg']" group-by="string()">
          <set xtf:meta="true">
             <xsl:value-of select="."/>
          </set>

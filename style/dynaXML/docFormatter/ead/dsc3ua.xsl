@@ -249,7 +249,7 @@ that are used generically throughout the stylesheet.-->
 			
 			<!-- Still allows for search results GW 5-6-16 -->
 			<xsl:when test="unitdate">
-				<xsl:for-each select="unittitle[text() and name() != 'unitdate']">
+				<xsl:for-each select="unittitle[name() != 'unitdate']">
 					<xsl:choose>
 						<xsl:when test="../dao">
 							<a>
@@ -407,32 +407,27 @@ The named templates are in section 4.-->
 					</xsl:choose>-->
 
 					<xsl:for-each select="c04|c">
-						<xsl:choose>
-							<xsl:when
-								test="@level='subseries' or @level='series' or @level='subgrp'">
-								<xsl:call-template name="c02-level-subseries"/>
-								<tr class="purpleHead">
-									<th>
-										<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Request</button>
-									</th>
-									<th>
-										<xsl:text>Box</xsl:text>
-									</th>
-									<th>
-										<xsl:text>Folder</xsl:text>
-									</th>
-									<th>
-										<xsl:text>Contents</xsl:text>
-									</th>
-									<th>
-										<xsl:text>Date</xsl:text>
-									</th>
-								</tr>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:call-template name="c02-level-container"/>
-							</xsl:otherwise>
-						</xsl:choose>
+						<xsl:if
+							test="@level='subseries' or @level='series' or @level='subgrp'">
+							<xsl:call-template name="c02-level-subseries"/>
+							<tr class="purpleHead">
+								<th>
+									<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Request</button>
+								</th>
+								<th>
+									<xsl:text>Box</xsl:text>
+								</th>
+								<th>
+									<xsl:text>Folder</xsl:text>
+								</th>
+								<th>
+									<xsl:text>Contents</xsl:text>
+								</th>
+								<th>
+									<xsl:text>Date</xsl:text>
+								</th>
+							</tr>
+						</xsl:if>
 
 						<xsl:for-each select="c05|c">
 							<xsl:call-template name="c02-level-container"/>
@@ -565,7 +560,7 @@ for each level.-->
 						<div class="col-sm-12 physdescSeries">
 							<span class="physdescLabel"><xsl:text>Quantity:     </xsl:text></span>
 							<xsl:choose>
-								<xsl:when test="extent or physfacet">
+								<xsl:when test="extent or physfacet or dimensions">
 									<xsl:if test="extent">
 										<xsl:value-of select="extent"/>
 									</xsl:if>
@@ -583,11 +578,26 @@ for each level.-->
 									<xsl:if test="physfacet">
 										&#160;<xsl:value-of select="physfacet"/>
 									</xsl:if>
+									<xsl:if test="dimensions">
+										<xsl:value-of select="dimensions"/>
+									</xsl:if>
+									<xsl:if test="dimensions/@unit">
+										<xsl:text> </xsl:text>
+										<xsl:value-of select="dimensions/@unit"/>
+									</xsl:if>
+									<xsl:if test="dimensions">
+										&#160;
+										<span id="firstDigital" class="digitalFiles glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="top" title="Contains Online Content"></span>
+									</xsl:if>
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:apply-templates/>
 								</xsl:otherwise>
 							</xsl:choose>
+							<xsl:if test="../../phystech">
+								&#160;Web Archives&#160;
+								<span id="webArch" class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
+							</xsl:if>
 						</div>
 					</xsl:for-each>
 					<xsl:for-each select="physloc | origination | note/p | langmaterial | materialspec">
@@ -627,6 +637,9 @@ for each level.-->
 									</xsl:when>
 									<xsl:when test="name(.) = 'bioghist'">
 										<xsl:text>Historical Note</xsl:text>
+									</xsl:when>
+									<xsl:when test="name(.) = 'acqinfo'">
+										<xsl:text>Acquisition Details</xsl:text>
 									</xsl:when>
 									<xsl:otherwise>
 										<xsl:text>More Details</xsl:text>
@@ -685,7 +698,7 @@ for each level.-->
 					</div>
 				</div>
 			</xsl:if>-->
-			<tr>
+			<tr itemscope="True" itemprop="associatedMedia" itemtype="https://schema.org/CreativeWork">
 				<td class="requestColumn">
 					<p class="unitID">
 						<xsl:attribute name="id">
@@ -705,6 +718,12 @@ for each level.-->
 					<div class="checkbox checkbox-primary">
 					  <input type="checkbox" class="styled fileCheck">
 							<xsl:attribute name="value">
+								<xsl:if test="../accessrestrict">
+									<xsl:text>RESTRICT</xsl:text>
+								</xsl:if>
+								<xsl:if test="../userestrict">
+									<xsl:text>RESTRICT</xsl:text>
+								</xsl:if>
 								<xsl:value-of select="../@id"/>
 								<xsl:text>: </xsl:text>
 								<xsl:value-of select="unittitle"/>
@@ -732,7 +751,10 @@ for each level.-->
 				<td>
 					<xsl:value-of select="container[2]"/>
 				</td>
-				<td>
+				<td itemprop="name">
+					<xsl:attribute name="content">
+						<xsl:value-of select="unittitle"/>
+					</xsl:attribute>
 					<xsl:call-template name="component-did"/>
 					<xsl:if test="../accessrestrict | ../userestrict">
 						<xsl:text> </xsl:text>
@@ -756,10 +778,15 @@ for each level.-->
 				</td>
 				<td>
 					<xsl:for-each select="unitdate">
-						<xsl:if test="not(position()=1)">
-							<xsl:text>, </xsl:text>
-						</xsl:if>
-						<xsl:value-of select="." />
+						<span itemprop="dateCreated">
+							<xsl:attribute name="content">
+								<xsl:value-of select="@normal"/>
+							</xsl:attribute>
+							<xsl:if test="not(position()=1)">
+								<xsl:text>, </xsl:text>
+							</xsl:if>
+							<xsl:value-of select="." />
+						</span>
 					</xsl:for-each>
 				</td>
 			
@@ -780,11 +807,41 @@ for each level.-->
 						<xsl:text>more</xsl:text>
 						<xsl:value-of select="translate(../@id, '. ', '')"/>
 					</xsl:attribute>
-					<xsl:for-each select="physdesc | physloc| origination | abstract | note/p | langmaterial | materialspec | ../scopecontent | ../bioghist | ../arrangement | ../processinfo |
-				../acqinfo | ../custodhist | ../odd | ../note | ../descgrp/*">
-						<p>
-							<xsl:apply-templates/>
-						</p>
+					<xsl:for-each select="physdesc">
+						<xsl:for-each select="extent">
+							<p><xsl:value-of select="."/>
+							<xsl:text> </xsl:text>
+							<xsl:value-of select="@unit"/></p>
+						</xsl:for-each>
+						<xsl:for-each select="physfacet">
+							<p><xsl:value-of select="."/></p>
+						</xsl:for-each>
+						<xsl:for-each select="dimensions">
+							<p><xsl:value-of select="."/>
+							<xsl:text> </xsl:text>
+							<xsl:value-of select="@unit"/></p>
+						</xsl:for-each>
+					</xsl:for-each>
+					<xsl:for-each select="../acqinfo">
+							<xsl:for-each select="p">
+								<xsl:choose>
+									<xsl:when test="date">
+										<p><xsl:value-of select="date"/><xsl:text>: </xsl:text><xsl:value-of select="text()"/></p>
+									</xsl:when>
+									<xsl:otherwise>
+										<p>
+											<xsl:value-of select="."/>
+										</p>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:for-each>
+						</xsl:for-each>
+						<xsl:for-each select="../scopecontent">
+							<p><xsl:apply-templates/></p>
+						</xsl:for-each>
+					<xsl:for-each select="physloc| origination | abstract | note/p | langmaterial | materialspec | ../bioghist | ../arrangement | ../processinfo |
+				 ../custodhist | ../odd | ../note | ../descgrp/*">
+						<xsl:apply-templates/>
 					</xsl:for-each>
 				</div>
 				</td>
@@ -800,9 +857,7 @@ for each level.-->
 							<xsl:value-of select="translate(../@id, '. ', '')"/>
 						</xsl:attribute>
 						<xsl:for-each select="../accessrestrict | ../userestrict">
-							<p>
-								<xsl:apply-templates/>
-							</p>
+							<xsl:apply-templates/>
 						</xsl:for-each>
 					</div>
 				</td>

@@ -5,6 +5,11 @@
 	padding: 0px 20px;
 }
 
+#collectionTitle {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 .row {
 	margin-left: 0px;
 	margin-right: 0px;
@@ -30,8 +35,12 @@
 }
 
 .section {
-	min-height: 100% !important;
+	/*min-height: 800px;*/
 	height: auto !important;
+}
+
+.footer {
+	margin-top: 200px;
 }
 
 .jumbotron {
@@ -249,6 +258,15 @@
 }
 .checkbox {
 	margin: 0px;
+	padding: 0px;
+	margin-left: 20px;
+	cursor: default;
+}
+
+.checkbox input {
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
 }
 
 .requestColumn * {
@@ -262,4 +280,23 @@
 
 .fa-file-text {
 	font-size: 13pt !important;
+}
+
+.modal .alert-danger {
+	display: none;
+}
+
+.physdescSeries {
+	margin-bottom: 10px;
+}
+
+.moreDiv p {
+	margin-bottom: 0px;
+	padding: 5px !important;
+}
+
+.bg-info {
+	font-weight: 600;
+	font-size: 13pt !important;
+	color: #337ab7;
 }

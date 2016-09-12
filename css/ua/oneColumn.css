@@ -1,0 +1,101 @@
+body {
+	background: url("http://library.albany.edu/speccoll/findaids/eresources/static/img/bgDowntown.jpg");
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-size: auto 100%;
+    background-position: center top;
+}
+
+@media only screen and (min-width: 1100px) {
+	body {
+		background-size: 100% auto;
+	}
+}
+
+body > .container .panel {
+	/*box-shadow: 0 0 20px #FFFFFF;*/
+}	
+
+#page-content-wrapper {
+	padding: 0px;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.container-fluid {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+#mainContent {
+	max-width: 1150px;
+	background-color: #FFFFFF;
+	box-shadow: 0 0 10px #FFFFFF;
+	padding: 20px 25px 5px 25px;
+	margin: auto;
+	padding: 30px;
+	padding-top: 130px;
+}
+
+#mainContent .forms {
+	margin: 0px;
+}
+
+
+#mainContent .forms .nav li {
+	background-color: #EEEEEE;
+	border-left: 1px solid #DDDDDD;
+	border-right: 1px solid #DDDDDD;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#mainContent .forms .nav li.active {
+	background-color: #FFFFFF;
+}
+
+.btn-group-wrap {
+    text-align: center;
+}
+
+#mainContent .forms .btn-group {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#mainContent .forms .btn-group a:hover {
+	background-color: #EBE6F0;
+	color: #512D6D;
+}
+
+#mainContent .forms .nav li:hover a {
+	background-color: #EBE6F0 !important;
+}
+
+#main-content {
+	width: auto !important;
+	margin: 20px;
+}
+
+.sequence {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	margin: 0px;
+	margin-top: 20px;
+}
+
+.well h4 {
+	margin: 10px auto;
+	text-align: center;
+}
+
+.well {
+	width: 300px;
+}
+
+#mainContent  p {
+	font-size: 11pt !important;
+}

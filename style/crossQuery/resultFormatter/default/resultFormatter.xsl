@@ -174,6 +174,27 @@
             <script src="script/yui/yahoo-dom-event.js" type="text/javascript"/> 
             <script src="script/yui/connection-min.js" type="text/javascript"/>
             <script src="script/moreless.js" type="text/javascript"/>
+			<link rel="stylesheet" href="css/ua/results.css" type="text/css"/>
+			<link rel="stylesheet" href="css/font-awesome.min.css"/>
+			<link rel="stylesheet" href="css/ua/browseNav.css" type="text/css"></link>
+			<link rel="stylesheet" href="css/ua/sideNavbar.css"></link>
+			<link rel="stylesheet" href="css/simple-sidebar.css" type="text/css"></link>
+           <script src="script/resultsSideNav.js" type="text/javascript"/>
+		   <script type="text/javascript" src="js/searchOptions.js"></script>
+			<script type="text/javascript" src="http://library.albany.edu/angelfish.js"></script>
+			<script type="text/javascript">
+				agf.pageview();
+			</script>
+			<script>
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			  ga('create', 'UA-83180993-1', 'auto');
+			  ga('send', 'pageview');
+
+			</script>
 			<script>
 				$(function () {
 				  $('[data-toggle="tooltip"]').tooltip()
@@ -196,115 +217,220 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<!--<a class="navbar-brand" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" height="75px" /></a>-->
+					<!--<a class="navbar-brand" href="http://library.albany.edu/archiveDev/"><img src="icons/ua/mainLogo.png" height="75px" /></a>-->
 					<div class="navbar-brand">
-						<a class="logo" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" /></a>
+						<a class="logo" href="http://library.albany.edu/archiveDev/"><img src="icons/ua/mainLogo.png" /></a>
 						<a class="ualbany" href="http://www.albany.edu"><img src="icons/ua/ualbany.png" /></a>
+						<a class="smallLogo" href="http://library.albany.edu/archiveDev/"><img src="icons/ua/mainLogo.png" /></a>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav" id="topNavMenu">
-						<!--<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">UAlbany <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="http://www.albany.edu/">UAlbany, SUNY</a></li>
-								<li><a href="http://library.albany.edu/">University Libraries</a></li>
-							</ul>
-						</li>-->
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Collections <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="search">About Collections</a></li>
-								<li><a href="http://library.albany.edu/archive/apap">NY State Modern Political Archive</a></li>
-								<li><a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a></li>
-								<li><a href="http://library.albany.edu/archive/ger">German Intellectual Émigré</a></li>
-								<li><a href="http://library.albany.edu/archive/ua">University Archives</a></li>
-								<li><a href="http://library.albany.edu/archive/mathes">Mathes Childrens Literature</a></li>
-								<li><a href="http://library.albany.edu/archive/manuscript">Rare Books and Manuscripts</a></li>
-								<li><a href="http://library.albany.edu/archive/collections/alpha">A-Z Complete List of Collections</a></li>
-								<li><a href="http://library.albany.edu/archive/collections/subject">Subject Guides to Collections</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Digital Selections <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="http://library.albany.edu/archive/digitalcollections">About Digital Selections</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/UALBANYSCA~14~14">Digital Photograph Collections (LUNA)</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/s/uc9c1q">University Photographs</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search;JSESSIONID=2b6136d9-4163-47bb-bdb7-152ea22a99fa?sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;q=Creator%3D%22United+University+Professions+%28UUP%29%22&amp;pgs=50&amp;res=1">United University Professions</a></li>
-								<li><a href="http://library.albany.edu/archive/milnedigitalcollections">Milne School</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search?q==%22WAMC%22&amp;sort=Archive_Collection,Date,Title,Subject">WAMC Northeast Public Radio</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=marcia+brown&amp;search=Search">Marcia Brown</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=CSEA&amp;sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;search=Search">The Civil Service Employees Association (CSEA)</a></li>
-								<li><a href="http://luna.albany.edu/luna/servlet/view/search?QuickSearchA=QuickSearchA&amp;q=Norman+Studer&amp;sort=Archive_Collection%2CDate%2CTitle%2CSubject&amp;search=Search">Norman Studer</a></li>
-								<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>
-								<li><a href="http://library.albany.edu/speccoll/findaids/eresources/findingaids/ua809.html">Albany Student Newspaper Archive</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exhibits <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="http://library.albany.edu/archive/chronology">Chronological History of UAlbany</a></li>
-								<li><a href="http://library.albany.edu/archive/seeger">Remembering Pete Seeger</a></li>
-								<li><a href="http://library.albany.edu/archive/exhibitmilne">The Milne School Murals</a></li>
-								<li><a href="http://library.albany.edu/speccoll/campusbuildings/index.htm">Campus Buildings Historical Tour</a></li>
-								<li><a href="http://library.albany.edu/speccoll/marciabrown/index.htm">Marcia Brown Exhibit and Resource Website</a></li>
-								<li><a href="http://library.albany.edu/speccoll/stockingBrown/">Patricia Stocking Brown</a></li>
-								<li><a href="http://library.albany.edu/speccoll/mural/">University Historical Murals</a></li>
-								<li><a href="http://library.albany.edu/speccoll/secretlives/index.htm">The Secret Lives of Toys and Their Friends</a></li>
-								<li><a href="http://library.albany.edu/speccoll/stone/index.htm">Edward Durell Stone and the Building of the Uptown Campus</a></li>
-								<li><a href="http://library.albany.edu/archive/exhibits">More...</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">University Records <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="http://library.albany.edu/archive/ua/transferform">Transfer Records to the University Archives</a></li>
-								<li><a href="http://library.albany.edu/archive/universityarchives">FAQ</a></li>
-								<li><a href="http://library.albany.edu/archive/UniversityArchives/ANTS">About ANTS: Archives Network Transfer System</a></li>
-								<li><a href="http://library.albany.edu/archive/ua/matrix">University Records Charts</a></li>
-								<li><a href="#">About SUNY Records Laws</a></li>
-								<li><a href="https://wiki.albany.edu/display/public/askit/Information+Security+Domains%2C+Supporting+Protocols+and+Procedures">About CIO Data Classification System</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="http://library.albany.edu/archive/rules">How to Use Collections for Research</a></li>
-								<li><a href="http://library.albany.edu/archive/directions">Hours and Directions</a></li>
-								<li><a href="http://library.albany.edu/archive/contact">Staff</a></li>
-								<li><a href="http://library.albany.edu/archive/grenander">About M.E. Grenander</a></li>
-								<li><a href="http://library.albany.edu/archive/manual">Accessioning and Processing Manual</a></li>
-								<li><a href="http://library.albany.edu/archive/citation">Citation Guide for Unpublished Materials</a></li>
-								<li><a href="http://library.albany.edu/archive/policy">Collection Development Policy</a></li>
-								<li><a href="http://library.albany.edu/archive/copyright">Copyright Notice</a></li>
-								<li><a href="http://liblogs.albany.edu/grenander/">Department Blog</a></li>
-								<li><a href="http://library.albany.edu/archive/historicalresources/">Find Other Historical Repositories</a></li>
-								<li><a href="http://library.albany.edu/archive/research_room">Marcia Brown Research Room</a></li>
-								<li><a href="http://library.albany.edu/speccoll/findaids/eresources/drupal/publish.pdf">Permission to Publish Form</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="http://library.albany.edu/archive/reference">Contact</a>
-						</li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Collections <span class="caret"/>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="http://meg.library.albany.edu:8080/archive/search">About Collections</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/apap.html">NY State Modern Political Archive</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ndpa.html">National Death Penalty Archive</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ger.html">German Intellectual Émigré</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ua.html">University Archives</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/mathes">Mathes Childrens Literature</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/mss.html">Business and Literary Manuscripts</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/books">Rare Books</a>
+									</li>
+									<li role="separator" class="divider"></li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/alpha.html">A-Z Complete List of Collections</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/subjects.html">Subject Guides to Collections</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/historicalresources/">Find Other Historical Repositories</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Digital Selections <span class="caret"/>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="http://library.albany.edu/archiveDev/digitalselections">About Digital Selections</a></li>
+									<li><a href="http://luna.albany.edu/luna/servlet">Digital Photograph Collections <span class="glyphicon glyphicon-new-window"></span></a></li>
+									<li><a href="http://library.albany.edu/archiveDev/aspSearch">Search Student Newspaper (ASP) Archive</a></li>
+									<li><a href="http://luna.albany.edu/luna/servlet/s/uc9c1q">University Photographs <span class="glyphicon glyphicon-new-window"></span></a></li>
+									<li><a href="http://luna.albany.edu/luna/servlet/s/cf080d">United University Professions <span class="glyphicon glyphicon-new-window"></span></a></li>
+									<li><a href="http://library.albany.edu/archiveDev/milnedigitalcollections">Milne School</a></li>
+									<li><a href="http://luna.albany.edu/luna/servlet/s/02x34e">WAMC Northeast Public Radio <span class="glyphicon glyphicon-new-window"></span></a></li>
+									<li><a href="http://luna.albany.edu/luna/servlet/s/0k7jzo">Marcia Brown <span class="glyphicon glyphicon-new-window"></span></a></li>
+									<li><a href="http://luna.albany.edu/luna/servlet/s/n0l6ni">Civil Service Employees Association (CSEA) <span class="glyphicon glyphicon-new-window"></span></a></li>
+									<li><a href="http://luna.albany.edu/luna/servlet/s/h6s218">Norman Studer <span class="glyphicon glyphicon-new-window"></span></a></li>
+									<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exhibits <span class="caret"/>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="http://library.albany.edu/archiveDev/chronology">Chronological History of UAlbany</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/seeger">Remembering Pete Seeger</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/exhibitmilne">The Milne School Murals</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/campusbuildings/index.htm">Campus Buildings Historical Tour <span class="glyphicon glyphicon-new-window"></span></a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/marciabrown/index.htm">Marcia Brown Exhibit and Resource Website <span class="glyphicon glyphicon-new-window"></span></a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/secretlives/index.htm">The Secret Lives of Toys and Their Friends <span class="glyphicon glyphicon-new-window"></span></a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/speccoll/stone/index.htm">Edward Durell Stone and the Building of the Uptown Campus <span class="glyphicon glyphicon-new-window"></span></a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/exhibits">More...</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Donors &amp; Records <span class="caret"/>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="http://library.albany.edu/archiveDev/outside_donors">Outside Donations of Records</a></li>
+									<li><a href="http://library.albany.edu/archiveDev/giving">Giving the the Archives</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="http://library.albany.edu/archiveDev/ua/transferform">Transfer University Records</a></li>
+									<li><a href="http://library.albany.edu/archiveDev/universityarchives">University Records FAQ</a></li>
+									<li><a href="http://library.albany.edu/archiveDev/ua/recordsCharts">University Records Charts</a></li>
+									<li><a href="http://library.albany.edu/archiveDev/ua/recordsLaws">About SUNY Records Laws</a></li>
+									<li><a href="https://wiki.albany.edu/display/public/askit/Information+Security+Domains%2C+Supporting+Protocols+and+Procedures">About CIO Data Classification System <span class="glyphicon glyphicon-new-window"></span></a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"/>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="http://library.albany.edu/archiveDev/mission">Mission</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/visit">Visiting</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/reference">Request</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/staff">Staff</a>
+									</li>
+									<li>
+										<a href="http://library.albany.edu/archiveDev/publish_cite">Publishing &amp; Citing</a>
+									</li>
+									<li>
+										<a href="http://liblogs.albany.edu/grenander/">Blog <span class="glyphicon glyphicon-new-window"></span></a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://library.albany.edu/archiveDev/reference">Contact</a>
+							</li>
 					
 					<div class="col-sm-3 col-md-3 pull-right" id="searchBox">
-						<form class="navbar-form" role="search">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search" name="keyword" value=""/>
-							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								<form class="navbar-form" role="search" action="http://meg.library.albany.edu:8080/archive/search">
+									<div class="input-append btn-group">
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="caret"/>
+										</button>
+										<ul class="dropdown-menu">
+											<li>
+												<a id="searchCollections">
+													<span class="glyphicon glyphicon-ok"></span> Collections</a>
+											</li>
+											<li>
+												<a id="searchPhotos">
+													<span class="glyphicon glyphicon-none"></span> Digital Selections <span class="glyphicon glyphicon-new-window"></span>
+												</a>
+											</li>
+											<li>
+												<a id="searchBooks">
+													<span class="glyphicon glyphicon-none"></span> Rare Books <span class="glyphicon glyphicon-new-window"></span>
+												</a>
+											</li>
+											<li>
+												<a id="searchMathes">
+													<span class="glyphicon glyphicon-none"></span> Mathes Children's Literature <span class="glyphicon glyphicon-new-window"></span>
+												</a>
+											</li>
+											<li>
+												<a id="searchAsp">
+													<span class="glyphicon glyphicon-none"></span> Student Newspaper <span class="glyphicon glyphicon-new-window"></span>
+												</a>
+											</li>
+										</ul>
+										<input id="searchInput" type="text" class="form-control" placeholder="Collections" name="keyword"></input>
+										<span class="input-group-addon">
+											<button type="submit">
+												<span class="glyphicon glyphicon-search"/>
+											</button>
+										</span>
+									</div>
+								</form>
 							</div>
-						</div>
-						</form>
-					</div>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
 			</div>
 			<!-- /.container -->
 		</nav>
+		<div id="wrapper" class="row no-gutter">
+			<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
+		   <div id="browseNav" class="side-nav">
+			  <div id="narrowSearch" class="page-header text-center">
+				<h3>Narrow Search</h3>
+			  </div>
+			  <xsl:if test="facet[@field='facet-genreform']/group">
+				 <xsl:apply-templates select="facet[@field='facet-genreform']"/>
+			  </xsl:if>
+			  <xsl:if test="facet[@field='facet-subject']/group">
+				 <xsl:apply-templates select="facet[@field='facet-subject']"/>
+			  </xsl:if>
+			  <xsl:if test="facet[@field='facet-persname']/group">
+				 <xsl:apply-templates select="facet[@field='facet-persname']"/>
+			  </xsl:if>
+			  <xsl:if test="facet[@field='facet-corpname']/group">
+				 <xsl:apply-templates select="facet[@field='facet-corpname']"/>
+			  </xsl:if>
+			  <xsl:if test="facet[@field='facet-geogname']/group">
+				 <xsl:apply-templates select="facet[@field='facet-geogname']"/>
+			  </xsl:if>
+			  <!-- JB 3/31/2014 add for materials facet
+			  <xsl:if test="facet[@field='facet-publisher']/group">
+				 <xsl:apply-templates select="facet[@field='facet-publisher']"/>
+			  </xsl:if> -->
+		   </div>
+		   
+			<div id="page-content-wrapper">
             <div class="container-fluid">
                
                <!--<xsl:if test="docHit">
@@ -317,32 +443,9 @@
                <xsl:choose>
                   <xsl:when test="docHit">
                      <div class="results row">
-                        <xsl:if test="not($smode='showBag')">
-                           <div class="facet col-md-3">
-                              <xsl:if test="facet[@field='facet-subject']/group">
-                                 <xsl:apply-templates select="facet[@field='facet-subject']"/>
-                              </xsl:if>
-                              <xsl:if test="facet[@field='facet-persname']/group">
-                                 <xsl:apply-templates select="facet[@field='facet-persname']"/>
-                              </xsl:if>
-                              <xsl:if test="facet[@field='facet-corpname']/group">
-                                 <xsl:apply-templates select="facet[@field='facet-corpname']"/>
-                              </xsl:if>
-                              <xsl:if test="facet[@field='facet-geogname']/group">
-                                 <xsl:apply-templates select="facet[@field='facet-geogname']"/>
-                              </xsl:if>
-                              <!-- JB 3/31/2014 add for materials facet -->
-                              <xsl:if test="facet[@field='facet-genreform']/group">
-                                 <xsl:apply-templates select="facet[@field='facet-genreform']"/>
-                              </xsl:if>
-                              <xsl:if test="facet[@field='facet-publisher']/group">
-                                 <xsl:apply-templates select="facet[@field='facet-publisher']"/>
-                              </xsl:if>
-                           </div>
-                        </xsl:if>
-                        <div class="docHit col-md-9">
+                        <div class="docHit col-md-12">
                            <!-- search query and results -->
-                           <div class="alert alert-info">
+                           <div class="alert alert-warning">
 							<div class="resultsLeft">
                               <div>
                               <b><xsl:value-of select="if($browse-all) then 'Browse by' else 'Search'"/>:</b>
@@ -438,9 +541,33 @@
                   </xsl:otherwise>
                </xsl:choose>
             </div>
+			<div class="container-fluid">
+				<footer>
+				 <div class="row">
+					<div class="footer col-md-12 text-center text-muted">
+						<div class="spc-footer">
+							<div class="footLeft">
+								<p>Open to the public Monday-Friday, 9am-5pm</p>
+								<p>Closed for some state holidays and winter intersession</p>
+								<p>Located on the top floor of the Science Library on the Uptown Campus</p>
+								<p><a href="http://library.albany.edu/archiveDev/directions">Hours and Directions</a></p>
+							</div>
+							<div class="footRight">
+								<p>M. E. Grenander Department of Special Collections &amp; Archives</p>
+								<p>Science Library 350</p>
+								<p>1400 Washington Avenue</p>
+								<p>Albany, NY 12222</p>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+					</div>
+				 </div>
+			   </footer>
+			  </div>
+            </div>
+			</div>
 
-               <!-- footer -->
-               <xsl:copy-of select="$brand.footer"/>
+               
             
          </body>
       </html>
@@ -627,7 +754,29 @@ Item number <xsl:value-of select="$num"/>:
             </div>
             
             <!-- footer -->
-            <xsl:copy-of select="$brand.footer"/>
+			<div class="container-fluid">
+				<footer>
+				 <div class="row">
+					<div class="footer col-md-12 text-center text-muted">
+						<div class="spc-footer">
+							<div class="footLeft">
+								<p>Open to the public Monday-Friday, 9am-5pm</p>
+								<p>Closed for some state holidays and winter intersession</p>
+								<p>Located on the top floor of the Science Library on the Uptown Campus</p>
+								<p><a href="http://library.albany.edu/archiveDev/directions">Hours and Directions</a></p>
+							</div>
+							<div class="footRight">
+								<p>M. E. Grenander Department of Special Collections &amp; Archives</p>
+								<p>Science Library 350</p>
+								<p>1400 Washington Avenue</p>
+								<p>Albany, NY 12222</p>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+					</div>
+				 </div>
+			   </footer>
+			  </div>
             
             </div>
          </body>
@@ -689,7 +838,7 @@ Item number <xsl:value-of select="$num"/>:
       
       <div id="main_{@rank}" class="docHit col-md-12">
             <div class="row">
-               <div class="col-md-1">
+               <div class="col-md-1 col-sm-12">
                   <xsl:choose>
                      <xsl:when test="$sort = ''">
                         <b><xsl:value-of select="@rank"/></b>
@@ -699,13 +848,37 @@ Item number <xsl:value-of select="$num"/>:
                      </xsl:otherwise>
                   </xsl:choose>
                </div>
-               <div class="col-md-2">
-                  <xsl:if test="$sort = 'title'">
-                     <a name="{$anchor}"/>
-                  </xsl:if>
-                  <b>Collection:</b>
-               </div>
-               <div class="col-md-9">
+			   <xsl:choose>
+					<xsl:when test="snippet">
+					   <div class="matchRow row">
+						  <div class="col-md-2 col-sm-2 col-xs-6">
+							 <b>Matches:&#160;&#160;</b>
+							 <br/>
+							 <xsl:value-of select="@totalHits"/> 
+							 <xsl:value-of select="if (@totalHits = 1) then ' hit' else ' hits'"/>&#160;&#160;&#160;&#160;
+						  </div>
+						  <div class="col-md-8  col-sm-12 col-xs-12">
+							 <xsl:apply-templates select="snippet" mode="text"/>
+						  </div>
+					   </div>
+					   <div class="col-md-2 col-sm-2 col-xs-6 col-md-offset-1">
+						  <xsl:if test="$sort = 'title'">
+							 <a name="{$anchor}"/>
+						  </xsl:if>
+						  <b>Part of Collection:</b>
+					   </div>
+					</xsl:when>
+					<xsl:otherwise>
+						<div class="col-md-2 col-sm-2 col-xs-6">
+						  <xsl:if test="$sort = 'title'">
+							 <a name="{$anchor}"/>
+						  </xsl:if>
+						  <b>Collection:</b>
+					   </div>
+					</xsl:otherwise>
+				</xsl:choose>
+               
+               <div class="collectionRow col-md-9  col-sm-12 col-xs-12">
                   <a>
                      <xsl:attribute name="href">
                         <xsl:choose>
@@ -814,7 +987,7 @@ Item number <xsl:value-of select="$num"/>:
             </div>-->
             <xsl:if test="meta/date != ''">
             <div class="row">
-               <div class="col-md-2 col-md-offset-1">
+               <div class="col-md-2 col-sm-3 col-xs-3 col-md-offset-1">
                   <b>Date Coverage:</b>
                </div>
                <div class="col-md-9">
@@ -823,7 +996,7 @@ Item number <xsl:value-of select="$num"/>:
             </div>
             </xsl:if>
 			<div class="row">
-               <div class="col-md-2 col-md-offset-1">
+               <div class="col-md-2 col-sm-3 col-xs-3 col-md-offset-1">
                   <xsl:if test="$sort = 'extent'">
                      <a name="{$anchor}"/>
                   </xsl:if>
@@ -832,20 +1005,7 @@ Item number <xsl:value-of select="$num"/>:
                <div class="col-md-9">
                   <xsl:choose>
                      <xsl:when test="meta/extent">
-						<xsl:choose>
-							<xsl:when test="contains(meta/extent[1], 'Digital Files')">
-								<xsl:apply-templates select="meta/extent[1]"/>&#160;&#160;<span class="digitalFiles glyphicon glyphicon-ok" data-toggle="tooltip" data-placement="top" title="Contains Online Content"></span>
-							</xsl:when>
-							<xsl:when test="contains(meta/extent[1], 'GB')">
-								<xsl:apply-templates select="meta/extent[1]"/>&#160;&#160;<span class="digitalFiles glyphicon glyphicon-ok" data-toggle="tooltip" data-placement="top" title="Contains Online Content"></span>
-							</xsl:when>
-							<xsl:when test="contains(meta/extent[1], 'Web Archives')">
-								<xsl:apply-templates select="meta/extent[1]"/>&#160;&#160;<span class="webArchive glyphicon glyphicon-ok" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:apply-templates select="meta/extent[1]"/>
-							</xsl:otherwise>
-						</xsl:choose>
+						<xsl:apply-templates select="meta/extent[1]"/>
                      </xsl:when>
                      <xsl:otherwise>none</xsl:otherwise>
                   </xsl:choose>
@@ -861,29 +1021,105 @@ Item number <xsl:value-of select="$num"/>:
                </div>
             </div>
          </xsl:if>-->
+			<xsl:if test="meta/genreform">
+               <div class="row">
+                  <div class="col-md-2 col-sm-3 col-xs-3 col-md-offset-1">
+                     <b>Types:&#160;&#160;</b>
+                  </div>
+                  <div class="col-md-9">
+					<xsl:if test="contains(meta, 'Digital Files')">
+						<a>
+						<xsl:attribute name="href">
+                        <xsl:choose>
+                           <xsl:when test="matches(meta/display, 'dynaxml')">
+                              <xsl:call-template name="dynaxml.url">
+                                 <xsl:with-param name="path" select="$path"/>
+                              </xsl:call-template>
+                           </xsl:when>
+                           <xsl:otherwise>
+                              <xsl:call-template name="rawDisplay.url">
+                                 <xsl:with-param name="path" select="$path"/>
+                              </xsl:call-template>
+                           </xsl:otherwise>
+                        </xsl:choose>
+						 <xsl:text>#firstDigital</xsl:text>
+                     </xsl:attribute>
+						Digital Files</a>
+						&#160;<span class="digitalFiles glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="top">
+						<xsl:attribute name="title">
+						<xsl:choose>
+							<xsl:when test="contains(meta/extent[1], 'GB')">
+								<xsl:value-of select="substring-after(meta/extent[1], 'GB')"/>
+							</xsl:when>
+							<xsl:when test="contains(meta/extent[1], 'MB')">
+								<xsl:value-of select="substring-after(meta/extent[1], 'MB')"/>
+							</xsl:when>
+							<xsl:when test="contains(meta/extent[1], 'to date')">
+								<xsl:value-of select="substring-after(meta/extent[1], 'to date')"/>
+							</xsl:when>
+							<xsl:when test="contains(meta/extent[1], 'ft.')">
+								<xsl:value-of select="substring-after(meta/extent[1], 'ft.')"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="meta/extent[1]"/>
+							</xsl:otherwise>
+						</xsl:choose>
+						</xsl:attribute>
+						</span>
+					</xsl:if>
+					<xsl:if test="contains(meta, 'Web Archives')">
+						<a>
+						<xsl:attribute name="href">
+                        <xsl:choose>
+                           <xsl:when test="matches(meta/display, 'dynaxml')">
+                              <xsl:call-template name="dynaxml.url">
+                                 <xsl:with-param name="path" select="$path"/>
+                              </xsl:call-template>
+                           </xsl:when>
+                           <xsl:otherwise>
+                              <xsl:call-template name="rawDisplay.url">
+                                 <xsl:with-param name="path" select="$path"/>
+                              </xsl:call-template>
+                           </xsl:otherwise>
+                        </xsl:choose>
+						 <xsl:text>#webArch</xsl:text>
+                     </xsl:attribute>
+						Web Archives</a>&#160;<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
+					</xsl:if>
+                    <!--<xsl:apply-templates select="meta/genreform"/>-->
+                  </div>
+               </div>
+            </xsl:if>
             <xsl:if test="meta/subject">
-               <div class="row">
-                  <div class="col-md-2 col-md-offset-1">
-                     <b>Subjects:&#160;&#160;</b>
-                  </div>
-                  <div class="col-md-9">
-                     <xsl:apply-templates select="meta/subject"/>
-                  </div>
-               </div>
+				<xsl:choose>
+				<xsl:when test="snippet"></xsl:when>
+				<xsl:otherwise>
+					<div class="row">
+					  <div class="col-md-2 col-sm-3 col-xs-3 col-md-offset-1">
+						 <b>Subjects:&#160;&#160;</b>
+					  </div>
+					  <div class="col-md-9">
+						 <xsl:apply-templates select="meta/subject"/>
+					  </div>
+				   </div>
+				</xsl:otherwise>
+				</xsl:choose>
             </xsl:if>
-            <xsl:if test="snippet">
-               <div class="row">
-                  <div class="col-md-2 col-md-offset-1">
-                     <b>Matches:&#160;&#160;</b>
-                     <br/>
-                     <xsl:value-of select="@totalHits"/> 
-                     <xsl:value-of select="if (@totalHits = 1) then ' hit' else ' hits'"/>&#160;&#160;&#160;&#160;
-                  </div>
-                  <div class="col-md-9">
-                     <xsl:apply-templates select="snippet" mode="text"/>
-                  </div>
-               </div>
-            </xsl:if>
+			<xsl:choose>
+				<xsl:when test="meta/description">
+				   <div class="matchRow row">
+					  <div class="col-md-2 col-sm-2 col-xs-6 col-md-offset-1">
+						 <b>Abstract:</b>
+						 <br/>
+					  </div>
+					  <div class="col-md-9  col-sm-12 col-xs-12">
+						 <xsl:value-of select="meta/description"/>
+					  </div>
+				   </div>
+				</xsl:when>
+				<xsl:otherwise></xsl:otherwise>
+			</xsl:choose>
+			
             
             <!-- "more like this" -->
             <!-- HA 3/20/2014 disabling similiar items -->
@@ -912,6 +1148,7 @@ Item number <xsl:value-of select="$num"/>:
                </td>
             </tr>-->
          <!-- HA Adding extra row for padding, should be removed eventually -->
+         <div class="row">&#160;</div>
          <div class="row">&#160;</div>
          
       </div>

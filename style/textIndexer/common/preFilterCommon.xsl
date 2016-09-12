@@ -140,6 +140,7 @@
          <xsl:apply-templates select="$meta/*:title[1]" mode="browse"/>    
          <xsl:apply-templates select="$meta/*:creator[1]" mode="browse"/>
          <xsl:apply-templates select="$meta/*:extent[1]" mode="browse"/>
+         <xsl:apply-templates select="$meta/*:abstract[1]" mode="browse"/>
       </xtf:meta>
    </xsl:template>
    
@@ -308,6 +309,15 @@
          <xsl:attribute name="xtf:tokenize" select="'no'"/>
          <xsl:value-of select="parse:alpha(parse:name(.))"/>
       </browse-extent>
+   </xsl:template>
+   
+    <!-- Generate browse-abstract -->
+   <xsl:template match="*:abstract" mode="browse">
+      <browse-abstract>
+         <xsl:attribute name="xtf:meta" select="'true'"/>
+         <xsl:attribute name="xtf:tokenize" select="'no'"/>
+         <xsl:value-of select="parse:alpha(parse:name(.))"/>
+      </browse-abstract>
    </xsl:template>
    
    <!-- ====================================================================== -->

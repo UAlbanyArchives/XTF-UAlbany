@@ -18,6 +18,16 @@ $(function(){
 });
 */
 
+/*
+$(document).ready(function () {
+
+    $('.collapse').on('shown hidden', function () {
+        $('body').scrollspy('refresh');
+    });
+
+});*/
+
+
 $.fn.clicktoggle = function(a, b) {
     return this.each(function() {
         var clicked = false;
@@ -33,6 +43,17 @@ $.fn.clicktoggle = function(a, b) {
 };
 
 $(document).ready(function(){    
+	$("#collectionMenu").on("activate.bs.scrollspy", function(){
+		if ($(".active").parent(".sub-menu").length) {
+			$(".active").parent(".sub-menu").prev(".list-group-item").addClass("active");
+			$(".active").parent(".sub-menu").parent(".collapse").prev(".list-group-item").addClass("active");
+		} else {
+			$(".active").parent(".collapse").prev(".list-group-item").addClass("active");
+		}
+    })
+});
+
+$(document).ready(function(){    
 	$("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -42,12 +63,12 @@ $(document).ready(function(){
 
 $(document).ready(function(){    
 	$('.collapse').on('shown.bs.collapse', function () {
-		$(this).prev().find("span.glyphicon").removeClass("glyphicon-triangle-bottom").addClass("glyphicon-triangle-top");
+		$(this).prev().find("span.glyphicon-triangle-bottom").removeClass("glyphicon-triangle-bottom").addClass("glyphicon-triangle-top");
 	});
 
 
 	$('.collapse').on('hidden.bs.collapse', function () {
-		$(this).prev().find("span.glyphicon").removeClass("glyphicon-triangle-top").addClass("glyphicon-triangle-bottom");
+		$(this).prev().find("span.glyphicon-triangle-top").removeClass("glyphicon-triangle-top").addClass("glyphicon-triangle-bottom");
 	});
 });
 
@@ -80,12 +101,14 @@ $( document ).ready(function() {
 	$("a.list-group-item").click(function(e) {
 		$('.panel-collapse').removeClass("in");
 		$(".glyphicon-minus").addClass("glyphicon-plus").removeClass("glyphicon-minus");
-		$('a[name="' + $(this).attr("href").substring(1) + '"]').next().find(".glyphicon").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+		$('a[name="' + $(this).attr("href").substring(1) + '"]').next().find(".glyphicon glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
 		$('a[name="' + $(this).attr("href").substring(1) + '"]').next().children('.panel-collapse').addClass('in');
 		$('a[name="' + $(this).attr("href").substring(1) + '"]').next().children('.panel-collapse').css({"height": "100%"});
 	});
 });
 
+
+// when page is opened with hash to collapsed panel, open panel
 $( document ).ready(function() {
 	if(window.location.hash) {
 	  var hash=window.location.hash.substring(1);
@@ -94,13 +117,25 @@ $( document ).ready(function() {
 	}
 });
 
+// when link to collapsed panel is clicked, open panel
+$(function(){
+	 $("#collectionMenu .list-group-item a").click(function(){
+		var targetId = $(this).attr('href').substring(1);
+		$target = $('[id=' + targetId + ']');
+		if ($target.attr("class") == "anchor") {
+			$target.next("div.panel").find('.collapse').addClass('in').css({height: ''});
+		}
+	 })
+});
+
+/*
 $(function(){
   $(document).on('click', 'a[href^="#"]', function(ev){
 	  var targetId = $(ev.target).parent("a").attr('href').substring(1),
       $target = $('[name=' + targetId + ']');
       $target.parents('.collapse').addClass('in').css({height: ''});
   });
-})
+})*/
 
 $( document ).ready(function() {
 	$('.panel-collapse').on('show.bs.collapse', function(){
@@ -111,6 +146,17 @@ $( document ).ready(function() {
 	});     
 });
 
+$(function(){
+	$('span.badge').parent().closest('a#tocItem').css('background-color', '#eaaa00').css('color', '#ffffff');
+});
+
+$(function(){
+	$('.checkbox-primary').one('click', function(e) {
+		$(".requestModel").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+		$('.checkbox-primary').unbind('click');
+	});
+});
+
 
 //when request modal is clicked get ids from checked boxed and append to href as params
 $(function(){
@@ -118,6 +164,14 @@ $(function(){
 		var checkedValues = $('input.styled:checked').map(function() {
 			return this.value;
 		}).get();
+		var checkedString = $('input.styled:checked').map(function() {
+			return this.value;
+		}).get().toString();
+		if (checkedString.indexOf('RESTRICT') >= 0 ) {
+			$("div.alert-danger").css("display", "block");
+		} else {
+			$("div.alert-danger").css("display", "none");
+		}
 		var link = $("a#scheduleVisit").attr("href");
 		$("a#scheduleVisit").attr("href", link + 'id=');
 		var remote = $("a#remoteRequest").attr("href");
@@ -144,27 +198,7 @@ $(function(){
 });
 */
 
-$(function(){
-  $(window).scroll(function(){
-	  if ($(this).scrollTop() < 57){
-		 $('.navbar-top').removeClass("fixHalf");
-		 $('#page-content-wrapper').removeClass("content-spacer");
-		 $('.logo').removeClass("logoHide");
-		 $('.ualbany').removeClass("logoHide");
-		 $('.smallLogo').removeClass("logoShow");
-		 $('.side-nav').css({"top":52-$(this).scrollTop()});
-	  } else {
-		 $('.navbar-top').addClass("fixHalf");
-		 $('#page-content-wrapper').addClass("content-spacer");
-		 $('.logo').addClass("logoHide");
-		 $('.ualbany').addClass("logoHide");
-		 $('.smallLogo').addClass("logoShow");
-		 $('.side-nav').css({"top": "-5px"});
-	  }
-  });
-});
-
-$(function() { 
+/*$(function() { 
 	$('#searchForm').submit(function() {
 		$("input[type=radio]").attr('disabled', true);
 	});
@@ -225,7 +259,7 @@ $(function() {
 			$("#srch-termValue2").prop('disabled', false);
 		} 
 	});
-});
+});*/
 
 $(function(){
 	$(".dropdown-menu > li > a.trigger").on("click",function(e){
@@ -245,6 +279,18 @@ $(function(){
 	});
 });
 
+//mobile nav close when link is clicked
+$(function(){
+	$("#sidebar-wrapper .list-group-item").on('click', function(){
+		$("#wrapper").removeClass("toggled");
+		$("#menu-toggle").removeClass("slideRight");
+	});	
+	$("#fa-brand a").on('click', function(){
+		$("#wrapper").removeClass("toggled");
+		$("#menu-toggle").removeClass("slideRight");
+	});	
+});	
+
 $(function(){
 	var $items = $('#seeAlsoList').find('ul').children();
 	if ( $items.length > 5 ) {
@@ -257,4 +303,32 @@ $(function(){
 	} else {
 		$('.viewAll').remove();
 	}
+});
+
+//search term plus and minus
+$(function(){
+	$('.searchPlus').on('click', function(){
+		if(window.location.hash) {
+			var $max = $(this).attr("title");
+			var $current = window.location.hash.substr(1);
+			if(parseInt($current) >= parseInt($max)) {
+				$(this).attr("href", "#1");
+			} else {
+				var $next = parseInt($current) + 1;
+				$(this).attr("href", "#" +$next.toString());
+			}
+		} 
+	});
+	$('.searchMinus').on('click', function(){
+		if(window.location.hash) {
+			var $current = window.location.hash.substr(1);
+			if(parseInt($current) <= 1 ) {
+				var $max = $(this).attr("title");
+				$(this).attr("href", "#" + $max.toString());
+			} else {
+				var $prev = parseInt($current) - 1;
+				$(this).attr("href", "#" +$prev.toString());
+			}
+		} 
+	});
 });

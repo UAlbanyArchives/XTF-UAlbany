@@ -185,7 +185,23 @@
     				<![endif]-->
 					<!--<link rel="stylesheet" type="text/css" href="{$css.path}ead.css"/>-->
 					<!--<xsl:call-template name="metadata"/>-->
+					<script type="text/javascript" src="script/headerAffix.js"></script>
 					<script type="text/javascript" src="script/leftNav.js"></script>
+					<script type="text/javascript" src="js/searchOptions.js"></script>
+					<script type="text/javascript" src="http://library.albany.edu/angelfish.js"></script>
+					<script type="text/javascript">
+					  agf.pageview();
+					</script>
+					<script>
+					  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+					  ga('create', 'UA-83180993-1', 'auto');
+					  ga('send', 'pageview');
+
+					</script>
 					<title>
 						<!--<xsl:value-of select="archdesc/did/unittitle/text()"/>-->
 						<xsl:for-each select="archdesc/did/unittitle/node()[not(self::unitdate)]">
@@ -194,64 +210,75 @@
 					</title>
 				</head>
 
-				<body data-spy="scroll" data-target=".nav" data-offset="50">
+				<body data-spy="scroll" data-target="#collectionMenu">
+					<script>
+						$(function () {
+						  $('[data-toggle="tooltip"]').tooltip()
+						})
+					</script>
 					<div id="wrapper">
 
 					<!-- Schema.org metadata -->
-						<div itemscope="" typeof="http:/schema.org/CollectionPage">
+						<div itemscope="" itemtype="https://schema.org/CollectionPage">
 							<xsl:if test="/ead/xtf:meta/description">
-								<meta itemprop="http:/schema.org/description">
+								<meta itemprop="description">
 									<xsl:attribute name="content">
 										<xsl:value-of select="/ead/xtf:meta/description"/>
 									</xsl:attribute>
 								</meta>
 							</xsl:if>
-							<meta itemprop="http:/schema.org/name">
+							<meta itemprop="name">
 								<xsl:attribute name="content">
 									<xsl:value-of select="/ead/xtf:meta/title"/>
 								</xsl:attribute>
 							</meta>
-							<!-- may be able to improve this based on JB work on repository -->
-							<div itemprop="http:/schema.org/contentLocation" itemscope=""
-								itemtype="http:/schema.org/Place">
-								<meta itemprop="http:/schema.org/name">
+							<div itemprop="http://schema.org/contentLocation" itemscope="" itemtype="http://schema.org/Place">
+								<meta itemprop="http://schema.org/name">
 									<xsl:attribute name="content">
 										<xsl:value-of select="/ead/xtf:meta/publisher"/>
 									</xsl:attribute>
 								</meta>
+								<meta itemprop="http://schema.org/url" content="http://library.albany.edu/archive"/>
+								<meta itemprop="http://schema.org/telephone" content="(518) 437-3935"/>
+								<div itemprop="http://schema.org/address" itemscope="" itemtype="http://schema.org/PostalAddress" style="display:none;">
+								  <span itemprop="streetAddress">1400 Washington Ave</span>
+								  <span itemprop="addressLocality">Albany</span>
+								  <span itemprop="addressRegion">NY</span>
+								</div>
+								<div itemprop="http://schema.org/geo" itemscope="" itemtype="http://schema.org/GeoCoordinates">
+								   <meta itemprop="http://schema.org/latitude" content="42.6859115" />
+								   <meta itemprop="http://schema.org/longitude" content="-73.82652789999997" />
+								</div>
 							</div>
-							<xsl:for-each select="/ead/xtf:meta/contributor">
-								<meta itemprop="http:/schema.org/contributor">
-									<xsl:attribute name="content">
-										<xsl:apply-templates/>
-									</xsl:attribute>
-								</meta>
-							</xsl:for-each>
 							<xsl:for-each select="/ead/xtf:meta/creator">
 								<xsl:if test="/ead/xtf:meta/creator != 'unknown'">
-									<meta itemprop="http:/schema.org/creator">
+									<meta itemprop="http://schema.org/creator">
 										<xsl:attribute name="content">
 											<xsl:apply-templates/>
 										</xsl:attribute>
 									</meta>
 								</xsl:if>
 							</xsl:for-each>
-							<div itemprop="http:/schema.org/dateCreated" itemscope="" itemtype="Date">
-								<meta itemprop="date">
-									<xsl:attribute name="content">
-										<xsl:value-of select="/ead/xtf:meta/date"/>
-									</xsl:attribute>
-								</meta>
-							</div>
-							<meta itemprop="http:/schema.org/inLanguage" content="en"/>
-							<!-- may be able to improve this based on JB work on repository -->
-							<div itemprop="http:/schema.org/publisher" itemscope=""
-								itemtype="http:/schema.org/organization">
-								<meta itemprop="http:/schema.org/name">
+							<meta itemprop="http://schema.org/dateCreated">
+								<xsl:attribute name="content">
+									<xsl:value-of select="/ead/xtf:meta/date"/>
+								</xsl:attribute>
+							</meta>
+							<meta itemprop="inLanguage" content="en"/>
+							<div itemprop="http://schema.org/publisher" itemscope=""
+								itemtype="http://schema.org/organization">
+								<meta itemprop="http://schema.org/name">
 									<xsl:attribute name="content">
 										<xsl:value-of select="/ead/xtf:meta/publisher"/>
 									</xsl:attribute>
 								</meta>
+								<meta itemprop="http://schema.org/url" content="http://library.albany.edu/archive"/>
+								<meta itemprop="http://schema.org/telephone" content="(518) 437-3935"/>
+								<div itemprop="http://schema.org/address" itemscope="" itemtype="http://schema.org/PostalAddress" style="display:none;">
+								  <span itemprop="streetAddress">1400 Washington Ave</span>
+								  <span itemprop="addressLocality">Albany</span>
+								  <span itemprop="addressRegion">NY</span>
+								</div>
 							</div>
 						</div>
 						<!-- End Schema.org metadata -->
@@ -299,6 +326,29 @@
 									</div>
 								</div>-->
 							</div>
+							
+							<footer>
+							 <div class="row">
+								<div class="footer col-md-12 text-center text-muted">
+									<div class="spc-footer">
+										<div class="footLeft">
+											<p>Open to the public Monday-Friday, 9am-5pm</p>
+											<p>Closed for some state holidays and winter intersession</p>
+											<p>Located on the top floor of the Science Library on the Uptown Campus</p>
+											<p><a href="http://library.albany.edu/archiveDev/directions">Hours and Directions</a></p>
+										</div>
+										<div class="footRight">
+											<p>M. E. Grenander Department of Special Collections &amp; Archives</p>
+											<p>Science Library 350</p>
+											<p>1400 Washington Avenue</p>
+											<p>Albany, NY 12222</p>
+										</div>
+										<div style="clear: both;"></div>
+									</div>
+								</div>
+							 </div>
+						   </footer>
+							
 						</div>
 					</div>
 				</body>
@@ -449,13 +499,27 @@
 										</span>
 										<xsl:text>"</xsl:text>
 									</b>
+									<a class="searchMinus">
+									<xsl:attribute name="href">
+										<xsl:text>#</xsl:text>
+										<xsl:value-of select="$sum"/>
+									</xsl:attribute>
+									<xsl:attribute name="title">
+										<xsl:value-of select="$sum"/>
+									</xsl:attribute>
+									<i class="fa fa-search-minus"></i></a>
 									<xsl:text> [</xsl:text>
 									<a class="clearHits"><xsl:attribute name="href">
 											<xsl:value-of select="$doc.path"/>
 										</xsl:attribute>
 										<xsl:text>Clear Hits</xsl:text>
 									</a>
-									<xsl:text>]</xsl:text>
+									<xsl:text>] </xsl:text>
+									<a class="searchPlus" href="#1">
+									<xsl:attribute name="title">
+										<xsl:value-of select="$sum"/>
+									</xsl:attribute>
+									<i class="fa fa-search-plus"></i></a>
 								</div>
 							</div>
 						</xsl:if>
@@ -473,25 +537,29 @@
 									</h5>
 								  </div>
 						
-								<div id="aboutMenu" class="list-group panel">
-									<a href="#about" class="list-group-item" data-toggle="collapse" data-parent="#panel1">About the Collection <span class="glyphicon glyphicon-triangle-bottom"></span>
-										<xsl:if test="$aboutHit.count &gt; 0">
-											<span class="badge">
-												<xsl:value-of select="$aboutHit.count"/>
-											</span>
-										</xsl:if>
-									</a>
+								<div id="aboutMenu" class="nav list-group panel">
+									<li class="list-group-item">
+										<a href="#about" data-toggle="collapse" data-parent="#panel1">About the Collection <span class="glyphicon glyphicon-triangle-bottom"></span>
+											<xsl:if test="$aboutHit.count &gt; 0">
+												<span class="badge">
+													<xsl:value-of select="$aboutHit.count"/>
+												</span>
+											</xsl:if>
+										</a>
+									</li>
 									<div class="collapse" id="about">
-										<a href="#abstract" class="list-group-item">Abstract and Summary</a>
+										<li class="list-group-item">
+											<a href="#abstract">Abstract and Summary</a>
+										</li>
 										<xsl:if test="archdesc/bioghist">
 											<xsl:apply-templates select="archdesc/bioghist" mode="tocLink-bioghist"/>
 										</xsl:if>
 										<xsl:if test="archdesc/scopecontent">
 											<xsl:apply-templates select="archdesc/scopecontent" mode="tocLink-scope"/>
 										</xsl:if>
-										<xsl:if test="archdesc/phystech">
+										<!--<xsl:if test="archdesc/phystech">
 											<xsl:apply-templates select="archdesc/phystech" mode="tocLink-phystech"/>
-										</xsl:if>
+										</xsl:if>-->
 										<xsl:if test="archdesc/arrangement">
 											<xsl:apply-templates select="archdesc/arrangement" mode="tocLink-arrange"/>
 										</xsl:if>
@@ -508,13 +576,15 @@
 											<xsl:apply-templates select="archdesc/odd" mode="tocLink-odd"/>
 										</xsl:if>
 									</div>
-									<a href="#collectionHistory" class="list-group-item" data-toggle="collapse" data-parent="#panel1">Collection History <span class="glyphicon glyphicon-triangle-bottom"></span>
-										<xsl:if test="$historyHit.count &gt; 0">
-											<span class="badge">
-												<xsl:value-of select="$historyHit.count"/>
-											</span>
-										</xsl:if>
-									</a>
+									<li class="list-group-item">
+										<a href="#collectionHistory" data-toggle="collapse" data-parent="#panel1">Collection History <span class="glyphicon glyphicon-triangle-bottom"></span>
+											<xsl:if test="$historyHit.count &gt; 0">
+												<span class="badge">
+													<xsl:value-of select="$historyHit.count"/>
+												</span>
+											</xsl:if>
+										</a>
+									</li>
 									<div class="collapse" id="collectionHistory">
 										<xsl:if test="archdesc/appraisal">
 											<xsl:apply-templates select="archdesc/appraisal" mode="tocLink-appraisal"/>
@@ -541,16 +611,18 @@
 											<xsl:apply-templates select="eadheader/revisiondesc" mode="tocLink-revisiondesc"/>
 										</xsl:if>
 									</div>
-									<a href="#accessUse" class="list-group-item" data-toggle="collapse" data-parent="#panel1">Access and Use <span class="glyphicon glyphicon-triangle-bottom"></span>
-										<xsl:if test="$accessHit.count &gt; 0">
-											<span class="badge">
-												<xsl:value-of select="$accessHit.count"/>
-												<xsl:value-of select="$accessHit.count"/>
-											</span>
-										</xsl:if>
-									</a>
+									<li class="list-group-item">
+										<a href="#accessUse" data-toggle="collapse" data-parent="#panel1">Access and Use <span class="glyphicon glyphicon-triangle-bottom"></span>
+											<xsl:if test="$accessHit.count &gt; 0">
+												<span class="badge">
+													<xsl:value-of select="$accessHit.count"/>
+													<xsl:value-of select="$accessHit.count"/>
+												</span>
+											</xsl:if>
+										</a>
+									</li>
 									<div class="collapse" id="accessUse">
-										<a href="#howto" class="list-group-item">How to Access Materials</a>
+										<li class="list-group-item"><a href="#howto">How to Access Materials</a></li>
 										<xsl:if test="archdesc/accessrestrict">
 											<xsl:apply-templates select="archdesc/accessrestrict" mode="tocLink-access"/>
 										</xsl:if>
@@ -574,7 +646,7 @@
 											  <div class="panel-heading">
 												<h5 class="panel-title">Contents</h5>
 											  </div>
-												<div id="seriesMenu" class="list-group panel">
+												<div id="seriesMenu" class="nav list-group panel">
 													<xsl:for-each select="archdesc/dsc/c01[@level='series' or @level='subseries' or @level='subgrp' or @level='subcollection'] | archdesc/dsc/c[@level='series' or @level='subseries' or @level='subgrp' or @level='subcollection']">
 														<xsl:choose>
 															<xsl:when test="c02[@level='subseries']">
@@ -586,24 +658,28 @@
 																	<xsl:for-each select="c02[@level='subseries']">
 																		<xsl:choose>
 																			<xsl:when test="c03[@level='subseries']">
-																				<a id="tocItem" href="#"  class="list-group-item sub-button" role="button">
-																					<xsl:attribute name="href">
-																						<xsl:text>#</xsl:text>
-																						<xsl:value-of select="translate(@id, '.', '--')"/>
-																					</xsl:attribute>
-																					<xsl:value-of select="did/unittitle"/>
-																					<xsl:text> </xsl:text>
-																					<i class="glyphicon glyphicon-triangle-bottom"></i>
-																				</a>
+																				<li class="list-group-item">
+																					<a id="tocItem" href="#"  class="sub-button" role="button">
+																						<xsl:attribute name="href">
+																							<xsl:text>#</xsl:text>
+																							<xsl:value-of select="translate(@id, '.', '--')"/>
+																						</xsl:attribute>
+																						<xsl:value-of select="did/unittitle"/>
+																						<xsl:text> </xsl:text>
+																						<i class="glyphicon glyphicon-triangle-bottom"></i>
+																					</a>
+																				</li>
 																				<ul class="sub-menu">
 																					<xsl:for-each select="c03[@level='subseries']">
-																						<a class="list-group-item">
-																							<xsl:attribute name="href">
-																								<xsl:text>#</xsl:text>
-																								<xsl:value-of select="translate(@id, '.', '--')"/>
-																							</xsl:attribute>
-																							<xsl:value-of select="did/unittitle"/>
-																						</a>
+																						<li class="list-group-item">
+																							<a>
+																								<xsl:attribute name="href">
+																									<xsl:text>#</xsl:text>
+																									<xsl:value-of select="translate(@id, '.', '--')"/>
+																								</xsl:attribute>
+																								<xsl:value-of select="did/unittitle"/>
+																							</a>
+																						</li>
 																					</xsl:for-each>
 																				</ul>
 																			</xsl:when>
@@ -623,7 +699,7 @@
 											</div>
 											</xsl:when>
 											<xsl:otherwise>
-												<div class="list-group panel">
+												<div class="nav list-group panel dsc-only">
 													<xsl:apply-templates select="archdesc/dsc" mode="tocLink-contents"/>
 												</div>
 											</xsl:otherwise>
@@ -644,6 +720,7 @@
 									<xsl:apply-templates select="archdesc/did/unittitle/node()[not(self::unitdate)]" />
 								</a>
 							</li>
+							<div style="clear: both;"></div>
 							<xsl:if test="($query != '0') and ($query != '')">
 								<div class="alert alert-info alert-dismissable">
 									<div class="text-center">
@@ -663,29 +740,49 @@
 											</span>
 											<xsl:text>"</xsl:text>
 										</b>
-										<xsl:text> [</xsl:text>
-										<a class="clearHits"><xsl:attribute name="href">
-												<xsl:value-of select="$doc.path"/>
-											</xsl:attribute>
-											<xsl:text>Clear Hits</xsl:text>
-										</a>
-										<xsl:text>]</xsl:text>
+										<a class="searchMinus">
+									<xsl:attribute name="href">
+										<xsl:text>#</xsl:text>
+										<xsl:value-of select="$sum"/>
+									</xsl:attribute>
+									<xsl:attribute name="title">
+										<xsl:value-of select="$sum"/>
+									</xsl:attribute>
+									<i class="fa fa-search-minus"></i></a>
+									<xsl:text> [</xsl:text>
+									<a class="clearHits"><xsl:attribute name="href">
+											<xsl:value-of select="$doc.path"/>
+										</xsl:attribute>
+										<xsl:text>Clear Hits</xsl:text>
+									</a>
+									<xsl:text>] </xsl:text>
+									<a class="searchPlus" href="#1">
+									<xsl:attribute name="title">
+										<xsl:value-of select="$sum"/>
+									</xsl:attribute>
+									<i class="fa fa-search-plus"></i></a>
 									</div>
 								</div>
 							</xsl:if>
 							<li class="dropdown">
-								<a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button">About the Collection <span class="caret"></span></a>
+								<a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button">About the Collection <span class="caret"></span>
+									<xsl:if test="$aboutHit.count &gt; 0">
+										<span class="badge">
+											<xsl:value-of select="$aboutHit.count"/>
+										</span>
+									</xsl:if>
+								</a>
 								<ul class="dropdown-menu">
-									<a href="#abstract" class="list-group-item">Abstract and Summary</a>
+									<li class="list-group-item"><a href="#abstract">Abstract and Summary</a></li>
 									<xsl:if test="archdesc/bioghist">
 										<xsl:apply-templates select="archdesc/bioghist" mode="tocLink-bioghist"/>
 									</xsl:if>
 									<xsl:if test="archdesc/scopecontent">
 										<xsl:apply-templates select="archdesc/scopecontent" mode="tocLink-scope"/>
 									</xsl:if>
-									<xsl:if test="archdesc/phystech">
+									<!--<xsl:if test="archdesc/phystech">
 										<xsl:apply-templates select="archdesc/phystech" mode="tocLink-phystech"/>
-									</xsl:if>
+									</xsl:if>-->
 									<xsl:if test="archdesc/arrangement">
 										<xsl:apply-templates select="archdesc/arrangement" mode="tocLink-arrange"/>
 									</xsl:if>
@@ -704,7 +801,13 @@
 								</ul>
 							</li>
 							<li class="dropdown">
-								<a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button">Collection History <span class="caret"></span></a>
+								<a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button">Collection History <span class="caret"></span>
+								<xsl:if test="$historyHit.count &gt; 0">
+									<span class="badge">
+										<xsl:value-of select="$historyHit.count"/>
+									</span>
+								</xsl:if>
+								</a>
 								<ul class="dropdown-menu">
 									<xsl:if test="archdesc/appraisal">
 											<xsl:apply-templates select="archdesc/appraisal" mode="tocLink-appraisal"/>
@@ -733,9 +836,16 @@
 								</ul>
 							</li>
 							<li class="dropdown">
-								<a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button">Access and Use <span class="caret"></span></a>
+								<a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button">Access and Use <span class="caret"></span>
+								<xsl:if test="$accessHit.count &gt; 0">
+									<span class="badge">
+										<xsl:value-of select="$accessHit.count"/>
+										<xsl:value-of select="$accessHit.count"/>
+									</span>
+								</xsl:if>
+								</a>
 								<ul class="dropdown-menu">
-									<a href="#howto" class="list-group-item">How to Access Materials</a>
+										<li class="list-group-item"><a href="#howto">How to Access Materials</a></li>
 										<xsl:if test="archdesc/accessrestrict">
 											<xsl:apply-templates select="archdesc/accessrestrict" mode="tocLink-access"/>
 										</xsl:if>
@@ -792,14 +902,15 @@
 																				</xsl:for-each>
 																			</ul>
 																		</xsl:when>
-																		<xsl:otherwise>-->
+																		<xsl:otherwise>
 																			<a class="list-group-item">
 																				<xsl:attribute name="href">
 																					<xsl:text>#</xsl:text>
-																					<xsl:value-of select="translate(@id, '.', '--')"/>
+																					<xsl:value-of select="translate(@id, '.', '-')"/>
 																				</xsl:attribute>
 																				<xsl:value-of select="did/unittitle"/>
-																			</a>
+																			</a>-->
+																			<xsl:apply-templates select="." mode="tocLink"/>
 																		<!--</xsl:otherwise>
 																	</xsl:choose>-->
 																</xsl:for-each>
@@ -808,13 +919,14 @@
 													</xsl:when>
 													<xsl:otherwise>
 														<li>
-															<a role="button">
+															<!--a class="list-group-item" role="button">
 																<xsl:attribute name="href">
 																	<xsl:text>#</xsl:text>
-																	<xsl:value-of select="translate(@id, '.', '--')"/>
+																	<xsl:value-of select="translate(@id, '.', '-')"/>
 																</xsl:attribute>
 																<xsl:value-of select="did/unittitle"/>
-															</a>
+															</a>-->
+															<xsl:apply-templates select="." mode="tocLink"/>
 														</li>
 													</xsl:otherwise>
 												</xsl:choose>
@@ -822,7 +934,10 @@
 									</ul>
 								</xsl:when>
 								<xsl:otherwise>
-									<ul>
+									<ul class="nav navbar-nav" id="panel4">
+										<li id="contents-brand">
+											<a>Contents</a>
+										  </li>
 										<li>
 											<xsl:apply-templates select="archdesc/dsc" mode="tocLink-contents"/>
 										</li>
@@ -1076,13 +1191,13 @@
 		</xsl:call-template>
 	</xsl:template>
 	
-	<xsl:template match="node()" mode="tocLink-phystech">
+	<!--<xsl:template match="node()" mode="tocLink-phystech">
 		<xsl:call-template name="make-toc-link-phystech">
 			<xsl:with-param name="name" select="string(.)"/>
 			<xsl:with-param name="id" select="ancestor-or-self::*[@id][1]/@id"/>
 			<xsl:with-param name="nodes" select="."/>
 		</xsl:call-template>
-	</xsl:template>
+	</xsl:template>-->
 	
 	<xsl:template match="node()" mode="tocLink-arrange">
 		<xsl:call-template name="make-toc-link-arrange">
@@ -1242,19 +1357,22 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#bioghist" class="list-group-item">
-			<xsl:choose>
-				<xsl:when test="head">
-					<xsl:value-of select="head"/>
-				</xsl:when>
-				<xsl:otherwise>Historical Note</xsl:otherwise>
-			</xsl:choose>
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#bioghist">
+				Background History
+				<!--<xsl:choose>
+					<xsl:when test="head">
+						<xsl:value-of select="head"/>
+					</xsl:when>
+					<xsl:otherwise>Historical Note</xsl:otherwise>
+				</xsl:choose>-->
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-scope">
@@ -1263,14 +1381,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#scopecontent" class="list-group-item">
-			Description of Contents
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#scopecontent">
+				Description of Contents
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-arrange">
@@ -1279,14 +1399,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#arrangement" class="list-group-item">
-			Arrangement
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#arrangement">
+				Arrangement
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-lang">
@@ -1295,14 +1417,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#langmaterial" class="list-group-item">
-			Languages
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#langmaterial">
+				Languages
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-separatedmaterial">
@@ -1311,14 +1435,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#separatedmaterial" class="list-group-item">
-			Separated Material
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#separatedmaterial">
+				Separated Material
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-relatedmaterial">
@@ -1327,31 +1453,35 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#relatedmaterial" class="list-group-item">
-			Related Material
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#relatedmaterial">
+				Related Material
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
-	<xsl:template name="make-toc-link-phystech">
+	<!--<xsl:template name="make-toc-link-phystech">
 		<xsl:param name="name"/>
 		<xsl:param name="id"/>
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#phystech" class="list-group-item">
-			Technical Details
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
-	</xsl:template>
+		<li class="list-group-item">
+			<a href="#phystech">
+				Technical Details
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
+	</xsl:template>-->
 	
 	<xsl:template name="make-toc-link-odd">
 		<xsl:param name="name"/>
@@ -1359,14 +1489,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#odd" class="list-group-item">
-			More Information
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#odd">
+				More Information
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-appraisal">
@@ -1375,14 +1507,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#appraisal" class="list-group-item">
-			Appraisal Information
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#appraisal">
+				Appraisal Information
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-acqinfo">
@@ -1391,14 +1525,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#acqinfo" class="list-group-item">
-			Acquisition
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#acqinfo">
+				Acquisition
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-custodhist">
@@ -1407,14 +1543,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#custodhist" class="list-group-item">
-			Custodial History
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#custodhist">
+				Custodial History
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-author">
@@ -1423,14 +1561,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#processinfo" class="list-group-item">
-			Processing Details
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#processinfo">
+				Processing Details
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-altformavail">
@@ -1439,14 +1579,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#altformavail" class="list-group-item">
-			Alternative Forms
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#altformavail">
+				Alternative Forms
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-accruals">
@@ -1455,14 +1597,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#accruals" class="list-group-item">
-			Accruals
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#accruals">
+				Accruals
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-publication">
@@ -1471,14 +1615,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#profiledesc" class="list-group-item">
-			Publication
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#profiledesc">
+				Publication
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-revisiondesc">
@@ -1487,14 +1633,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#revisiondesc" class="list-group-item">
-			Revisions
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#revisiondesc">
+				Revisions
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-access">
@@ -1503,14 +1651,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#accessrestrict" class="list-group-item">
-			Access Restrictions
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#accessrestrict">
+				Access Restrictions
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-use">
@@ -1519,14 +1669,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#userestrict" class="list-group-item">
-			Use Restrictions
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#userestrict">
+				Use Restrictions
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-citation">
@@ -1535,14 +1687,16 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#prefercite" class="list-group-item">
-			Citation Example
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#prefercite">
+				Citation Example
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-contents">
@@ -1551,14 +1705,42 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a href="#containerList" class="list-group-item">
-			Contents of Collection
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a href="#containerList" id="tocItem">
+				Contents of Collection
+				<xsl:if test="../did/physdesc/dimensions">
+					&#160;
+					<span class="digitalFiles glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="top">
+						<xsl:attribute name="title">
+							<xsl:value-of select="did/physdesc/dimensions"/>
+							<xsl:text> Digital Files</xsl:text>
+						</xsl:attribute>
+					</span>
+				</xsl:if>
+				<xsl:if test="phystech">
+					&#160;
+					<xsl:choose>
+						<xsl:when test="did/physdesc/extent[@unit='captures']">
+							<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top">
+								<xsl:attribute name="title">
+									<xsl:value-of select="did/physdesc/extent"/>
+									<xsl:text> </xsl:text>
+									<xsl:value-of select="did/physdesc/extent/@unit"/>
+								</xsl:attribute>
+							</span>
+						</xsl:when>
+						<xsl:otherwise>
+							<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:if>
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 
 	<xsl:template name="make-toc-link">
@@ -1568,18 +1750,46 @@
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 
 		<!--actual list template here-->
-		<a class="list-group-item" id="tocItem">
-			<xsl:attribute name="href">
-				<xsl:text>#</xsl:text>
-				<xsl:value-of select="translate(@id, '.', '--')"/>
-			</xsl:attribute>
-			<xsl:value-of select="did/unittitle"/>
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a id="tocItem">
+				<xsl:attribute name="href">
+					<xsl:text>#</xsl:text>
+					<xsl:value-of select="translate(@id, '.', '--')"/>
+				</xsl:attribute>
+				<xsl:value-of select="did/unittitle"/>
+				<xsl:if test="did/physdesc/dimensions">
+					&#160;
+					<span class="digitalFiles glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="top">
+						<xsl:attribute name="title">
+							<xsl:value-of select="did/physdesc/dimensions"/>
+							<xsl:text> Digital Files</xsl:text>
+						</xsl:attribute>
+					</span>
+				</xsl:if>
+				<xsl:if test="phystech">
+					&#160;
+					<xsl:choose>
+						<xsl:when test="did/physdesc/extent[@unit='captures']">
+							<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top">
+								<xsl:attribute name="title">
+									<xsl:value-of select="did/physdesc/extent"/>
+									<xsl:text> </xsl:text>
+									<xsl:value-of select="did/physdesc/extent/@unit"/>
+								</xsl:attribute>
+							</span>
+						</xsl:when>
+						<xsl:otherwise>
+							<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:if>
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 	
 	<xsl:template name="make-toc-link-children">
@@ -1588,20 +1798,48 @@
 		<xsl:param name="nodes"/>
 		<xsl:variable name="hit.count" select="sum($nodes/@xtf:hitCount)"/>
 		
-		<a class="list-group-item" id="tocItem" data-toggle="collapse" data-parent="#panel2">
-			<xsl:attribute name="href">
-				<xsl:text>#</xsl:text>
-				<xsl:value-of select="translate(@id, '.', '--')"/>
-			</xsl:attribute>
-			<xsl:value-of select="did/unittitle"/>
-			<xsl:text> </xsl:text>
-			<span class="glyphicon glyphicon-triangle-bottom"></span>
-			<xsl:if test="$hit.count &gt; 0">
-				<span class="badge">
-					<xsl:value-of select="$hit.count"/>
-				</span>
-			</xsl:if>
-		</a>
+		<li class="list-group-item">
+			<a id="tocItem" data-toggle="collapse" data-parent="#panel2">
+				<xsl:attribute name="href">
+					<xsl:text>#</xsl:text>
+					<xsl:value-of select="translate(@id, '.', '--')"/>
+				</xsl:attribute>
+				<xsl:value-of select="did/unittitle"/>
+				<xsl:text> </xsl:text>
+				<span class="glyphicon glyphicon-triangle-bottom"></span>
+				<xsl:if test="did/physdesc/dimensions">
+					&#160;
+					<span class="digitalFiles glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="top">
+						<xsl:attribute name="title">
+							<xsl:value-of select="did/physdesc/dimensions"/>
+							<xsl:text> Digital Files</xsl:text>
+						</xsl:attribute>
+					</span>
+				</xsl:if>
+				<xsl:if test="phystech">
+					&#160;
+					<xsl:choose>
+						<xsl:when test="did/physdesc/extent[@unit='captures']">
+							<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top">
+								<xsl:attribute name="title">
+									<xsl:value-of select="did/physdesc/extent"/>
+									<xsl:text> </xsl:text>
+									<xsl:value-of select="did/physdesc/extent/@unit"/>
+								</xsl:attribute>
+							</span>
+						</xsl:when>
+						<xsl:otherwise>
+							<span class="webArchive fa fa-internet-explorer" data-toggle="tooltip" data-placement="top" title="Contains Web Archives"></span>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:if>
+				<xsl:if test="$hit.count &gt; 0">
+					<span class="badge">
+						<xsl:value-of select="$hit.count"/>
+					</span>
+				</xsl:if>
+			</a>
+		</li>
 	</xsl:template>
 
 	<!-- ====================================================================== -->

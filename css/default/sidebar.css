@@ -126,6 +126,7 @@ ul.alert-dropdown {
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
+		/*background-color: #EBE6F0;*/
     }
 	.side-nav * {
 		direction: ltr;
@@ -137,8 +138,7 @@ ul.alert-dropdown {
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-		color: #EBE6F0;
-        \*background-color: #512D6D !important;*\
+
     }
 }
 

@@ -56,11 +56,13 @@
             <title>About Collections</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <xsl:copy-of select="$brand.links"/>
+			<script src="script/headerAffix.js" type="text/javascript"></script>
+			<link rel="stylesheet" href="css/ua/oneColumn.css" type="text/css"></link>
          </head>
          <body>
             <xsl:copy-of select="$brand.header"/>
             <div class="searchPage container-fluid">
-			<div class="container">
+			<div class="container" id="mainContent">
                <div class="forms">
                      <ul class="nav nav-tabs nav-justified">
                         <li class="{if(matches($smode,'simple')) then 'active' else ''}"><a href="search?smode=simple">Browse</a></li>
@@ -106,32 +108,95 @@
 	<div id="content">
 		<div class="article">
 			<p>The M.E. Grenander Department of Special Collections and Archives serves as a repository for manuscripts, archives, books, and special collections of original research materials.</p>
-			<ul>
+			<div class="btn-group-wrap">
+				<div class="btn-group" role="group" >
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/alpha.html" role="button" type="button" class="btn btn-default">A-Z Complete List</a>
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/subjects.html" role="button" type="button" class="btn btn-default">Subject Guides</a>
+				</div>
+			</div>
+			<div class="col-xs-12 sequence">
+				<div class="well workshop-well">
+					<div class="row">
+						<div class="col-xs-12">
+							<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/apap.html">New York State Modern Political Archive</a></h4>
+							<p>Collections of organizations and individuals active in public policy issues especially since 1950.</p>
+						</div>
+					</div>
+				</div>
+				<div class="well workshop-well">
+					<div class="row">
+						<div class="col-xs-12">
+							<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/ndpa.html">National Death Penalty Archive</a></h4>
+							<p>A collection of personal papers and organizational records documenting the United States&#39;s important history of capital punishment.</p>
+						</div>
+					</div>
+				</div>
+				<div class="well workshop-well">
+					<div class="row">
+						<div class="col-xs-12">
+							<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/ger.html">German and Jewish Intellectual Émigré Collection</a></h4>
+							<p>Personal and professional papers of German-speaking Émigré in the social sciences, humanities, and the arts and the organizations which assisted those who fled the Nazi regime.</p>
+						</div>
+					</div>
+				</div>
+				<div class="well workshop-well">
+					<div class="row">
+						<div class="col-xs-12">
+							<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/ua.html">University Archives</a></h4>
+							<p>Official records of the University at Albany, SUNY, and its predecessor institutions dating to the founding of the New York State Normal School in 1844.</p>
+						</div>
+					</div>
+				</div>
+				<div class="well workshop-well">
+					<div class="row">
+						<div class="col-xs-12">
+							<h4><a href="http://library.albany.edu/archiveDev/mathes">Miriam Snow Mathes Historical Children's Literature Collection</a></h4>
+							<p>Over 12,000 children's books and periodicals published in the 19th century and up to 1960.</p>
+						</div>
+					</div>
+				</div>
+				<div class="well workshop-well">
+					<div class="row">
+						<div class="col-xs-12">
+							<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/mss.html">Business, Literary, and Art Collection</a></h4>
+							<p>Chiefly New York State and New England business records, state and local history collections, and art and literary manuscripts.</p>
+						</div>
+					</div>
+				</div>
+				<div class="well workshop-well">
+					<div class="row">
+						<div class="col-xs-12">
+							<h4><a href="http://library.albany.edu/archiveDev/books">Rare and Specialized Books</a></h4>
+							<p>Pre-1801 European and pre-1820 American printed books.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<ul>
 				<li>
-					<a href="http://library.albany.edu/archive/apap">New York State Modern Political Archive </a>: Collections of organizations and individuals active in public policy issues especially since 1950.</li>
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/apap.html">New York State Modern Political Archive</a>: Collections of organizations and individuals active in public policy issues especially since 1950.</li>
 				<li>
-					<a href="http://library.albany.edu/archive/ger">German and Jewish Intellectual Émigré Collection</a>: Personal and professional papers of German-speaking Émigré in the social sciences, humanities, and the arts and the organizations which assisted those who fled the Nazi regime.</li>
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ger.html">German and Jewish Intellectual Émigré Collection</a>: Personal and professional papers of German-speaking Émigré in the social sciences, humanities, and the arts and the organizations which assisted those who fled the Nazi regime.</li>
 				<li>
-					<a href="http://library.albany.edu/archive/ua">University Archives</a>: Official records of the University at Albany, SUNY, and its predecessor institutions dating to the founding of the New York State Normal School in 1844. Also includes papers and records related to the faculty and students of the University.</li>
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ua.html">University Archives</a>: Official records of the University at Albany, SUNY, and its predecessor institutions dating to the founding of the New York State Normal School in 1844. Also includes papers and records related to the faculty and students of the University.</li>
 				<li>
-					<a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a>: a collection of personal papers and organizational records documenting the United State&#39;s important history of capital punishment.</li>
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ndpa.html">National Death Penalty Archive</a>: a collection of personal papers and organizational records documenting the United States&#39;s important history of capital punishment.</li>
 				<li>
-					<a href="http://library.albany.edu/archive/mathes">Miriam Snow Mathes Historical Children's Literature Collection</a>:  includes over 12,000 children's books and periodicals published in the 19th century and up to 1960.</li>
+					<a href="http://library.albany.edu/archiveDev/mathes">Miriam Snow Mathes Historical Children's Literature Collection</a>:  includes over 12,000 children's books and periodicals published in the 19th century and up to 1960.</li>
 				<li>
-					<a href="http://library.albany.edu/archive/manuscript">Business, Literary, and Art Collection</a>: Chiefly New York State and New England business records, state and local history collections, and art and literary manuscripts.</li>
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/mss.html">Business, Literary, and Art Collection</a>: Chiefly New York State and New England business records, state and local history collections, and art and literary manuscripts.</li>
 				<li>
-					<a href="http://library.albany.edu/archive/books">Rare and Specialized Books</a>: Pre-1801 European and pre-1820 American printed books</li>
+					<a href="http://library.albany.edu/archiveDev/books">Rare and Specialized Books</a>: Pre-1801 European and pre-1820 American printed books</li>
 			</ul>
 			<ul>
 				<li>
-					<a href="http://library.albany.edu/archive/collections/alpha">Alphabetical Listing of Collections</a>: An alphabetical listing of all manuscript and archival collections.</li>
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/alpha.html">Alphabetical Listing of Collections</a>: An alphabetical listing of all manuscript and archival collections.</li>
 				<li>
-					<a href="http://library.albany.edu/archive/collections/subject">Subject Guides to Collections</a>: Selected subject listings of manuscript and archival collections.</li>
+					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/subjects.html">Subject Guides to Collections</a>: Selected subject listings of manuscript and archival collections.</li>
 				<li>
-					<a href="http://library.albany.edu/archive/chronology">Chronological History of the University at Albany, SUNY</a>: Chronological History of the University at Albany, SUNY, 1844-2008</li>
-			</ul>
+					<a href="http://library.albany.edu/archiveDev/chronology">Chronological History of the University at Albany, SUNY</a>: Chronological History of the University at Albany, SUNY, 1844-2008</li>
+			</ul>-->
 		</div>
-		<!-- /article -->
 	</div>
 </div>
    </xsl:template>
@@ -326,32 +391,95 @@
 				<div id="content">
 					<div class="article">
 						<p>The M.E. Grenander Department of Special Collections and Archives serves as a repository for manuscripts, archives, books, and special collections of original research materials.</p>
-						<ul>
+						<div class="btn-group-wrap">
+							<div class="btn-group" role="group" >
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/alpha.html" role="button" type="button" class="btn btn-default">A-Z Complete List</a>
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/subjects.html" role="button" type="button" class="btn btn-default">Subject Guides</a>
+							</div>
+						</div>
+						<div class="col-xs-12 sequence">
+							<div class="well workshop-well">
+								<div class="row">
+									<div class="col-xs-12">
+										<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/apap.html">New York State Modern Political Archive</a></h4>
+										<p>Collections of organizations and individuals active in public policy issues especially since 1950.</p>
+									</div>
+								</div>
+							</div>
+							<div class="well workshop-well">
+								<div class="row">
+									<div class="col-xs-12">
+										<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/ndpa.html">National Death Penalty Archive</a></h4>
+										<p>A collection of personal papers and organizational records documenting the United States&#39;s important history of capital punishment.</p>
+									</div>
+								</div>
+							</div>
+							<div class="well workshop-well">
+								<div class="row">
+									<div class="col-xs-12">
+										<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/ger.html">German and Jewish Intellectual Émigré Collection</a></h4>
+										<p>Personal and professional papers of German-speaking Émigré in the social sciences, humanities, and the arts and the organizations which assisted those who fled the Nazi regime.</p>
+									</div>
+								</div>
+							</div>
+							<div class="well workshop-well">
+								<div class="row">
+									<div class="col-xs-12">
+										<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/ua.html">University Archives</a></h4>
+										<p>Official records of the University at Albany, SUNY, and its predecessor institutions dating to the founding of the New York State Normal School in 1844.</p>
+									</div>
+								</div>
+							</div>
+							<div class="well workshop-well">
+								<div class="row">
+									<div class="col-xs-12">
+										<h4><a href="http://library.albany.edu/archiveDev/mathes">Miriam Snow Mathes Historical Children's Literature Collection</a></h4>
+										<p>Over 12,000 children's books and periodicals published in the 19th century and up to 1960.</p>
+									</div>
+								</div>
+							</div>
+							<div class="well workshop-well">
+								<div class="row">
+									<div class="col-xs-12">
+										<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/mss.html">Business, Literary, and Art Collection</a></h4>
+										<p>Chiefly New York State and New England business records, state and local history collections, and art and literary manuscripts.</p>
+									</div>
+								</div>
+							</div>
+							<!--<div class="well workshop-well">
+								<div class="row">
+									<div class="col-xs-12">
+										<h4><a href="http://library.albany.edu/archiveDev/books">Rare and Specialized Books</a></h4>
+										<p>Pre-1801 European and pre-1820 American printed books.</p>
+									</div>
+								</div>
+							</div>-->
+						</div>
+						<!--<ul>
 							<li>
-								<a href="http://library.albany.edu/archive/apap">New York State Modern Political Archive </a>: Collections of organizations and individuals active in public policy issues especially since 1950.</li>
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/apap.html">New York State Modern Political Archive</a>: Collections of organizations and individuals active in public policy issues especially since 1950.</li>
 							<li>
-								<a href="http://library.albany.edu/archive/ger">German and Jewish Intellectual Émigré Collection</a>: Personal and professional papers of German-speaking Émigré in the social sciences, humanities, and the arts and the organizations which assisted those who fled the Nazi regime.</li>
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ger.html">German and Jewish Intellectual Émigré Collection</a>: Personal and professional papers of German-speaking Émigré in the social sciences, humanities, and the arts and the organizations which assisted those who fled the Nazi regime.</li>
 							<li>
-								<a href="http://library.albany.edu/archive/ua">University Archives</a>: Official records of the University at Albany, SUNY, and its predecessor institutions dating to the founding of the New York State Normal School in 1844. Also includes papers and records related to the faculty and students of the University.</li>
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ua.html">University Archives</a>: Official records of the University at Albany, SUNY, and its predecessor institutions dating to the founding of the New York State Normal School in 1844. Also includes papers and records related to the faculty and students of the University.</li>
 							<li>
-								<a href="http://library.albany.edu/archive/ndpa">National Death Penalty Archive</a>: a collection of personal papers and organizational records documenting the United State&#39;s important history of capital punishment.</li>
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ndpa.html">National Death Penalty Archive</a>: a collection of personal papers and organizational records documenting the United States&#39;s important history of capital punishment.</li>
 							<li>
-								<a href="http://library.albany.edu/archive/mathes">Miriam Snow Mathes Historical Children's Literature Collection</a>:  includes over 12,000 children's books and periodicals published in the 19th century and up to 1960.</li>
+								<a href="http://library.albany.edu/archiveDev/mathes">Miriam Snow Mathes Historical Children's Literature Collection</a>:  includes over 12,000 children's books and periodicals published in the 19th century and up to 1960.</li>
 							<li>
-								<a href="http://library.albany.edu/archive/manuscript">Business, Literary, and Art Collection</a>: Chiefly New York State and New England business records, state and local history collections, and art and literary manuscripts.</li>
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/mss.html">Business, Literary, and Art Collection</a>: Chiefly New York State and New England business records, state and local history collections, and art and literary manuscripts.</li>
 							<li>
-								<a href="http://library.albany.edu/archive/books">Rare and Specialized Books</a>: Pre-1801 European and pre-1820 American printed books</li>
+								<a href="http://library.albany.edu/archiveDev/books">Rare and Specialized Books</a>: Pre-1801 European and pre-1820 American printed books</li>
 						</ul>
 						<ul>
 							<li>
-								<a href="http://library.albany.edu/archive/collections/alpha">Alphabetical Listing of Collections</a>: An alphabetical listing of all manuscript and archival collections.</li>
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/alpha.html">Alphabetical Listing of Collections</a>: An alphabetical listing of all manuscript and archival collections.</li>
 							<li>
-								<a href="http://library.albany.edu/archive/collections/subject">Subject Guides to Collections</a>: Selected subject listings of manuscript and archival collections.</li>
+								<a href="http://library.albany.edu/speccoll/findaids/eresources/static/subjects.html">Subject Guides to Collections</a>: Selected subject listings of manuscript and archival collections.</li>
 							<li>
-								<a href="http://library.albany.edu/archive/chronology">Chronological History of the University at Albany, SUNY</a>: Chronological History of the University at Albany, SUNY, 1844-2008</li>
-						</ul>
+								<a href="http://library.albany.edu/archiveDev/chronology">Chronological History of the University at Albany, SUNY</a>: Chronological History of the University at Albany, SUNY, 1844-2008</li>
+						</ul>-->
 					</div>
-					<!-- /article -->
 				</div>
 			</div>
          </div>
