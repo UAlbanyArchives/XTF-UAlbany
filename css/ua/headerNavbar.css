@@ -312,13 +312,14 @@ span.glyphicon-triangle-top {
 
 
 .navbar-inverse .navbar-nav .open .dropdown-menu li a:hover {
-	color: #EBE6F0;
+	color: #EBE6F0 !important;
 	background-color: #512D6D;
 }
 .navbar-inverse .navbar-nav .open .dropdown-menu li a {
 	color: #403a60;
 	padding-top: 11px;
 	padding-left: 15px;
+	padding-right: 15px;
 	padding-bottom: 10px;
 }
 

@@ -450,15 +450,6 @@
 				  <strong>This site is best viewed with Javascript.</strong>
 				  <xsl:text> If you are unable to use Javascript, it may help to use the </xsl:text>
 				  <a>
-					  <xsl:attribute name="href">
-						<xsl:text>http://library.albany.edu/speccoll/findaids/eresources/findingaids/</xsl:text>
-						<xsl:value-of select="substring-after(/ead/@id, '_')"/>
-						<xsl:text>.html</xsl:text>
-					  </xsl:attribute>
-					  <xsl:text>flat HTML version</xsl:text>
-				  </a>
-				  <xsl:text> or the </xsl:text>
-				  <a>
 					<xsl:attribute name="href">
 				  <xsl:text>http://library.albany.edu/speccoll/findaids/eresources/static/pdf/</xsl:text>
 					<xsl:value-of select="substring-after(/ead/@id, '_')"/>

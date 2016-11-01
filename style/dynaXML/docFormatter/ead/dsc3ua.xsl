@@ -252,12 +252,26 @@ that are used generically throughout the stylesheet.-->
 				<xsl:for-each select="unittitle[name() != 'unitdate']">
 					<xsl:choose>
 						<xsl:when test="../dao">
-							<a>
-								<xsl:attribute name="href">
-									<xsl:value-of select="../dao/@href"/>
-								</xsl:attribute>
-								<xsl:apply-templates/>
-							</a>
+							
+							<xsl:choose>
+								<xsl:when test=".='Contents'">
+									<a class="hackContainerList">
+										<xsl:attribute name="href">
+											<xsl:value-of select="../dao/@href"/>
+										</xsl:attribute>
+										<xsl:apply-templates/>
+									</a>
+								</xsl:when>
+								<xsl:otherwise>
+									<a>
+										<xsl:attribute name="href">
+											<xsl:value-of select="../dao/@href"/>
+										</xsl:attribute>
+										<xsl:apply-templates/>
+									</a>
+								</xsl:otherwise>
+							</xsl:choose>
+							
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:apply-templates/>
@@ -272,12 +286,24 @@ that are used generically throughout the stylesheet.-->
 				<xsl:for-each select="unittitle">
 					<xsl:choose>
 						<xsl:when test="../dao">
-							<a>
-								<xsl:attribute name="href">
-									<xsl:value-of select="../dao/@href"/>
-								</xsl:attribute>
-								<xsl:apply-templates/>
-							</a>
+							<xsl:choose>
+								<xsl:when test=".='Contents'">
+									<a class="hackContainerList">
+										<xsl:attribute name="href">
+											<xsl:value-of select="../dao/@href"/>
+										</xsl:attribute>
+										<xsl:apply-templates/>
+									</a>
+								</xsl:when>
+								<xsl:otherwise>
+									<a>
+										<xsl:attribute name="href">
+											<xsl:value-of select="../dao/@href"/>
+										</xsl:attribute>
+										<xsl:apply-templates/>
+									</a>
+								</xsl:otherwise>
+							</xsl:choose>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:apply-templates/>
@@ -518,9 +544,11 @@ for each level.-->
 										<xsl:value-of select="unittitle"/>
 									</xsl:attribute>
 									<xsl:if test="dao">
-									<xsl:attribute name="disabled">
-										<xsl:text>disabled</xsl:text>
-									</xsl:attribute>
+										<xsl:if test="did/unittitle!='Contents'">
+											<xsl:attribute name="disabled">
+												<xsl:value-of select="disabled"/>
+											</xsl:attribute>
+										</xsl:if>
 									</xsl:if>
 							  </input><label></label>
 							</div>
@@ -541,6 +569,7 @@ for each level.-->
 								</i>
 							</xsl:if>
 						</h4>
+						<div style="clear:both;"></div>
 					</div>
 					<xsl:if test="../accessrestrict | ../userestrict">
 						<div class="collapse col-sm-12 restrictDiv">
@@ -728,15 +757,12 @@ for each level.-->
 								<xsl:text>: </xsl:text>
 								<xsl:value-of select="unittitle"/>
 							</xsl:attribute>
-							<xsl:if test="dao">
-							<xsl:attribute name="disabled">
-								<xsl:text>disabled</xsl:text>
-							</xsl:attribute>
-							</xsl:if>
 							<xsl:if test="..//dao">
-							<xsl:attribute name="disabled">
-								<xsl:text>disabled</xsl:text>
-							</xsl:attribute>
+								<xsl:if test="unittitle!='Contents'">
+									<xsl:attribute name="disabled">
+										<xsl:value-of select="disabled"/>
+									</xsl:attribute>
+								</xsl:if>
 							</xsl:if>
 					  </input><label></label>
 					</div>
@@ -881,9 +907,11 @@ for each level.-->
 								</xsl:attribute>
 								</xsl:if>
 								<xsl:if test="..//dao">
-								<xsl:attribute name="disabled">
-									<xsl:text>disabled</xsl:text>
-								</xsl:attribute>
+									<xsl:if test="unittitle!='Contents'">
+										<xsl:attribute name="disabled">
+											<xsl:value-of select="disabled"/>
+										</xsl:attribute>
+									</xsl:if>						
 								</xsl:if>
 						  </input><label></label>
 						</div>

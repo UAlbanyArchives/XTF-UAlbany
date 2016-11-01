@@ -16,11 +16,12 @@
 }
 
 #menu-toggle.slideRight {
-	left: 345px;
+	/*left: 345px;*/
+	left: 250px;
 }
 
 #wrapper.toggled {
-    padding-left: 350px;
+    /*padding-left: 350px;*/
 	width: 100% !important;
 	-webkit-overflow-scrolling: touch;
 	-webkit-transition: all 0.5s ease;
@@ -67,8 +68,9 @@
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -250px;
+    /*margin-right: -250px;*/
 }
+
 
 @media only screen and (max-width: 991px) {
 	.browseNav {
@@ -95,6 +97,13 @@
 	#wrapper.toggled .browseNav {
 		width: 250px;
 		left: 250px;
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	#wrapper.toggled .side-nav {
+		width: 255px;
 		-webkit-transition: all 0.5s ease;
 		-moz-transition: all 0.5s ease;
 		-o-transition: all 0.5s ease;

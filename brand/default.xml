@@ -161,12 +161,12 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li><a href="http://library.albany.edu/archiveDev/outside_donors">Outside Donations of Records</a></li>
-									<li><a href="http://library.albany.edu/archiveDev/giving">Giving the the Archives</a></li>
+									<li><a href="http://library.albany.edu/archiveDev/giving">Giving to the Archives</a></li>
 									<li role="separator" class="divider"></li>
 									<li><a href="http://library.albany.edu/archiveDev/ua/transferform">Transfer University Records</a></li>
 									<li><a href="http://library.albany.edu/archiveDev/universityarchives">University Records FAQ</a></li>
 									<li><a href="http://library.albany.edu/archiveDev/ua/recordsCharts">University Records Charts</a></li>
-									<li><a href="http://library.albany.edu/archiveDev/ua/recordsLaws">About SUNY Records Laws</a></li>
+									<!--<li><a href="http://library.albany.edu/archiveDev/ua/recordsLaws">About SUNY Records Laws</a></li>-->
 									<li><a href="https://wiki.albany.edu/display/public/askit/Information+Security+Domains%2C+Supporting+Protocols+and+Procedures">About CIO Data Classification System <span class="glyphicon glyphicon-new-window"></span></a></li>
 								</ul>
 							</li>
@@ -175,13 +175,13 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li>
-										<a href="http://library.albany.edu/archiveDev/mission">Mission</a>
+										<a href="http://library.albany.edu/archiveDev/mission">Mission &amp; Purpose</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/visit">Visiting</a>
+										<a href="http://library.albany.edu/archiveDev/visit">Visiting the Archives</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/reference">Request</a>
+										<a href="http://library.albany.edu/archiveDev/reference">Make a Request</a>
 									</li>
 									<li>
 										<a href="http://library.albany.edu/archiveDev/staff">Staff</a>
@@ -325,7 +325,7 @@
 								<li><a href="http://library.albany.edu/archiveDev/universityarchives">FAQ</a></li>
 								<li><a href="http://library.albany.edu/archiveDev/UniversityArchives/ANTS">About ANTS: Archives Network Transfer System</a></li>
 								<li><a href="http://library.albany.edu/archiveDev/ua/recordsCharts">University Records Charts</a></li>
-								<li><a href="http://library.albany.edu/archiveDev/ua/recordsLaws">About SUNY Records Laws</a></li>
+								<!--<li><a href="http://library.albany.edu/archiveDev/ua/recordsLaws">About SUNY Records Laws</a></li>-->
 								<li><a href="https://wiki.albany.edu/display/public/askit/Information+Security+Domains%2C+Supporting+Protocols+and+Procedures">About CIO Data Classification System</a></li>
 							</ul>
 						</li>

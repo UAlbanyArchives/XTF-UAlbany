@@ -1,9 +1,22 @@
 
 .side-nav {
-	width: 345px;
-	padding-left: 35px !important;
-	padding-right: 15px;
+	width: 0px;
 	margin-right: 0px;
+	margin-left: -255px;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	overflow-y: auto;
+	bottom: 0;
+	direction: rtl;
+	left: 250px;
+	z-index: 1 !important;
+}
+
+.side-nav .facet {
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 @media only screen and (max-width: 400px) {
@@ -29,13 +42,6 @@
 	.side-nav .page-header {
 		border-bottom-color: #512D6D;
 	}
-}
-.side-nav {
-	overflow-y: auto;
-	bottom: 0;
-	direction: rtl;
-	
-	z-index: 1 !important;
 }
 
 .side-nav  *{

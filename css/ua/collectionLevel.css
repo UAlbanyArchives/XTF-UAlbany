@@ -285,10 +285,10 @@
 .modal .alert-danger {
 	display: none;
 }
-
+/*
 .physdescSeries {
 	margin-bottom: 10px;
-}
+}*/
 
 .moreDiv p {
 	margin-bottom: 0px;
@@ -299,4 +299,8 @@
 	font-weight: 600;
 	font-size: 13pt !important;
 	color: #337ab7;
+}
+
+.hackContainerList {
+	font-size: 16pt !important;
 }
