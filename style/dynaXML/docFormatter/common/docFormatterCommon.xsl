@@ -348,6 +348,7 @@
 										<input type="text" class="form-control" placeholder="Collections" name="keyword" id="searchInput" ></input>
 										<input type="text" class="form-control" placeholder="Search this Collection" name="query" id="scopedSearchInput" disabled="disabled"/>
 										<input id="scopedSearchHidden" type="hidden" name="docId" value="{$docId}" disabled="disabled"/>
+										<input type="hidden" name="browse-all" value="yes"></input>
 										<span class="input-group-addon">
 											<button type="submit">
 												<span class="glyphicon glyphicon-search"/>

@@ -388,6 +388,7 @@
 												</a>
 											</li>
 										</ul>
+										<input type="hidden" name="browse-all" value="yes"></input>
 										<input id="searchInput" type="text" class="form-control" placeholder="Collections" name="keyword"></input>
 										<span class="input-group-addon">
 											<button type="submit">

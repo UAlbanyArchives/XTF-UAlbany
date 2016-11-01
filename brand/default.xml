@@ -231,6 +231,7 @@
 											</li>
 										</ul>
 										<input id="searchInput" type="text" class="form-control" placeholder="Collections" name="keyword"></input>
+										<input type="hidden" name="browse-all" value="yes"></input>
 										<span class="input-group-addon">
 											<button type="submit">
 												<span class="glyphicon glyphicon-search"/>
@@ -369,6 +370,7 @@
 											</li>
 										</ul>
 										<input type="text" class="form-control" placeholder="Collections" name="keyword"></input>
+										<input type="hidden" name="browse-all" value="yes"></input>
 										<span class="input-group-addon">
 											<button type="submit">
 												<span class="glyphicon glyphicon-search"/>

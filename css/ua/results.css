@@ -1,16 +1,10 @@
 
 .side-nav {
-	width: 0px;
+	width: 350px;
 	margin-right: 0px;
-	margin-left: -255px;
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-	transition: all 0.5s ease;
 	overflow-y: auto;
 	bottom: 0;
 	direction: rtl;
-	left: 250px;
 	z-index: 1 !important;
 }
 
@@ -38,6 +32,13 @@
 	.side-nav {
 		background-color: #EBE6F0;
 		top: 47px !important;
+		margin-left: -255px;
+		width: 0px;
+		left: 250px;
+		-webkit-transition: all 0.5s ease;
+		-moz-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
 	}
 	.side-nav .page-header {
 		border-bottom-color: #512D6D;
