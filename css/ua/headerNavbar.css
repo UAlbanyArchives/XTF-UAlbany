@@ -310,6 +310,17 @@ span.glyphicon-triangle-top {
 	color: #eaaa00;
 }
 
+.navbar-inverse .navbar-nav a:hover .digitalFiles  {
+	color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav .active a:hover span {
+	color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav .dsc-only .digitalFiles {
+	color: #ffffff;
+}
 
 .navbar-inverse .navbar-nav .open .dropdown-menu li a:hover {
 	color: #EBE6F0 !important;

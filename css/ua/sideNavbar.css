@@ -72,13 +72,23 @@
 }
 
  #collectionMenu .dsc-only .list-group-item {
-	 border-top: 1px solid #ddd !important;
+	 border: 1px solid #337AB7 !important;
+	 background-color: #337AB7;
  }
 
  #collectionMenu .panel .list-group-item a {
 	 color: #555555;
 	 display: block;
  }
+ 
+  #collectionMenu .dsc-only .list-group-item a {
+	 color: #fff;
+ }
+ 
+  #collectionMenu .dsc-only > li > a:focus,   #collectionMenu .dsc-only > li > a:hover {
+	text-decoration: none;
+	background-color: #eaaa00;
+}
  
 #collectionMenu .panel div div li a {
 	padding-left: 35px;
@@ -102,7 +112,7 @@
 }
 
 #collectionMenu .panel .active a:hover {
-		background-color: #eaaa00;
+		background-color: #eaaa00 !important;
 }
 
 #collectionMenu .panel .list-group div .list-group-item {
@@ -147,6 +157,10 @@
 
 #collectionMenu .panel-heading {
 	border: 1px solid #DDDDDD;
+}
+
+#collectionMenu #panel2 .panel-heading {
+	border: 1px solid #337AB7;
 }
 
 #collectionMenu .panel-heading a {

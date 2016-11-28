@@ -10,6 +10,15 @@
 	padding-right: 0px;
 }
 
+#collectionTitle .panel-primary {
+	border-color: #512D6D;
+}
+
+#collectionTitle .panel-primary .panel-heading{
+	background-color: #512D6D;
+	border-color: #512D6D;
+}
+
 .row {
 	margin-left: 0px;
 	margin-right: 0px;

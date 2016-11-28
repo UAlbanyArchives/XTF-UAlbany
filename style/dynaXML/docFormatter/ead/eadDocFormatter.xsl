@@ -641,21 +641,21 @@
 							<!--Container List-->
 							<xsl:if test="archdesc/dsc">
 								<xsl:choose>
-									<xsl:when test="archdesc/dsc/c01[@level='series']">
-										<div id="panel2" class="panel panel-default">
+									<xsl:when test="archdesc/dsc/c01[@level='series'] or archdesc/dsc/c01[@level='subgrp']">
+										<div id="panel2" class="panel panel-primary">
 											  <div class="panel-heading">
 												<h5 class="panel-title">Contents</h5>
 											  </div>
 												<div id="seriesMenu" class="nav list-group panel">
 													<xsl:for-each select="archdesc/dsc/c01[@level='series' or @level='subseries' or @level='subgrp' or @level='subcollection'] | archdesc/dsc/c[@level='series' or @level='subseries' or @level='subgrp' or @level='subcollection']">
 														<xsl:choose>
-															<xsl:when test="c02[@level='subseries']">
+															<xsl:when test="c02[@level='subseries'] or c02[@level='series']">
 																<xsl:apply-templates select="." mode="tocLink-children"/>
 																<div class="collapse">
 																	<xsl:attribute name="id">
 																		<xsl:value-of select="translate(@id, '.', '--')"/>
 																	</xsl:attribute>
-																	<xsl:for-each select="c02[@level='subseries']">
+																	<xsl:for-each select="c02[@level='subseries'] | c02[@level='series']">
 																		<xsl:choose>
 																			<xsl:when test="c03[@level='subseries']">
 																				<li class="list-group-item">
@@ -664,6 +664,8 @@
 																							<xsl:text>#</xsl:text>
 																							<xsl:value-of select="translate(@id, '.', '--')"/>
 																						</xsl:attribute>
+																						<xsl:value-of select="did/unitid"/>
+																						<xsl:text>: </xsl:text>
 																						<xsl:value-of select="did/unittitle"/>
 																						<xsl:text> </xsl:text>
 																						<i class="glyphicon glyphicon-triangle-bottom"></i>
@@ -874,18 +876,22 @@
 													<xsl:when test="c02[@level='subseries']">
 														<li class="dropdown">
 															<a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button">
+																<xsl:value-of select="did/unitid"/>
+																<xsl:text>: </xsl:text>
 																<xsl:value-of select="did/unittitle"/>
 																<span class="caret"></span>
 															</a>
 															<ul class="dropdown-menu">
 																<xsl:for-each select="c02[@level='subseries']">
-																	<!--<xsl:choose>
+																	<xsl:choose>
 																		<xsl:when test="c03[@level='subseries']">
 																			<a class="list-group-item sub-button" role="button">
 																				<xsl:attribute name="href">
 																					<xsl:text>#</xsl:text>
 																					<xsl:value-of select="@id"/>
 																				</xsl:attribute>
+																				<xsl:value-of select="did/unitid"/>
+																				<xsl:text>: </xsl:text>
 																				<xsl:value-of select="did/unittitle"/>
 																				<xsl:text> </xsl:text>
 																				<i class="glyphicon glyphicon-triangle-bottom"></i>
@@ -897,6 +903,8 @@
 																							<xsl:text>#</xsl:text>
 																							<xsl:value-of select="@id"/>
 																						</xsl:attribute>
+																						<xsl:value-of select="did/unitid"/>
+																						<xsl:text>: </xsl:text>
 																						<xsl:value-of select="did/unittitle"/>
 																					</a>
 																				</xsl:for-each>
@@ -908,11 +916,13 @@
 																					<xsl:text>#</xsl:text>
 																					<xsl:value-of select="translate(@id, '.', '-')"/>
 																				</xsl:attribute>
+																				<xsl:value-of select="did/unitid"/>
+																				<xsl:text>: </xsl:text>
 																				<xsl:value-of select="did/unittitle"/>
-																			</a>-->
+																			</a>
 																			<xsl:apply-templates select="." mode="tocLink"/>
-																		<!--</xsl:otherwise>
-																	</xsl:choose>-->
+																		</xsl:otherwise>
+																	</xsl:choose>
 																</xsl:for-each>
 															</ul>
 														</li>
@@ -1756,6 +1766,8 @@
 					<xsl:text>#</xsl:text>
 					<xsl:value-of select="translate(@id, '.', '--')"/>
 				</xsl:attribute>
+				<xsl:value-of select="did/unitid"/>
+				<xsl:text>: </xsl:text>
 				<xsl:value-of select="did/unittitle"/>
 				<xsl:if test="did/physdesc/dimensions">
 					&#160;
@@ -1804,6 +1816,8 @@
 					<xsl:text>#</xsl:text>
 					<xsl:value-of select="translate(@id, '.', '--')"/>
 				</xsl:attribute>
+				<xsl:value-of select="did/unitid"/>
+				<xsl:text>: </xsl:text>
 				<xsl:value-of select="did/unittitle"/>
 				<xsl:text> </xsl:text>
 				<span class="glyphicon glyphicon-triangle-bottom"></span>

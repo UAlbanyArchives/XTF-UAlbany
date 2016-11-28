@@ -767,6 +767,15 @@
 					<xsl:for-each select="p">
 						<p><xsl:apply-templates/></p>
 					</xsl:for-each>
+					<xsl:for-each select="dao">
+						<br></br>
+						<a>
+							<xsl:attribute name="href">
+								<xsl:value-of select="@href"/>
+							</xsl:attribute>
+							<xsl:value-of select="@title"/>
+						</a>
+					</xsl:for-each>
 				  </div>
 				</div>
 			  </div>
@@ -787,6 +796,15 @@
 				  <div class="panel-body">
 					<xsl:for-each select="p">
 						<p><xsl:apply-templates/></p>
+					</xsl:for-each>
+					<xsl:for-each select="dao">
+						<br></br>
+						<a>
+							<xsl:attribute name="href">
+								<xsl:value-of select="@href"/>
+							</xsl:attribute>
+							<xsl:value-of select="@title"/>
+						</a>
 					</xsl:for-each>
 				  </div>
 				</div>

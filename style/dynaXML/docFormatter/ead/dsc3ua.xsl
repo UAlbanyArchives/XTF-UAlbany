@@ -43,7 +43,7 @@ any introductory paragraphs.-->
 	<xsl:template match="archdesc/dsc">
 		<h3>Contents of Collection</h3>
 		<xsl:choose>
-		<xsl:when test="not(c01/@level='series')">
+		<xsl:when test="not(c01/@level='series' or c01/@level='subgrp')">
 			<div class="row section">
 				<div class="table-responsive">
 				  <table class="table">
