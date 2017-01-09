@@ -108,6 +108,8 @@
 	<div id="content">
 		<div class="article">
 			<p>The M.E. Grenander Department of Special Collections and Archives serves as a repository for manuscripts, archives, books, and special collections of original research materials.</p>
+			
+			
 			<div class="btn-group-wrap">
 				<div class="btn-group" role="group" >
 					<a href="http://library.albany.edu/speccoll/findaids/eresources/static/alpha.html" role="button" type="button" class="btn btn-default">A-Z Complete List</a>

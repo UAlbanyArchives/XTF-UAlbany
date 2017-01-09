@@ -160,7 +160,7 @@
                <xsl:with-param name="hitNode" select="key('hit-num-dynamic', string($prev))"/>
             </xsl:call-template>
          </xsl:variable>
-         <a>
+         <a class="searchNav">
 			<!-- This choose was messing up search result links
             <xsl:choose>
                <xsl:when test="$target.chunk = $chunk.id">
@@ -196,7 +196,7 @@
                <xsl:with-param name="hitNode" select="key('hit-num-dynamic', string($next))"/>
             </xsl:call-template>
          </xsl:variable>
-         <a>
+         <a class="searchNav">
 			<!-- This choose was messing up search result links
             <xsl:choose>
                <xsl:when test="$target.chunk = $chunk.id">

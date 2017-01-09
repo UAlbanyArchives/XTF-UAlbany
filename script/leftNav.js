@@ -109,7 +109,7 @@ $( document ).ready(function() {
 
 
 // when page is opened with hash to collapsed panel, open panel
-$( document ).ready(function() {
+$(document ).ready(function() {
 	if(window.location.hash) {
 	  var hash=window.location.hash.substring(1);
 	  $target = $('[name=' + hash + ']');
@@ -167,7 +167,13 @@ $(function(){
 		var checkedString = $('input.styled:checked').map(function() {
 			return this.value;
 		}).get().toString();
+		if (checkedValues.length < 1) {
+			$("div.alert-warning").css("display", "block");
+		} else {
+			$("div.alert-warning").css("display", "none");
+		}
 		if (checkedString.indexOf('RESTRICT') >= 0 ) {
+			$("div.alert-warning").css("display", "block");
 			$("div.alert-danger").css("display", "block");
 		} else {
 			$("div.alert-danger").css("display", "none");
@@ -311,24 +317,44 @@ $(function(){
 		if(window.location.hash) {
 			var $max = $(this).attr("title");
 			var $current = window.location.hash.substr(1);
-			if(parseInt($current) >= parseInt($max)) {
+			if(Math.floor($current) == $current && $.isNumeric($current)) {
+				if(parseInt($current) >= parseInt($max)) {
+					$(this).attr("href", "#1");
+				} else {
+					var $next = parseInt($current) + 1;
+					$(this).attr("href", "#" +$next.toString());
+				}
+			}
+			else {
 				$(this).attr("href", "#1");
-			} else {
-				var $next = parseInt($current) + 1;
-				$(this).attr("href", "#" +$next.toString());
 			}
 		} 
 	});
 	$('.searchMinus').on('click', function(){
 		if(window.location.hash) {
+			var $max = $(this).attr("title");
 			var $current = window.location.hash.substr(1);
-			if(parseInt($current) <= 1 ) {
-				var $max = $(this).attr("title");
-				$(this).attr("href", "#" + $max.toString());
-			} else {
-				var $prev = parseInt($current) - 1;
-				$(this).attr("href", "#" +$prev.toString());
+			if(Math.floor($current) == $current && $.isNumeric($current)) {
+				if(parseInt($current) <= 1 ) {
+					$(this).attr("href", "#" + $max.toString());
+				} else {
+					var $prev = parseInt($current) - 1;
+					$(this).attr("href", "#" +$prev.toString());
+				}
+			}
+			else {
+				$(this).attr("href", "#" +$max.toString());
 			}
 		} 
+	});
+});
+
+$(function(){
+	$('.searchNav').click(function() {
+		if(window.location.hash) {
+		  var spot = $(this).attr("href").substring(1);
+		  $target = $('[name=' + spot + ']');
+		  $target.parents('.collapse').addClass('in').css({height: ''});
+		}
 	});
 });

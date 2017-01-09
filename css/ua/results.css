@@ -2,10 +2,13 @@
 .side-nav {
 	width: 350px;
 	margin-right: 0px;
+	padding-top: 20px;
 	overflow-y: auto;
 	bottom: 0;
 	direction: rtl;
 	z-index: 1 !important;
+	background-color: #EBE6F0;
+	/*border-right: 1px solid #512D6D;*/
 }
 
 .side-nav .facet {
@@ -17,11 +20,11 @@
 	.side-nav {
 			margin-top: 0px !important;
 	}
-	#browseNav {
+	/*#browseNav {
 		width: 280px;
-	}
+	}*/
 	#menu-toggle.slideRight {
-		left: 280px !important;
+		left: 250px !important;
 	}
 }
 

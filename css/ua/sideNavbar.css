@@ -107,13 +107,14 @@
 	background-color: #512D6D !important;
 }
 
-#collectionMenu .panel .active a i {
+/*#collectionMenu .panel .active a i {
 	color: #FFFFFF;
-}
+}*/
 
 #collectionMenu .panel .active a:hover {
 		background-color: #eaaa00 !important;
 }
+
 
 #collectionMenu .panel .list-group div .list-group-item {
 	padding-left: 35px;
@@ -165,6 +166,19 @@
 
 #collectionMenu .panel-heading a {
 	color: #512D6D;
+}
+
+#collectionMenu .panel-heading .panel-title .bg-info {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+#collectionMenu .panel-heading .panel-title .glyphicon {
+	color: #337ab7;
+}
+
+#collectionMenu .panel-heading .panel-title * {
+	display: inline-block;
 }
 
 #collectionMenu .panel-heading a:hover, a:active {

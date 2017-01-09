@@ -292,6 +292,9 @@
 										<a href="http://library.albany.edu/archiveDev/chronology">Chronological History of UAlbany</a>
 									</li>
 									<li>
+										<a href="http://library.albany.edu/archiveDev/onthemake">University on the Make, 1960-1970</a>
+									</li>
+									<li>
 										<a href="http://library.albany.edu/archiveDev/seeger">Remembering Pete Seeger</a>
 									</li>
 									<li>
@@ -305,9 +308,6 @@
 									</li>
 									<li>
 										<a href="http://library.albany.edu/speccoll/secretlives/index.htm">The Secret Lives of Toys and Their Friends <span class="glyphicon glyphicon-new-window"></span></a>
-									</li>
-									<li>
-										<a href="http://library.albany.edu/speccoll/stone/index.htm">Edward Durell Stone and the Building of the Uptown Campus <span class="glyphicon glyphicon-new-window"></span></a>
 									</li>
 									<li>
 										<a href="http://library.albany.edu/archiveDev/exhibits">More...</a>
@@ -336,19 +336,19 @@
 										<a href="http://library.albany.edu/archiveDev/mission">Mission &amp; Purpose</a>
 									</li>
 									<li>
+										<a href="http://liblogs.albany.edu/grenander/">News</a>
+									</li>
+									<li>
 										<a href="http://library.albany.edu/archiveDev/visit">Visiting the Archives</a>
 									</li>
 									<li>
 										<a href="http://library.albany.edu/archiveDev/reference">Make a Request</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/staff">Staff</a>
-									</li>
-									<li>
 										<a href="http://library.albany.edu/archiveDev/publish_cite">Publishing &amp; Citing</a>
 									</li>
 									<li>
-										<a href="http://liblogs.albany.edu/grenander/">Blog <span class="glyphicon glyphicon-new-window"></span></a>
+										<a href="http://library.albany.edu/archiveDev/staff">Staff</a>
 									</li>
 								</ul>
 							</li>
@@ -407,9 +407,9 @@
 		<div id="wrapper" class="row no-gutter">
 			<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
 		   <div id="browseNav" class="side-nav">
-			  <div id="narrowSearch" class="page-header text-center">
+			  <!--<div id="narrowSearch" class="page-header text-center">
 				<h3>Narrow Search</h3>
-			  </div>
+			  </div>-->
 			  <xsl:if test="facet[@field='facet-genreform']/group">
 				 <xsl:apply-templates select="facet[@field='facet-genreform']"/>
 			  </xsl:if>
@@ -476,9 +476,9 @@
                               </div>
 							  </div>
 							  <div class="btn-group options" role="group">
-								   <xsl:if test="$smode != 'showBag'">
+								   <!--<xsl:if test="$smode != 'showBag'">
 										 <a type="button" class="btn btn-primary" href="{$xtfURL}{$crossqueryPath}?{$modifyString}"><xsl:text>Modify Search</xsl:text></a>
-								   </xsl:if>
+								   </xsl:if>-->
 								   <a type="button" class="btn btn-primary" href="{$xtfURL}{$crossqueryPath}"><xsl:text>New Search</xsl:text></a>
 								   <xsl:if test="$smode = 'showBag'">
 										<a type="button" class="btn btn-primary" href="{session:getData('queryURL')}"><xsl:text>Return to Search Results</xsl:text></a>
@@ -486,7 +486,7 @@
 							  </div>
 							  <form method="get" action="{$xtfURL}{$crossqueryPath}" class="resultsSort">
 							   <div class="form-group form-inline">
-								  <label>Sorted by:&#160;</label>
+								  <label>Sort by:&#160;</label>
 								  <xsl:call-template name="sort.options"/>
 								  <xsl:call-template name="hidden.query">
 									 <xsl:with-param name="queryString"

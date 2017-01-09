@@ -52,12 +52,32 @@
 	margin-top: 200px;
 }
 
+.jumbotron .bg-info {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.jumbotron * {
+	display: inline-block;
+}
+.jumbotron h4 {
+	display: block;
+}
+
 .jumbotron {
 	margin-bottom: 20px;
 }
 
 .jumbotron p {
 	font-size: 14px;
+}
+
+.jumbotron h2 .glyphicon {
+	font-size: 20px !important;
+}
+
+.jumbotron h2 .bg-info {
+	font-size: 30px !important;
 }
 
 #buttonPDF {
@@ -294,6 +314,11 @@
 .modal .alert-danger {
 	display: none;
 }
+
+.modal .alert-warning {
+	display: none;
+}
+
 /*
 .physdescSeries {
 	margin-bottom: 10px;

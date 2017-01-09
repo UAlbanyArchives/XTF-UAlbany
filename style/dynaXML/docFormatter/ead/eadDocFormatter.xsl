@@ -499,7 +499,7 @@
 										</span>
 										<xsl:text>"</xsl:text>
 									</b>
-									<a class="searchMinus">
+									<a class="searchMinus searchNav">
 									<xsl:attribute name="href">
 										<xsl:text>#</xsl:text>
 										<xsl:value-of select="$sum"/>
@@ -507,7 +507,7 @@
 									<xsl:attribute name="title">
 										<xsl:value-of select="$sum"/>
 									</xsl:attribute>
-									<i class="fa fa-search-minus"></i></a>
+									<i class="glyphicon glyphicon-arrow-left"></i></a>
 									<xsl:text> [</xsl:text>
 									<a class="clearHits"><xsl:attribute name="href">
 											<xsl:value-of select="$doc.path"/>
@@ -515,11 +515,11 @@
 										<xsl:text>Clear Hits</xsl:text>
 									</a>
 									<xsl:text>] </xsl:text>
-									<a class="searchPlus" href="#1">
+									<a class="searchPlus searchNav" href="#1">
 									<xsl:attribute name="title">
 										<xsl:value-of select="$sum"/>
 									</xsl:attribute>
-									<i class="fa fa-search-plus"></i></a>
+									<i class="glyphicon glyphicon-arrow-right"></i></a>
 								</div>
 							</div>
 						</xsl:if>
@@ -742,7 +742,7 @@
 											</span>
 											<xsl:text>"</xsl:text>
 										</b>
-										<a class="searchMinus">
+										<a class="searchMinus searchNav">
 									<xsl:attribute name="href">
 										<xsl:text>#</xsl:text>
 										<xsl:value-of select="$sum"/>
@@ -750,7 +750,7 @@
 									<xsl:attribute name="title">
 										<xsl:value-of select="$sum"/>
 									</xsl:attribute>
-									<i class="fa fa-search-minus"></i></a>
+									<i class="glyphicon glyphicon-arrow-left"></i></a>
 									<xsl:text> [</xsl:text>
 									<a class="clearHits"><xsl:attribute name="href">
 											<xsl:value-of select="$doc.path"/>
@@ -758,11 +758,11 @@
 										<xsl:text>Clear Hits</xsl:text>
 									</a>
 									<xsl:text>] </xsl:text>
-									<a class="searchPlus" href="#1">
+									<a class="searchPlus searchNav" href="#1">
 									<xsl:attribute name="title">
 										<xsl:value-of select="$sum"/>
 									</xsl:attribute>
-									<i class="fa fa-search-plus"></i></a>
+									<i class="glyphicon glyphicon-arrow-right"></i></a>
 									</div>
 								</div>
 							</xsl:if>
@@ -1769,6 +1769,9 @@
 				<xsl:value-of select="did/unitid"/>
 				<xsl:text>: </xsl:text>
 				<xsl:value-of select="did/unittitle"/>
+				<xsl:if test="accessrestrict">
+					<i class="glyphicon glyphicon-asterisk restrictIcon" data-toggle="collapse"></i>
+				</xsl:if>
 				<xsl:if test="did/physdesc/dimensions">
 					&#160;
 					<span class="digitalFiles glyphicon glyphicon-floppy-disk" data-toggle="tooltip" data-placement="top">

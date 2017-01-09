@@ -66,6 +66,12 @@
     padding: 15px;
 }
 
+@media only screen and (min-width: 767px) {
+	#page-content-wrapper {
+		width: 100%;
+	}
+}
+
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     /*margin-right: -250px;*/

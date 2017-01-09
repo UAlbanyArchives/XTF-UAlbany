@@ -310,16 +310,28 @@ span.glyphicon-triangle-top {
 	color: #eaaa00;
 }
 
-.navbar-inverse .navbar-nav a:hover .digitalFiles  {
+.navbar-inverse .navbar-nav .active a:hover .digitalFiles {
+	color: green;
+}
+
+.navbar-inverse .navbar-nav .active a:hover .webArchive {
+	color: blue;
+}
+
+/*.navbar-inverse .navbar-nav a:hover .digitalFiles  {
 	color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav .active a:hover span {
 	color: #ffffff;
-}
+*/
 
 .navbar-inverse .navbar-nav .dsc-only .digitalFiles {
 	color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav .dsc-only:hover .digitalFiles {
+	color: green;
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu li a:hover {
@@ -618,12 +630,17 @@ a {
  
 }
 
-.alert-warning {
+.docHit .alert-warning {
 	color: #512D6D;
 	background-color: #EBE6F0;
 	border-color: #EBE6F0;
 }
 
+@media only screen and (min-width: 767px) {
+	.docHit .alert-warning {
+		margin-left: 20px;
+	}
+}
 
 .alert-info {
 	color: #512D6D;

@@ -245,6 +245,9 @@
 										<a href="http://library.albany.edu/archiveDev/chronology">Chronological History of UAlbany</a>
 									</li>
 									<li>
+										<a href="http://library.albany.edu/archiveDev/onthemake">University on the Make, 1960-1970</a>
+									</li>
+									<li>
 										<a href="http://library.albany.edu/archiveDev/seeger">Remembering Pete Seeger</a>
 									</li>
 									<li>
@@ -258,9 +261,6 @@
 									</li>
 									<li>
 										<a href="http://library.albany.edu/speccoll/secretlives/index.htm">The Secret Lives of Toys and Their Friends <span class="glyphicon glyphicon-new-window"></span></a>
-									</li>
-									<li>
-										<a href="http://library.albany.edu/speccoll/stone/index.htm">Edward Durell Stone and the Building of the Uptown Campus <span class="glyphicon glyphicon-new-window"></span></a>
 									</li>
 									<li>
 										<a href="http://library.albany.edu/archiveDev/exhibits">More...</a>
@@ -289,19 +289,19 @@
 										<a href="http://library.albany.edu/archiveDev/mission">Mission &amp; Purpose</a>
 									</li>
 									<li>
+										<a href="http://liblogs.albany.edu/grenander/">News</a>
+									</li>
+									<li>
 										<a href="http://library.albany.edu/archiveDev/visit">Visiting the Archives</a>
 									</li>
 									<li>
 										<a href="http://library.albany.edu/archiveDev/reference">Make a Request</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/staff">Staff</a>
-									</li>
-									<li>
 										<a href="http://library.albany.edu/archiveDev/publish_cite">Publishing &amp; Citing</a>
 									</li>
 									<li>
-										<a href="http://liblogs.albany.edu/grenander/">Blog <span class="glyphicon glyphicon-new-window"></span></a>
+										<a href="http://library.albany.edu/archiveDev/staff">Staff</a>
 									</li>
 								</ul>
 							</li>

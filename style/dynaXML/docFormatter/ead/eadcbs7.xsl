@@ -413,6 +413,16 @@
 			  <div class="modal-body">
 				<p>Archival materials can be view in-person in our reading room, located on the top floor of the Science Library on the Uptown Campus. Making an appointment is not neccessary, but it may help us ensure the items are available when you arrive.</p>
 				<p>We can also deliver digital scans for remote research for a fee.</p>
+				
+				<xsl:if test="../archdesc/accessrestrict/p != 'Access to this record group is unrestricted.' and ../archdesc/accessrestrict/p != 'Access to this collection is unrestricted.'">
+					<div class="alert alert-warning">
+					  <strong>Possible Restrictions</strong><br/>
+					  <xsl:for-each select="../archdesc/accessrestrict/p">
+						<p><xsl:value-of select="." /></p>
+					  </xsl:for-each>
+					</div>
+				</xsl:if>
+				
 				<div class="alert alert-danger">
 				  <strong>Restricted Records</strong><br/>The materials you selected include restricted records. We may not be able to fulfill remote requests for these items, and in-person access may be limited. If you request these items an archivist will contact you with more details.
 				</div>
@@ -482,7 +492,8 @@
 			</div>
 		</div>
 		<div id="buttonPDF" class="col-md-2">
-			<button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-info-sign"/> Need Help?</button>
+			<!--<button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-info-sign"/> Need Help?</button>-->
+			<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Request Collection</button>
 			<a type="button" class="btn btn-default">
 				<xsl:attribute name="href">
 				  <xsl:text>http://library.albany.edu/speccoll/findaids/eresources/static/pdf/</xsl:text>
@@ -492,7 +503,6 @@
 				<i class="fa fa-file-pdf-o"/>
 				<xsl:text> PDF Version</xsl:text>
 			</a>
-			<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Request Collection</button>
 		</div>
 		<div id="seeAlsoList" class="col-xs-12 col-sm-9 col-md-10">
 			<ul>

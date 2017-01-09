@@ -539,6 +539,12 @@ for each level.-->
 							<div class="checkbox checkbox-primary">
 							  <input type="checkbox" class="styled cmpntCheck">
 									<xsl:attribute name="value">
+										<xsl:if test="../accessrestrict">
+											<xsl:text>RESTRICT</xsl:text>
+										</xsl:if>
+										<xsl:if test="../userestrict">
+											<xsl:text>RESTRICT</xsl:text>
+										</xsl:if>
 										<xsl:value-of select="../@id"/>
 										<xsl:text>: </xsl:text>
 										<xsl:value-of select="unittitle"/>
