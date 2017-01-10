@@ -232,7 +232,7 @@
 									<xsl:value-of select="/ead/xtf:meta/title"/>
 								</xsl:attribute>
 							</meta>
-							<div itemprop="http://schema.org/contentLocation" itemscope="" itemtype="http://schema.org/Place">
+							<div itemprop="http://schema.org/contentLocation" itemscope="" itemtype="http://schema.org/CivicStructure">
 								<meta itemprop="http://schema.org/name">
 									<xsl:attribute name="content">
 										<xsl:value-of select="/ead/xtf:meta/publisher"/>
@@ -240,6 +240,7 @@
 								</meta>
 								<meta itemprop="http://schema.org/url" content="http://library.albany.edu/archive"/>
 								<meta itemprop="http://schema.org/telephone" content="(518) 437-3935"/>
+								<meta itemprop="openingHours" content="Mo,Tu,We,Th,Fr 09:00-07:00"/>
 								<div itemprop="http://schema.org/address" itemscope="" itemtype="http://schema.org/PostalAddress" style="display:none;">
 								  <span itemprop="streetAddress">1400 Washington Ave</span>
 								  <span itemprop="addressLocality">Albany</span>
@@ -664,8 +665,10 @@
 																							<xsl:text>#</xsl:text>
 																							<xsl:value-of select="translate(@id, '.', '--')"/>
 																						</xsl:attribute>
-																						<xsl:value-of select="did/unitid"/>
-																						<xsl:text>: </xsl:text>
+																						<xsl:if test="did/unitid">
+																							<xsl:value-of select="did/unitid"/>
+																							<xsl:text>: </xsl:text>
+																						</xsl:if>
 																						<xsl:value-of select="did/unittitle"/>
 																						<xsl:text> </xsl:text>
 																						<i class="glyphicon glyphicon-triangle-bottom"></i>
@@ -890,8 +893,10 @@
 																					<xsl:text>#</xsl:text>
 																					<xsl:value-of select="@id"/>
 																				</xsl:attribute>
-																				<xsl:value-of select="did/unitid"/>
-																				<xsl:text>: </xsl:text>
+																				<xsl:if test="did/unitid">
+																					<xsl:value-of select="did/unitid"/>
+																					<xsl:text>: </xsl:text>
+																				</xsl:if>
 																				<xsl:value-of select="did/unittitle"/>
 																				<xsl:text> </xsl:text>
 																				<i class="glyphicon glyphicon-triangle-bottom"></i>
@@ -903,8 +908,10 @@
 																							<xsl:text>#</xsl:text>
 																							<xsl:value-of select="@id"/>
 																						</xsl:attribute>
-																						<xsl:value-of select="did/unitid"/>
-																						<xsl:text>: </xsl:text>
+																						<xsl:if test="did/unitid">
+																							<xsl:value-of select="did/unitid"/>
+																							<xsl:text>: </xsl:text>
+																						</xsl:if>
 																						<xsl:value-of select="did/unittitle"/>
 																					</a>
 																				</xsl:for-each>
@@ -916,8 +923,10 @@
 																					<xsl:text>#</xsl:text>
 																					<xsl:value-of select="translate(@id, '.', '-')"/>
 																				</xsl:attribute>
-																				<xsl:value-of select="did/unitid"/>
-																				<xsl:text>: </xsl:text>
+																				<xsl:if test="did/unitid">
+																					<xsl:value-of select="did/unitid"/>
+																					<xsl:text>: </xsl:text>
+																				</xsl:if>
 																				<xsl:value-of select="did/unittitle"/>
 																			</a>
 																			<xsl:apply-templates select="." mode="tocLink"/>
@@ -1766,8 +1775,10 @@
 					<xsl:text>#</xsl:text>
 					<xsl:value-of select="translate(@id, '.', '--')"/>
 				</xsl:attribute>
-				<xsl:value-of select="did/unitid"/>
-				<xsl:text>: </xsl:text>
+				<xsl:if test="did/unitid">
+					<xsl:value-of select="did/unitid"/>
+					<xsl:text>: </xsl:text>
+				</xsl:if>
 				<xsl:value-of select="did/unittitle"/>
 				<xsl:if test="accessrestrict">
 					<i class="glyphicon glyphicon-asterisk restrictIcon" data-toggle="collapse"></i>
@@ -1819,8 +1830,10 @@
 					<xsl:text>#</xsl:text>
 					<xsl:value-of select="translate(@id, '.', '--')"/>
 				</xsl:attribute>
-				<xsl:value-of select="did/unitid"/>
-				<xsl:text>: </xsl:text>
+				<xsl:if test="did/unitid">
+					<xsl:value-of select="did/unitid"/>
+					<xsl:text>: </xsl:text>
+				</xsl:if>
 				<xsl:value-of select="did/unittitle"/>
 				<xsl:text> </xsl:text>
 				<span class="glyphicon glyphicon-triangle-bottom"></span>
