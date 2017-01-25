@@ -412,7 +412,7 @@
 			  </div>
 			  <div class="modal-body">
 				<p>Archival materials can be view in-person in our reading room, located on the top floor of the Science Library on the Uptown Campus. Making an appointment is not neccessary, but it may help us ensure the items are available when you arrive.</p>
-				<p>We can also deliver digital scans for remote research for a fee.</p>
+				<p>If materials are unrestricted, we can also deliver digital scans remotely for a fee.</p>
 				
 				<xsl:if test="../archdesc/accessrestrict/p != 'Access to this record group is unrestricted.' and ../archdesc/accessrestrict/p != 'Access to this collection is unrestricted.'">
 					<div class="alert alert-warning">
