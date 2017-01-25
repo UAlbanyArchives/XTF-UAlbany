@@ -1,9 +1,15 @@
 body {
-	background: url("http://library.albany.edu/speccoll/findaids/eresources/static/img/bgDowntown.jpg");
+	background-image: none;
 	background-repeat: no-repeat;
     background-attachment: fixed;
 	background-size: auto 100%;
     background-position: center top;
+}
+
+@media only screen and (min-width: 991px) {
+	body {
+		background-image: url("http://library.albany.edu/speccoll/findaids/eresources/static/img/bg.jpg");
+	}
 }
 
 @media only screen and (min-width: 1100px) {
@@ -34,10 +40,14 @@ body > .container .panel {
 	max-width: 1150px;
 	background-color: #FFFFFF;
 	box-shadow: 0 0 10px #FFFFFF;
-	padding: 20px 25px 5px 25px;
+	/*padding: 20px 25px 5px 25px;*/
 	margin: auto;
-	padding: 30px;
+	/*padding: 30px;*/
 	padding-top: 130px;
+}
+
+.noResults {
+	padding-top: 30px !important;
 }
 
 #mainContent .forms {
@@ -45,14 +55,14 @@ body > .container .panel {
 }
 
 
-#mainContent .forms .nav li {
+#mainContent .forms .nav-justified li {
 	background-color: #EEEEEE;
 	border-left: 1px solid #DDDDDD;
 	border-right: 1px solid #DDDDDD;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
-#mainContent .forms .nav li.active {
+#mainContent .forms .nav-justified li.active {
 	background-color: #FFFFFF;
 }
 
@@ -70,13 +80,18 @@ body > .container .panel {
 	color: #512D6D;
 }
 
-#mainContent .forms .nav li:hover a {
+#mainContent .forms .nav-justified li:hover a {
 	background-color: #EBE6F0 !important;
 }
 
 #main-content {
 	width: auto !important;
-	margin: 20px;
+}
+
+@media (min-width: 767px) {
+	#main-content {
+		margin: 20px;
+	}
 }
 
 .sequence {
@@ -98,4 +113,133 @@ body > .container .panel {
 
 #mainContent  p {
 	font-size: 11pt !important;
+}
+
+/*Big Search Box*/
+	.searchBig a {
+		color: #EBE6F0;
+	}
+	.searchBig .sequence {
+		padding-bottom: 10px;
+		padding-top: 10px;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+	}
+	.searchBig .sequence * {
+		margin: 5px;
+	}
+	.searchBig {
+	padding: 20px 20px;
+	height: auto;
+	background-color: #512d6d;
+	}
+	.searchBig .btn-primary {
+		background-color: #EBE6F0;
+		color: #403a60;
+		border-color: #403a60;
+		border-radius: 0px;
+	}
+	.searchBig .input-group {
+		margin: 0 auto;
+		
+		width: 100%;
+		display: block !important;
+		font-size: 25pt;
+	}
+	.searchBig .searchBox .input-group input {
+		height: 70px;
+		margin: 0 auto;
+		vertical-align: middle;
+		font-size: 30pt;
+		width: 85% !important;
+		max-width: 100% !important;
+	}
+	@media (max-width: 600px) {
+		.searchBig .input-group-btn {
+			display: block;
+			margin: 0px auto;
+			width: 70px;
+		}
+		.searchBig .input-group-btn button {
+			margin-top: 10px;
+		}
+		.searchBox .input-group input {
+			width: 100% !important;
+			border-top-right-radius: 5px !important;
+			border-bottom-right-radius: 5px !important;
+		}
+	}
+	.searchBig  .input-group-btn {
+		width: 40% !important;
+	}
+	.searchBig .btn-primary:hover {
+		color: #EBE6F0;
+	}
+	.searchBig  .searchBox .input-group .btn {
+		height: 70px;
+		vertical-align: middle;
+		font-size: 20pt;
+		float: right;
+		width: 100%;
+	}
+	
+	.searchBig  .nav-tabs {
+	margin-bottom: 20px;
+}
+
+.searchBig  .nav-tabs li.active a {
+	background-color: #EBE6F0;
+}
+
+.nav-tabs li.active a:hover {
+	background-color: #ffffff;
+}
+
+.searchBig .input-group-btn .btn {
+	margin-left: 10px !important;
+}
+
+.searchBig  .nav-tabs li a:hover {
+	background-color: #eaaa00; 
+	color: #ffffff;
+	border-color: #512D6D;
+	border-bottom: 1px solid #EBE6F0;
+}
+
+.searchBig {
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+
+
+.searchBig .sequence .glyphicon {
+	font-size: 7pt;
+	top: 0px;
+}
+
+#menu-toggle {
+	display: none;
+}
+
+#browseNav {
+	display: none;
+}
+
+.sequence {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+@media (max-width: 767px) {
+	#mainContent {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+
+@media (min-width: 767px) {
+	#page-content-wrapper {
+		padding-left: 0px !important;
+	}
 }

@@ -103,12 +103,164 @@
    <xsl:template name="simpleForm" exclude-result-prefixes="#all">
     <div id="main-content" class="container">
 	<div id="main-content-header">
-		<h2 id="page-title">Archive and Manuscript Collections</h2>
+		<!--<h2 id="page-title">Archive and Manuscript Collections</h2>-->
+		<!--<h2 id="page-title">Search Collections</h2>-->
 	</div>
 	<div id="content">
 		<div class="article">
-			<p>The M.E. Grenander Department of Special Collections and Archives serves as a repository for manuscripts, archives, books, and special collections of original research materials.</p>
+			<!--<p>The M.E. Grenander Department of Special Collections and Archives serves as a repository for manuscripts, archives, books, and special collections of original research materials.</p>-->
 			
+			<div class="row searchBig">
+	<div>
+		<ul class="nav nav-tabs">
+			<li  class="active">
+				<a data-toggle="tab" href="#bigSearchCollections">Collections</a>
+			</li>
+			<li>
+				<a data-toggle="tab" href="#bigSearchSelections">Digital Selections</a>
+			</li>
+			<li>
+				<a data-toggle="tab" href="#bigSearchBooks">Rare Books</a>
+			</li>
+			<li>
+				<a data-toggle="tab" href="#bigSearchMathes">Mathes Collection</a>
+			</li>
+			<li>
+				<a data-toggle="tab" href="#bigSearchNewspapers">Student Newspapers</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div id="bigSearchCollections" class="tab-pane fade in active">
+				<form class="search-form searchBox" role="search" action="http://meg.library.albany.edu:8080/archive/search">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Collections" name="keyword"  value="{$keyword}"/>
+						<div class="input-group-btn">
+							<button class="btn btn-primary" type="submit">
+								<i class="glyphicon glyphicon-search"/>
+							</button>
+						</div>
+					</div>
+					<div style="clear: both"/>
+				</form>
+				<div class="col-xs-12 sequence">
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Labor" role="button">Labor</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Capital+Punishment" role="button">Capital Punishment</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Politics+Politicians" role="button">Politics and Politicians</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?f1-genreform=Web%20Archives" role="button">Web Archives</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Military+Armed+Conflict" role="button">Military and Armed Conflict</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Economics" role="button">Economics</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Africana+Studies" role="button">Africana Studies</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Schenectady" role="button">Schenectady, New York</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?f1-genreform=Digital%20Files" role="button">Digital Files</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Neighborhood+Community+Associations" role="button">Neighborhood and Community Associations</a>
+					<a class="btn btn-primary" href="http://meg.library.albany.edu:8080/archive/search?keyword=Education" role="button">Education</a>
+				</div>
+			</div>
+			<div id="bigSearchSelections" class="tab-pane fade">
+				<form class="search-form searchBox" role="search" action="http://luna.albany.edu/luna/servlet/view/search">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Digital Selections" name="q" />
+						<div class="input-group-btn">
+							<button class="btn btn-primary" type="submit">
+								<i class="glyphicon glyphicon-search"/>
+							</button>
+						</div>
+					</div>
+					<div style="clear: both"/>
+				</form>
+				<div class="col-xs-12 sequence">
+					<a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=construction" role="button">Construction <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=csea" role="button">CSEA <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=marcia+brown" role="button">Marcia Brown <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=pete+seeger" role="button">Pete Seeger <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=wamc" role="button">WAMC <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=university+archives" role="button">University Archives <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=labor+unions" role="button">Labor Unions <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=portraits" role="button">Portraits <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=norman+studer" role="button">Norman Studer <span class="glyphicon glyphicon-new-window"/>
+					</a><a class="btn btn-primary" href="http://luna.albany.edu/luna/servlet/view/search?q=Edward+Durell+Stone" role="button">Edward Durell Stone <span class="glyphicon glyphicon-new-window"/>
+					</a>
+				</div>
+			</div>
+			<div id="bigSearchBooks" class="tab-pane fade">
+				<form class="search-form searchBox" role="search" action="http://p8991-libms1.albany.edu.libproxy.albany.edu/F/">
+					<input type='hidden' name='func' value='find-a'/>
+					<input type='hidden' name='filter_code_1' value='WLN'/>
+					<input type='hidden' name='filter_request_1' value=''/>
+					<input type='hidden' name='filter_code_2' value='WYR'/>
+					<input type='hidden' name='filter_request_2' value=''/>
+					<input type='hidden' name='filter_code_3' value='WYR'/>
+					<input type='hidden' name='filter_request_3' value=''/>
+					<input type='hidden' name='filter_code_4' value='WCL'/>
+					<input type='hidden' name='filter_request_4' value=''/>
+					<input type='hidden' name='filter_code_5' value='WSL'/>
+					<input type='hidden' name='filter_request_5' value='ALBU'/>
+					<input type='hidden' name='find_code' value='WTS'/>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Rare Books" name="request"/>
+						<div class="input-group-btn">
+							<button class="btn btn-primary" type="submit">
+								<i class="glyphicon glyphicon-search"/>
+							</button>
+						</div>
+					</div>
+					<div style="clear: both"/>
+				</form>
+			</div>
+			<div id="bigSearchMathes" class="tab-pane fade">
+				<form class="search-form searchBox" role="search" action="http://p8991-libms1.albany.edu.libproxy.albany.edu/F/">
+					<input type="hidden" name="func" value="find-a" />
+					<input type="hidden" name="filter_code_1" value="WLN" />
+					<input type="hidden" name="filter_request_1" value="" />
+					<input type="hidden" name="filter_code_2" value="WYR" />
+					<input type="hidden" name="filter_request_2" value="" />
+					<input type="hidden" name="filter_code_3" value="WYR" />
+					<input type="hidden" name="filter_request_3" value="" />
+					<input type="hidden" name="filter_code_4" value="WCL" />
+					<input type="hidden" name="filter_request_4" value="jc*" />
+					<input type="hidden" name="filter_code_5" value="WSL" />
+					<input type="hidden" name="filter_request_5" value="ALBU" />
+					<input type="hidden" name="find_code" value="WTS" />
+					<input type="hidden" name="request_op" value="AND" />
+					<input type="hidden" name="find_code" value="WTS" />
+					<input type="hidden" name="request" value="" />
+					<input type="hidden" name="request_op" value="AND" />
+					<input type="hidden" name="find_code" value="WTS" />
+					<input type="hidden" name="request" value="" />
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Mathes Collection" name="request" />
+						<div class="input-group-btn">
+							<button class="btn btn-primary" type="submit">
+								<i class="glyphicon glyphicon-search"/>
+							</button>
+						</div>
+					</div>
+					<div style="clear: both"></div>
+				</form>
+			</div>
+			<div id="bigSearchNewspapers" class="tab-pane fade">
+				<form class="search-form searchBox" role="search" action="http://libsearch.albany.edu/search">
+					<input type="hidden" name="site" value="asp_collection" />
+					<input type="hidden" name="client" value="asp_frontend" />
+					<input type="hidden" name="output" value="xml_no_dtd" />
+					<input type="hidden" name="proxystylesheet" value="asp_frontend" />
+					<input type="hidden" name="proxyreload" value="1" />
+					<input type="hidden" name="numgm" value="5" />
+					<input type="hidden" name="filter" value="0" />
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Student Newspapers" name="q" />
+						<div class="input-group-btn">
+							<button class="btn btn-primary" type="submit">
+								<i class="glyphicon glyphicon-search"/>
+							</button>
+						</div>
+					</div>
+					<div style="clear: both"/>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 			
 			<div class="btn-group-wrap">
 				<div class="btn-group" role="group" >

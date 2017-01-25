@@ -431,7 +431,7 @@
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				<a type="button" class="btn btn-primary" id="scheduleVisit">
 					<xsl:attribute name="href">
-						<xsl:text>http://library.albany.edu/archiveDev/scheduleVisit?col=</xsl:text>
+						<xsl:text>http://library.albany.edu/archive/scheduleVisit?col=</xsl:text>
 						<xsl:value-of select="/ead/@id"/>
 						<xsl:text>: </xsl:text>
 						<xsl:value-of select="/ead/archdesc/did/unittitle/text()"/>
@@ -441,7 +441,7 @@
 				</a>
 				<a type="button" class="btn btn-primary" id="remoteRequest">
 					<xsl:attribute name="href">
-						<xsl:text>http://library.albany.edu/archiveDev/remoteRequest?col=</xsl:text>
+						<xsl:text>http://library.albany.edu/archive/remoteRequest?col=</xsl:text>
 						<xsl:value-of select="/ead/@id"/>
 						<xsl:text>: </xsl:text>
 						<xsl:value-of select="/ead/archdesc/did/unittitle/text()"/>

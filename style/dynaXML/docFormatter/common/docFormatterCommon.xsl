@@ -170,11 +170,11 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<!--<a class="navbar-brand" href="http://library.albany.edu/archiveDev/"><img src="icons/ua/mainLogo.png" height="75px" /></a>-->
+					<!--<a class="navbar-brand" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" height="75px" /></a>-->
 					<div class="navbar-brand">
-						<a class="logo" href="http://library.albany.edu/archiveDev/"><img src="icons/ua/mainLogo.png" /></a>
-						<a class="ualbany" href="http://www.albany.edu"><img src="icons/ua/ualbany.png" /></a>
-						<a class="smallLogo" href="http://library.albany.edu/archiveDev/"><img src="icons/ua/mainLogo.png" /></a>
+						<a class="logo" data-toggle="tooltip" title="Archives Home" href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" /></a>
+						<a data-toggle="tooltip" title="UAlbany Libraries" class="ualbany" href="http://library.albany.edu/"><img src="icons/ua/ualbany.png" /></a>
+						<a class="smallLogo" data-toggle="tooltip" title="Archives Home"  href="http://library.albany.edu/archive/"><img src="icons/ua/mainLogo.png" /></a>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -185,7 +185,7 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li>
-										<a href="http://meg.library.albany.edu:8080/archive/search">About Collections</a>
+										<a href="http://library.albany.edu/archive/collections">About Collections</a>
 									</li>
 									<li>
 										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/apap.html">NY State Modern Political Archive</a>
@@ -200,13 +200,13 @@
 										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ua.html">University Archives</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/mathes">Mathes Childrens Literature</a>
+										<a href="http://library.albany.edu/archive/mathes">Mathes Childrens Literature</a>
 									</li>
 									<li>
 										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/mss.html">Business and Literary Manuscripts</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/books">Rare Books</a>
+										<a href="http://library.albany.edu/archive/books">Rare Books</a>
 									</li>
 									<li role="separator" class="divider"></li>
 									<li>
@@ -216,7 +216,7 @@
 										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/subjects.html">Subject Guides to Collections</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/historicalresources/">Find Other Historical Repositories</a>
+										<a href="http://library.albany.edu/archive/historicalresources/">Find Other Historical Repositories</a>
 									</li>
 								</ul>
 							</li>
@@ -224,17 +224,17 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Digital Selections <span class="caret"/>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="http://library.albany.edu/archiveDev/digitalselections">About Digital Selections</a></li>
+									<li><a href="http://library.albany.edu/archive/digitalselections">About Digital Selections</a></li>
 									<li><a href="http://luna.albany.edu/luna/servlet">Digital Photograph Collections <span class="glyphicon glyphicon-new-window"></span></a></li>
-									<li><a href="http://library.albany.edu/archiveDev/aspSearch">Search Student Newspaper (ASP) Archive</a></li>
+									<li><a href="http://library.albany.edu/archive/aspSearch">Search Student Newspaper (ASP) Archive</a></li>
 									<li><a href="http://luna.albany.edu/luna/servlet/s/uc9c1q">University Photographs <span class="glyphicon glyphicon-new-window"></span></a></li>
 									<li><a href="http://luna.albany.edu/luna/servlet/s/cf080d">United University Professions <span class="glyphicon glyphicon-new-window"></span></a></li>
-									<li><a href="http://library.albany.edu/archiveDev/milnedigitalcollections">Milne School</a></li>
+									<li><a href="http://library.albany.edu/archive/milnedigitalcollections">Milne School</a></li>
 									<li><a href="http://luna.albany.edu/luna/servlet/s/02x34e">WAMC Northeast Public Radio <span class="glyphicon glyphicon-new-window"></span></a></li>
 									<li><a href="http://luna.albany.edu/luna/servlet/s/0k7jzo">Marcia Brown <span class="glyphicon glyphicon-new-window"></span></a></li>
 									<li><a href="http://luna.albany.edu/luna/servlet/s/n0l6ni">Civil Service Employees Association (CSEA) <span class="glyphicon glyphicon-new-window"></span></a></li>
 									<li><a href="http://luna.albany.edu/luna/servlet/s/h6s218">Norman Studer <span class="glyphicon glyphicon-new-window"></span></a></li>
-									<li><a href="http://library.albany.edu/speccoll/findaids/apap015.htm#series5">CSEA Newspaper Archive</a></li>
+									<li><a href="http://library.albany.edu/speccoll/findaids/eresources/html/apap015.htm#series5">CSEA Newspaper Archive</a></li>
 								</ul>
 							</li>
 							<li class="dropdown">
@@ -242,28 +242,28 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li>
-										<a href="http://library.albany.edu/archiveDev/chronology">Chronological History of UAlbany</a>
+										<a href="http://library.albany.edu/archive/chronology">Chronological History of UAlbany</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/onthemake">University on the Make, 1960-1970</a>
+										<a href="http://library.albany.edu/archive/onthemake">University on the Make, 1960-1970</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/seeger">Remembering Pete Seeger</a>
+										<a href="http://library.albany.edu/archive/seeger">Remembering Pete Seeger</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/exhibitmilne">The Milne School Murals</a>
+										<a href="http://library.albany.edu/archive/exhibitmilne">The Milne School Murals</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/speccoll/campusbuildings/index.htm">Campus Buildings Historical Tour <span class="glyphicon glyphicon-new-window"></span></a>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/html/campusbuildings/index.htm">Campus Buildings Historical Tour <span class="glyphicon glyphicon-new-window"></span></a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/speccoll/marciabrown/index.htm">Marcia Brown Exhibit and Resource Website <span class="glyphicon glyphicon-new-window"></span></a>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/html/marciabrown/index.htm">Marcia Brown Exhibit and Resource Website <span class="glyphicon glyphicon-new-window"></span></a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/speccoll/secretlives/index.htm">The Secret Lives of Toys and Their Friends <span class="glyphicon glyphicon-new-window"></span></a>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/html/secretlives/index.htm">The Secret Lives of Toys and Their Friends <span class="glyphicon glyphicon-new-window"></span></a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/exhibits">More...</a>
+										<a href="http://library.albany.edu/archive/exhibits">More...</a>
 									</li>
 								</ul>
 							</li>
@@ -271,13 +271,13 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Donors &amp; Records <span class="caret"/>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="http://library.albany.edu/archiveDev/outside_donors">Outside Donations of Records</a></li>
-									<li><a href="http://library.albany.edu/archiveDev/giving">Giving to the Archives</a></li>
+									<li><a href="http://library.albany.edu/archive/outside_donors">Outside Donations of Records</a></li>
+									<li><a href="http://library.albany.edu/archive/giving">Giving to the Archives</a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="http://library.albany.edu/archiveDev/ua/transferform">Transfer University Records</a></li>
-									<li><a href="http://library.albany.edu/archiveDev/universityarchives">University Records FAQ</a></li>
-									<li><a href="http://library.albany.edu/archiveDev/ua/recordsCharts">University Records Charts</a></li>
-									<!--<li><a href="http://library.albany.edu/archiveDev/ua/recordsLaws">About SUNY Records Laws</a></li>-->
+									<li><a href="http://library.albany.edu/archive/ua/transferform">Transfer University Records</a></li>
+									<li><a href="http://library.albany.edu/archive/ua/faq">University Records FAQ</a></li>
+									<li><a href="http://library.albany.edu/archive/ua/recordsCharts">University Records Charts</a></li>
+									<!--<li><a href="http://library.albany.edu/archive/ua/recordsLaws">About SUNY Records Laws</a></li>-->
 									<li><a href="https://wiki.albany.edu/display/public/askit/Information+Security+Domains%2C+Supporting+Protocols+and+Procedures">About CIO Data Classification System <span class="glyphicon glyphicon-new-window"></span></a></li>
 								</ul>
 							</li>
@@ -286,34 +286,34 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li>
-										<a href="http://library.albany.edu/archiveDev/mission">Mission &amp; Purpose</a>
+										<a href="http://library.albany.edu/archive/mission">Mission &amp; Purpose</a>
 									</li>
 									<li>
+										<a href="http://library.albany.edu/archive/visit">Visiting the Archives</a>
+									</li>
+									<!--<li>
 										<a href="http://liblogs.albany.edu/grenander/">News</a>
+									</li>-->
+									<li>
+										<a href="http://library.albany.edu/archive/reference">Make a Request</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/visit">Visiting the Archives</a>
+										<a href="http://library.albany.edu/archive/publish_cite">Publishing &amp; Citing</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/archiveDev/reference">Make a Request</a>
-									</li>
-									<li>
-										<a href="http://library.albany.edu/archiveDev/publish_cite">Publishing &amp; Citing</a>
-									</li>
-									<li>
-										<a href="http://library.albany.edu/archiveDev/staff">Staff</a>
+										<a href="http://library.albany.edu/archive/staff">Staff</a>
 									</li>
 								</ul>
 							</li>
 							<li>
-								<a href="http://library.albany.edu/archiveDev/reference">Contact</a>
+								<a href="http://library.albany.edu/archive/reference">Contact</a>
 							</li>
 					
 					<div class="col-sm-3 col-md-3 pull-right" id="searchBox">
 								<form class="navbar-form" role="search" action="http://meg.library.albany.edu:8080/archive/search">
 									<div class="input-append btn-group">
 										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<span class="caret"/>
+											<span class="caret" data-toggle="tooltip" title="Search Options" />
 										</button>
 										<ul class="dropdown-menu">
 											<li>
@@ -321,26 +321,26 @@
 													<span class="glyphicon glyphicon-none"></span><xsl:text> </xsl:text><xsl:value-of select="$doc.title"/></a>
 											</li>
 											<li>
-												<a id="searchCollections">
+												<a id="searchCollections" data-toggle="tooltip" title="Search Archival Collections">
 													<span class="glyphicon glyphicon-ok"></span> Collections</a>
 											</li>
 											<li>
-												<a id="searchPhotos">
+												<a id="searchPhotos" data-toggle="tooltip" title="Search Online Digital Content">
 													<span class="glyphicon glyphicon-none"></span> Digital Selections <span class="glyphicon glyphicon-new-window"></span>
 												</a>
 											</li>
 											<li>
-												<a id="searchBooks">
+												<a id="searchBooks" data-toggle="tooltip" title="Search Rare Books">
 													<span class="glyphicon glyphicon-none"></span> Rare Books <span class="glyphicon glyphicon-new-window"></span>
 												</a>
 											</li>
 											<li>
-												<a id="searchMathes">
+												<a id="searchMathes" data-toggle="tooltip" title="Search Children's Literature Collection">
 													<span class="glyphicon glyphicon-none"></span> Mathes Children's Literature <span class="glyphicon glyphicon-new-window"></span>
 												</a>
 											</li>
 											<li>
-												<a id="searchAsp">
+												<a id="searchAsp" data-toggle="tooltip" title="Search the Student Newspaper">
 													<span class="glyphicon glyphicon-none"></span> Student Newspaper <span class="glyphicon glyphicon-new-window"></span>
 												</a>
 											</li>

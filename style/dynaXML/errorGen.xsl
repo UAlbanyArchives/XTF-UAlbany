@@ -166,8 +166,45 @@
 
 <!-- In the case of an InvalidDocument exception, the only relevant info is the document identifier. -->
 <xsl:template match="InvalidDocument">
-  <h1>Document Not Found</h1>
-  <p>Document <b><xsl:value-of select="$docId"/></b> is not available. Please check that you have typed the address correctly or that the referring page does not have an error in its link.</p>
+  <h1>Finding Collection Page</h1>
+  <xsl:choose>
+	<xsl:when test="starts-with($docId, 'apap')">
+		<meta http-equiv="refresh">
+			<xsl:attribute name="content">
+				<xsl:text>0; url=http://library.albany.edu/speccoll/findaids/eresources/static/apap.html#</xsl:text>
+				<xsl:value-of select="substring-before($docId, '.xml')"/>
+			</xsl:attribute>
+		</meta>
+	</xsl:when>
+	<xsl:when test="starts-with($docId, 'ger')">
+		<meta http-equiv="refresh">
+			<xsl:attribute name="content">
+				<xsl:text>0; url=http://library.albany.edu/speccoll/findaids/eresources/static/ger.html#</xsl:text>
+				<xsl:value-of select="substring-before($docId, '.xml')"/>
+			</xsl:attribute>
+		</meta>
+	</xsl:when>
+	<xsl:when test="starts-with($docId, 'mss')">
+		<meta http-equiv="refresh">
+			<xsl:attribute name="content">
+				<xsl:text>0; url=http://library.albany.edu/speccoll/findaids/eresources/static/mss.html#</xsl:text>
+				<xsl:value-of select="substring-before($docId, '.xml')"/>
+			</xsl:attribute>
+		</meta>
+	</xsl:when>
+	<xsl:when test="starts-with($docId, 'ua')">
+		<meta http-equiv="refresh">
+			<xsl:attribute name="content">
+				<xsl:text>0; url=http://library.albany.edu/speccoll/findaids/eresources/static/ua.html#</xsl:text>
+				<xsl:value-of select="substring-before($docId, '.xml')"/>
+			</xsl:attribute>
+		</meta>
+	</xsl:when>
+	<xsl:otherwise>
+		<meta http-equiv="refresh" content="0; url=http://library.albany.edu/archiveDev" />
+	</xsl:otherwise>
+  </xsl:choose>
+  <p>Collection <b><xsl:value-of select="$docId"/></b> does not have a collection page. Unfortunately we are not able to create detailed collection pages for each collection. Also, the collection number may be incorrect. You will be redirected to the relevent collection browse page. If you are not redirected, please <a href="http://library.albany.edu/archive/reference">Contact Us</a> and let us know of this issue.</p>
   <p>Document ID: <b><xsl:value-of select="$docId"/></b></p>
 </xsl:template>
 

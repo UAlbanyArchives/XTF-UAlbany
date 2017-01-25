@@ -840,6 +840,9 @@ for each level.-->
 						<xsl:value-of select="translate(../@id, '. ', '')"/>
 					</xsl:attribute>
 					<xsl:for-each select="physdesc">
+						<xsl:if test = "text()">
+							<p><xsl:value-of select="."/></p>
+						</xsl:if>
 						<xsl:for-each select="extent">
 							<p><xsl:value-of select="."/>
 							<xsl:text> </xsl:text>

@@ -336,7 +336,7 @@
 											<p>Open to the public Monday-Friday, 9am-5pm</p>
 											<p>Closed for some state holidays and winter intersession</p>
 											<p>Located on the top floor of the Science Library on the Uptown Campus</p>
-											<p><a href="http://library.albany.edu/archiveDev/directions">Hours and Directions</a></p>
+											<p><a href="http://library.albany.edu/archive/directions">Hours and Directions</a></p>
 										</div>
 										<div class="footRight">
 											<p>M. E. Grenander Department of Special Collections &amp; Archives</p>
