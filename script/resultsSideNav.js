@@ -29,7 +29,7 @@ $(function(){
 		 $('.logo').addClass("logoHide");
 		 $('.ualbany').addClass("logoHide");
 		 $('.smallLogo').addClass("logoShow");
-		 $('.side-nav').css({"top": "-5px"});
+		 $('.side-nav').css({"top": "-10px"});
 	  }
   });
 });

@@ -389,7 +389,7 @@
 											</li>
 										</ul>
 										<input type="hidden" name="browse-all" value="yes"></input>
-										<input id="searchInput" type="text" class="form-control" placeholder="Collections" name="keyword"></input>
+										<input id="searchInput" type="text" class="form-control" placeholder="Collections" name="keyword" value="{$keyword}"></input>
 										<span class="input-group-addon">
 											<button type="submit">
 												<span class="glyphicon glyphicon-search"/>
@@ -404,7 +404,7 @@
 			</div>
 			<!-- /.container -->
 		</nav>
-		<div id="wrapper" class="row no-gutter">
+		<div id="wrapper">
 			<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
 		   <div id="browseNav" class="side-nav">
 			  <!--<div id="narrowSearch" class="page-header text-center">

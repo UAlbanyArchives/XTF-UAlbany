@@ -638,7 +638,7 @@ a {
 
 @media only screen and (min-width: 767px) {
 	.docHit .alert-warning {
-		margin-left: 20px;
+		margin-left: 10px;
 	}
 }
 
