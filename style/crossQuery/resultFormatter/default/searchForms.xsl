@@ -280,7 +280,7 @@
 				<div class="well workshop-well">
 					<div class="row">
 						<div class="col-xs-12">
-							<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/ndpa.html">National Death Penalty Archive</a></h4>
+							<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/91.html">National Death Penalty Archive</a></h4>
 							<p>A collection of personal papers and organizational records documenting the United States&#39;s important history of capital punishment.</p>
 						</div>
 					</div>
@@ -563,7 +563,7 @@
 							<div class="well workshop-well">
 								<div class="row">
 									<div class="col-xs-12">
-										<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/ndpa.html">National Death Penalty Archive</a></h4>
+										<h4><a href="http://library.albany.edu/speccoll/findaids/eresources/static/91.html">National Death Penalty Archive</a></h4>
 										<p>A collection of personal papers and organizational records documenting the United States&#39;s important history of capital punishment.</p>
 									</div>
 								</div>

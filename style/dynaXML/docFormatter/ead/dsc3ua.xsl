@@ -41,44 +41,46 @@
 any introductory paragraphs.-->
 
 	<xsl:template match="archdesc/dsc">
-		<h3>Contents of Collection</h3>
-		<xsl:choose>
-		<xsl:when test="not(c01/@level='series' or c01/@level='subgrp')">
-			<div class="row section">
-				<div class="table-responsive">
-				  <table class="table">
-					<thead>
-						<tr class="purpleHead">
-							<th>
-								<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request">Request</button>
-							</th>
-							<th>
-								<xsl:text>Box</xsl:text>
-							</th>
-							<th>
-								<xsl:text>Folder</xsl:text>
-							</th>
-							<th>
-								<xsl:text>Contents</xsl:text>
-							</th>
-							<th>
-								<xsl:text>Date</xsl:text>
-							</th>
-						</tr>
-					</thead>
-					<xsl:for-each select="c01">
-						<xsl:call-template name="c02-level-container"/>
-					</xsl:for-each>
-				  </table>
+		<xsl:if test="c01">
+			<h3>Contents of Collection</h3>
+			<xsl:choose>
+			<xsl:when test="not(c01/@level='series' or c01/@level='subgrp')">
+				<div class="row section">
+					<div class="table-responsive">
+					  <table class="table">
+						<thead>
+							<tr class="purpleHead">
+								<th>
+									<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request">Request</button>
+								</th>
+								<th>
+									<xsl:text>Box</xsl:text>
+								</th>
+								<th>
+									<xsl:text>Folder</xsl:text>
+								</th>
+								<th>
+									<xsl:text>Contents</xsl:text>
+								</th>
+								<th>
+									<xsl:text>Date</xsl:text>
+								</th>
+							</tr>
+						</thead>
+						<xsl:for-each select="c01">
+							<xsl:call-template name="c02-level-container"/>
+						</xsl:for-each>
+					  </table>
+					</div>
 				</div>
-			</div>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:for-each select="c01|c">
-				<xsl:call-template name="c01"/>
-			</xsl:for-each>
-		</xsl:otherwise>
-		</xsl:choose>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:for-each select="c01|c">
+					<xsl:call-template name="c01"/>
+				</xsl:for-each>
+			</xsl:otherwise>
+			</xsl:choose>
+		</xsl:if>
 	</xsl:template>
 
 	<!--<xsl:template match="dsc/head">
@@ -524,14 +526,14 @@ for each level.-->
 							<p class="unitID">
 								<xsl:attribute name="id">
 									<xsl:text>ID-</xsl:text>
-									<xsl:value-of select="translate(../@id, '.', '--')"/>
+									<xsl:value-of select="substring(../@id, 8)"/>
 								</xsl:attribute>
-								<xsl:value-of select="../@id"/>
+								<xsl:value-of select="substring(../@id, 8)"/>
 							</p>
 							<i class="fa fa-folder">
 								<xsl:attribute name="onclick">
 									<xsl:text>copyToClipboard('#ID-</xsl:text>
-									<xsl:value-of select="translate(../@id, '.', '--')"/>
+									<xsl:value-of select="substring(../@id, 8)"/>
 									<xsl:text>')</xsl:text>
 								</xsl:attribute>
 							</i>
@@ -738,14 +740,14 @@ for each level.-->
 					<p class="unitID">
 						<xsl:attribute name="id">
 							<xsl:text>ID-</xsl:text>
-							<xsl:value-of select="translate(../@id, '.', '--')"/>
+							<xsl:value-of select="substring(../@id, 8)"/>
 						</xsl:attribute>
-						<xsl:value-of select="../@id"/>
+						<xsl:value-of select="substring(../@id, 8)"/>
 					</p>
 					<i class="fa fa-folder">
 						<xsl:attribute name="onclick">
 							<xsl:text>copyToClipboard('#ID-</xsl:text>
-							<xsl:value-of select="translate(../@id, '.', '--')"/>
+							<xsl:value-of select="substring(../@id, 8)"/>
 							<xsl:text>')</xsl:text>
 						</xsl:attribute>
 					</i>
@@ -778,7 +780,15 @@ for each level.-->
 						<xsl:value-of select="container[1]/@type"/>
 						<xsl:text> </xsl:text>
 					</xsl:if>
-					<xsl:value-of select="container[1]"/>
+					<xsl:variable name="boxTest" select="container[1]"/>
+					<xsl:choose>
+						<xsl:when test="contains($boxTest, '(')">
+							<xsl:value-of select="substring-before($boxTest,'(')"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="container[1]"/>
+						</xsl:otherwise>
+					</xsl:choose>
 				</td>
 				<td>
 					<xsl:value-of select="container[2]"/>

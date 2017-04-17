@@ -641,7 +641,7 @@
 							<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Request</button>
 							
 							<!--Container List-->
-							<xsl:if test="archdesc/dsc">
+							<xsl:if test="archdesc/dsc/c01">
 								<xsl:choose>
 									<xsl:when test="archdesc/dsc/c01[@level='series'] or archdesc/dsc/c01[@level='subgrp']">
 										<div id="panel2" class="panel panel-primary">
@@ -868,7 +868,7 @@
 						<button type="button" class="btn btn-primary requestModel" data-toggle="modal" data-target="#request"><i class="glyphicon glyphicon-folder-close"/> Request</button>
 													
 						<!--Container List-->
-						<xsl:if test="archdesc/dsc">
+						<xsl:if test="archdesc/dsc/c01">
 							<xsl:choose>
 								<xsl:when test="archdesc/dsc/c01[@level='series']">
 									<ul id="panel4" class="nav navbar-nav">

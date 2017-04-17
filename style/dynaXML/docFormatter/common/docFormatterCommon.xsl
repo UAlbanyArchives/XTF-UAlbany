@@ -191,7 +191,7 @@
 										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/apap.html">NY State Modern Political Archive</a>
 									</li>
 									<li>
-										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ndpa.html">National Death Penalty Archive</a>
+										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/91.html">National Death Penalty Archive</a>
 									</li>
 									<li>
 										<a href="http://library.albany.edu/speccoll/findaids/eresources/static/ger.html">German Intellectual Émigré</a>

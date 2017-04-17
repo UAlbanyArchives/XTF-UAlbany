@@ -462,7 +462,7 @@
 				  <a>
 					<xsl:attribute name="href">
 				  <xsl:text>http://library.albany.edu/speccoll/findaids/eresources/static/pdf/</xsl:text>
-					<xsl:value-of select="substring-after(/ead/@id, '_')"/>
+					<xsl:value-of select="/ead/@id"/>
 					<xsl:text>.pdf</xsl:text>
 					</xsl:attribute>
 					<xsl:text>print PDF version</xsl:text>
@@ -476,7 +476,7 @@
 					<xsl:apply-templates select="../archdesc/did/unittitle/node()[not(self::unitdate)]" />
 				</h2>
 				<h4>
-					<xsl:value-of select="substring-after(filedesc/titlestmt/titleproper, ')')"/>
+					<xsl:apply-templates select="../archdesc/did/unittitle/unitdate/text()" />
 				</h4>
 				<xsl:if test="filedesc/titlestmt/subtitle">
 					<p>
@@ -497,7 +497,7 @@
 			<a type="button" class="btn btn-default">
 				<xsl:attribute name="href">
 				  <xsl:text>http://library.albany.edu/speccoll/findaids/eresources/static/pdf/</xsl:text>
-					<xsl:value-of select="substring-after(/ead/@id, '_')"/>
+					<xsl:value-of select="/ead/@id"/>
 					<xsl:text>.pdf</xsl:text>
 				</xsl:attribute>
 				<i class="fa fa-file-pdf-o"/>
@@ -871,7 +871,7 @@
 	
 	<xsl:template match="archdesc/did/langmaterial">
 		<a id ="{name(.)}" class="anchor"></a>
-		<xsl:if test="string(child::*)">
+		<xsl:if test="string()">
 			<div class="panel panel-default">
 				<div class="panel-heading" data-toggle="collapse" href="#collapse5">
 				  <h4 class="panel-title">
@@ -880,9 +880,7 @@
 				</div>
 				<div id="collapse5" class="panel-collapse collapse">
 				  <div class="panel-body">
-					<xsl:for-each select="language">
-						<p><xsl:apply-templates/></p>
-					</xsl:for-each>
+					<p><xsl:apply-templates/></p>
 				  </div>
 				</div>
 			  </div>
